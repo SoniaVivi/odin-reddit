@@ -9,8 +9,8 @@ const Header = () => {
       </a>
       <input className="search header-search"></input>
       <div className="login-container ">
-        <button>Log In</button>
-        <button>Sign Up</button>
+        <a>Log In</a>
+        <a>Sign Up</a>
       </div>
       <div className="user-container"></div>
     </div>

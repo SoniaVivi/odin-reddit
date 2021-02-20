@@ -32,17 +32,13 @@ $margin-left: 17px;
   > * {
     display: flex;
     flex-flow: row nowrap;
-    align-items: center;
+    align-items: flex-start;
   }
 }
 
 .logo-container {
   font-weight: 700;
   font-size: 16px;
-
-  > p {
-    margin-bottom: 0;
-  }
 
   .logo {
     $size: 32px;
@@ -51,11 +47,18 @@ $margin-left: 17px;
     border-radius: 50%;
     background-color: #fe471c;
   }
+
+  > p {
+    align-self: center;
+    margin-left: 10px;
+    margin-bottom: 0;
+  }
 }
 
 .header-search {
   max-width: 656px;
   width: 100%;
+  height: 36px;
   margin-left: $margin-left;
   border: 1px solid #edeff1;
   border-radius: 3px;
@@ -75,11 +78,11 @@ $margin-left: 17px;
     font-weight: 700;
   }
 
-  > button:first-child {
+  > a:first-child {
     color: $button-color;
   }
 
-  > button:nth-child(2) {
+  > a:nth-child(2) {
     color: #ffffff;
     background-color: $button-color;
   }
