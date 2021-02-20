@@ -1,0 +1,110 @@
+* {
+  border: unset;
+  font-family: "Ubuntu";
+  color: black;
+  background-color: unset;
+}
+
+body {
+  background-color: #dae0e6;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* Header Elements */
+
+$margin-left: 17px;
+
+.header {
+  $side-padding: 20px;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  width: 100%;
+  height: 48px;
+  padding-top: 8px;
+  padding-left: $side-padding;
+  padding-right: $side-padding;
+  background-color: #ffffff;
+
+  > * {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+  }
+}
+
+.logo-container {
+  font-weight: 700;
+  font-size: 16px;
+
+  > p {
+    margin-bottom: 0;
+  }
+
+  .logo {
+    $size: 32px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: #fe471c;
+  }
+}
+
+.header-search {
+  max-width: 656px;
+  width: 100%;
+  margin-left: $margin-left;
+  border: 1px solid #edeff1;
+  border-radius: 3px;
+  background-color: #f6f7f8;
+}
+
+.login-container {
+  $button-color: #0479cf;
+  width: 245px;
+  margin-left: $margin-left;
+  > * {
+    width: 120px;
+    height: 32px;
+    margin-left: $margin-left;
+    border: 1px solid $button-color;
+    border-radius: 24px;
+    font-weight: 700;
+  }
+
+  > button:first-child {
+    color: $button-color;
+  }
+
+  > button:nth-child(2) {
+    color: #ffffff;
+    background-color: $button-color;
+  }
+}
+
+.user-container {
+  width: 70px;
+}
+
+.post {
+  $post-width: 640px;
+  max-width: 640px;
+  max-height: 638px;
+  width: 640px;
+  height: auto; /* min is 96px */
+}
+
+@media (max-width: 1070px) {
+  .logo-text {
+    display: none;
+  }
+}
+
+@media (min-width: 1070px) {
+  .logo-container {
+    min-width: 134px;
+  }
+}
