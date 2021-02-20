@@ -1,0 +1,2 @@
+class ModeratorOrigin < ApplicationRecord
+end

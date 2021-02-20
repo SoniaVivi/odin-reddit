@@ -1,0 +1,42 @@
+@import "bootstrap/bootstrap", "_variables", "_mixins", "header",
+  "trending-posts", "post-feed";
+
+/* General Rules */
+
+* {
+  box-sizing: border-box;
+  border: unset;
+  font-family: "IBM Plex Sans", "Ubuntu", sans-serif;
+  src: url(font-path("IBMPlexSans-Regular.ttf"));
+  color: black;
+  background-color: unset;
+  // outline: 1px solid black;
+  list-style-type: none;
+}
+
+body {
+  background-color: #dae0e6;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* Alerts and Notices */
+
+.alert,
+.notice {
+  max-width: 100%;
+}
+
+@media (max-width: 1070px) {
+  .logo-text {
+    display: none;
+  }
+}
+
+@media (min-width: 1070px) {
+  .logo-container {
+    min-width: 134px;
+  }
+}

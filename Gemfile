@@ -42,6 +42,8 @@ group :development do
   gem 'listen', '~> 3.3'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+  #RSpec to aid in testing
+  gem 'rspec-rails', '~> 4.0.2'
 end
 
 group :test do
@@ -50,10 +52,18 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
+  #RSpec to aid in testing
+  gem 'rspec-rails', '~> 4.0.2'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-# React
+# Use React to streamline JavaScript development
 gem 'react-rails'
+
+#For user registration and authentication
+gem 'devise'
+
+#To format ruby code
+gem 'prettier'
