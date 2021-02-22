@@ -11,9 +11,13 @@
   </head>
 
   <body>
-  <%= react_component("Header") %>
+    <%= react_component("Header", {}, class: "header") %>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-    <%= yield %>
+    <div class="container-xl">
+      <div class="row content">
+        <%= yield %>
+      <div>
+    </div>
   </body>
 </html>

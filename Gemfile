@@ -58,5 +58,8 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # Use React to streamline JavaScript development
 gem 'react-rails'
 
-#Devise
+#For user registration and authentication
 gem 'devise'
+
+#To format ruby code
+gem 'prettier'

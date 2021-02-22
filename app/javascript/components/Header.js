@@ -2,10 +2,10 @@ import React from "react";
 import PropTypes from "prop-types";
 const Header = () => {
   return (
-    <div className="header">
+    <React.Fragment>
       <a className="logo-container" href="">
         <div className="logo" src=""></div>
-        <p class="logo-text">fakedit</p>
+        <p className="logo-text">fakedit</p>
       </a>
       <input className="search header-search"></input>
       <div className="login-container ">
@@ -13,7 +13,7 @@ const Header = () => {
         <a>Sign Up</a>
       </div>
       <div className="user-container"></div>
-    </div>
+    </React.Fragment>
   );
 };
 
