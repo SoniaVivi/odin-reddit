@@ -10,13 +10,19 @@ const PostFeed = (props) => {
             <div class="postfeed-score">
               {(() =>
                 post.score > 1000
-                  ? (post.score / 1000).toString().slice(0, 3) + "K"
+                  ? (post.score / 1000).toString().slice(0, 3) + "k"
                   : post.score)()}
             </div>
             <button className="arrow arrow-down"></button>
           </div>
           <div className="post-details-container">
-            <div className="post-metadata"></div>
+            <div className="post-metadata">
+              <a></a>
+              <a></a>
+              <div>
+                Posted by {props.poster} {(() => {})()}
+              </div>
+            </div>
             <h1>{post.title}</h1>
             <p>{post.description}</p>
           </div>
