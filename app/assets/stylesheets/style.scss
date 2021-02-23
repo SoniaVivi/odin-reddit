@@ -1,13 +1,18 @@
+@import "bootstrap/bootstrap";
+@import "_mixins";
+@import "header";
+@import "trending-posts";
+
 /* General Rules */
 
 * {
   box-sizing: border-box;
   border: unset;
-  font-family: "IBM Plex Sans", "Ubuntu";
+  font-family: "IBM Plex Sans", "Ubuntu", sans-serif;
   src: url(font-path("IBMPlexSans-Regular.ttf"));
   color: black;
   background-color: unset;
-  outline: 1px solid black;
+  // outline: 1px solid black;
   list-style-type: none;
 }
 
@@ -41,6 +46,43 @@ a {
   h1 {
     font-size: 20px;
   }
+}
+
+.postfeed-post-container {
+  display: flex;
+}
+
+.vertical-score-post-container {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  max-width: 40px;
+  width: 100%;
+  font-size: 14px;
+  font-weight: 700;
+  background-color: #f8f9fa;
+}
+
+.arrow {
+  position: relative;
+  overflow: hidden;
+  width: 16px;
+  height: 20px;
+}
+
+.arrow::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  display: block;
+  width: 32px;
+  height: 40px;
+  background: no-repeat center image-url("arrow.png");
+}
+
+.arrow-down::before {
+  transform: rotate(180deg);
 }
 
 @media (max-width: 1070px) {
