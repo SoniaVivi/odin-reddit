@@ -1,2 +1,3 @@
 /app/controllers/*.rb
+/app/models/user.rb
 

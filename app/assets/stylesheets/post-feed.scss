@@ -1,0 +1,51 @@
+.postfeed {
+  > li {
+    min-height: 96px;
+    width: auto;
+    height: auto;
+    margin-top: 15px;
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+  }
+
+  h1 {
+    font-size: 20px;
+  }
+}
+
+.postfeed-post-container {
+  display: flex;
+}
+
+.vertical-score-post-container {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  max-width: 40px;
+  width: 100%;
+  font-size: 14px;
+  font-weight: 700;
+  background-color: #f8f9fa;
+}
+
+.arrow {
+  position: relative;
+  overflow: hidden;
+  width: 16px;
+  height: 20px;
+}
+
+.arrow::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  display: block;
+  width: 32px;
+  height: 40px;
+  background: no-repeat center image-url("arrow.png");
+}
+
+.arrow-down::before {
+  transform: rotate(180deg);
+}
