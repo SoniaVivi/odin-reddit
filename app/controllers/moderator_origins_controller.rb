@@ -1,0 +1,2 @@
+class ModeratorOriginsController < ApplicationController
+end
