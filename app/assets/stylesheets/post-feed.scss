@@ -49,3 +49,42 @@
 .arrow-down::before {
   transform: rotate(180deg);
 }
+
+.post-details-container {
+  padding: 0 5px;
+
+  h1 {
+    margin-top: 7px;
+  }
+}
+
+.post-metadata {
+  display: flex;
+  font-size: 12px;
+
+  * {
+    color: $gray;
+  }
+
+  p,
+  a,
+  pre {
+    margin-bottom: 0;
+    white-space: pre;
+  }
+
+  .post-origin {
+    position: relative;
+    display: flex;
+    align-items: center;
+    font-weight: 700;
+    color: black;
+  }
+
+  .post-origin:after {
+    @include create-circle(1px);
+    content: "";
+    border: 1px solid black;
+    margin-left: 2px;
+  }
+}

@@ -34,5 +34,6 @@ titles.each_with_index do |title, i|
     score: rand(10_000),
     origin_id: test_origin.id,
     poster_id: test_user.id,
+    subject_type: 'text',
   )
 end
