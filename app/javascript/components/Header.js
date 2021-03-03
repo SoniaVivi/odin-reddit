@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 const Header = () => {
   return (
     <React.Fragment>
-      <a className="logo-container" href="">
+      <a className="logo-container" href="/">
         <div className="logo" src=""></div>
         <p className="logo-text">fakedit</p>
       </a>
