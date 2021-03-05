@@ -1,0 +1,143 @@
+$light-gray: #edeff1;
+
+body {
+  background-color: #323232;
+}
+
+.content {
+  background-color: #eeeeee;
+  min-height: 100vh;
+}
+
+.post-content {
+  height: calc(100% - 34px);
+  margin-bottom: 17px;
+  background-color: #ffffff;
+}
+
+.post-content-container {
+  min-height: 100%;
+  padding-top: 32px;
+  padding-left: 32px;
+}
+
+.post-container {
+  border: unset;
+}
+
+.comment-nesting-line {
+  $margin: 10px;
+  width: 2px;
+  height: calc(100% - #{$margin});
+  margin: $margin 0;
+  background-color: $light-gray;
+}
+
+.comment-section {
+  height: 100%;
+  margin-top: 15px;
+}
+
+.comment {
+  padding-right: 0;
+  padding-left: 15px;
+}
+
+.comment:not(.top-level) {
+  padding-left: 21px;
+}
+
+.comment-body,
+.nested-comment-container,
+.comment-container,
+.markup-buttons,
+div.new-comment-options {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.comment-container,
+.markup-buttons,
+div.new-comment-options {
+  flex-flow: row nowrap;
+}
+
+div.comment-editor {
+  flex-flow: column nowrap;
+  align-items: center;
+  padding-left: 2px;
+}
+
+textarea.comment-editor {
+  height: 138px;
+  padding-top: 8px;
+  border-radius: 3px;
+  border: 1px solid $light-gray;
+  border-bottom: none;
+  outline: none;
+}
+
+textarea.comment-editor:focus {
+  border: 1px solid black;
+  border-bottom: none;
+}
+
+.markup-buttons {
+  $height: 30px;
+  height: #{$height + 6px};
+  background-color: #f6f7f8;
+  border-radius: 3px;
+  border: 1px solid $light-gray;
+
+  button:not(.new-comment-options) {
+    width: $height;
+    height: $height;
+  }
+}
+
+textarea.comment-editor:focus + .markup-buttons {
+  border: 1px solid black;
+  border-top: none;
+}
+
+.formatting-container {
+  display: flex;
+  align-items: top;
+}
+
+.formatting-container::after {
+  content: "";
+  display: inline-block;
+  width: 1px;
+  height: calc(100% - 4px);
+  margin: 0 4px;
+  background-color: $light-gray;
+}
+
+.structural-formatting-buttons::after {
+  margin-left: 34px;
+}
+
+div.new-comment-options {
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+button.new-comment-options {
+  height: 24px;
+  border-radius: 24px;
+  border: 1px solid #bebfbf;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+button.new-comment-options:first-child {
+  width: 144px;
+  border: none;
+}
+
+button.new-comment-options:last-child {
+  width: 104px;
+  background-color: #bebfbf;
+}

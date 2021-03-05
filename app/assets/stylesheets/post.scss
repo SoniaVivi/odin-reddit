@@ -1,0 +1,35 @@
+.post-container {
+  display: flex;
+  min-height: 96px;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin-top: 15px;
+  background-color: #ffffff;
+  border: 1px solid #cccccc;
+
+  h1 {
+    font-size: 20px;
+  }
+}
+
+.no-grey-side-area {
+  > .vertical-score-post-container {
+    background-color: #ffffff;
+  }
+}
+
+.post-wrapper {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+/* Voting Arrows and Score */
+
+.post-details-container {
+  padding: 0 5px;
+
+  h1 {
+    margin-top: 7px;
+  }
+}

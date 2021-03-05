@@ -4,10 +4,11 @@ class Post < ApplicationRecord
 
   belongs_to :poster, class_name: 'User'
   belongs_to :origin
+  has_many :comments
 
   def get_data
     {
-      created_at: created_at.strftime('%FT%T'),
+      created_at: created_at.strftime('%FT%H:%M:%S'),
       description: description,
       origin: origin.title,
       poster: poster.name,
@@ -16,6 +17,8 @@ class Post < ApplicationRecord
       post_type: subject_type,
       title: title,
       edited: updated_at,
+      comment_quantity: comments.length,
+      id: id,
     }
   end
 end

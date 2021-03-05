@@ -40,34 +40,50 @@ $margin-left: 17px;
   width: 100%;
   height: 36px;
   margin-left: $margin-left;
-  border: 1px solid #edeff1;
+  border: 1px solid $light-gray;
   border-radius: 3px;
   background-color: #f6f7f8;
 }
 
 .login-container {
-  $button-color: #0479cf;
   width: 245px;
   margin-left: $margin-left;
+}
 
-  > * {
-    @include center-children();
-    width: 120px;
-    height: 32px;
-    margin-left: $margin-left;
-    border: 1px solid $button-color;
-    border-radius: 24px;
-    font-weight: 700;
-  }
+.login-button,
+.signup-button {
+  @include center-children();
+  @include rounded-corners(32px, $blue, 120px);
+  margin-left: $margin-left;
+  font-weight: 700;
+}
 
-  > a:first-child {
-    color: $button-color;
-  }
+.login-button {
+  color: $blue;
+}
 
-  > a:nth-child(2) {
-    color: #ffffff;
-    background-color: $button-color;
-  }
+.signup-button {
+  color: #ffffff;
+  background-color: $blue;
+}
+
+.user-account-modal-wrapper {
+  @include center-children();
+  position: fixed;
+  z-index: 100000000;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.user-account-modal {
+  display: flex;
+  justify-content: flex-start;
+  width: 850px;
+  height: 650px;
+  background-color: #ffffff;
 }
 
 .user-container {

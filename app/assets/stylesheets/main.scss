@@ -1,0 +1,174 @@
+/* General Rules */
+
+* {
+  box-sizing: border-box;
+  border: unset;
+  font-family: "IBM Plex Sans", "Ubuntu", sans-serif;
+  src: url(font-path("IBMPlexSans-Regular.ttf"));
+  color: black;
+  background-color: unset;
+  // outline: 1px solid black;
+  list-style-type: none;
+}
+
+body {
+  background-color: #dae0e6;
+}
+
+a {
+  text-decoration: none;
+}
+
+p {
+  margin: 0;
+}
+
+.disable-scroll {
+  overflow: hidden;
+}
+
+/* Poster username and time styling */
+
+.poster-time-container {
+  display: flex;
+  font-size: 12px;
+
+  * {
+    color: $gray;
+  }
+
+  a,
+  p,
+  pre {
+    margin-bottom: 0;
+    white-space: pre;
+    color: $gray;
+  }
+
+  .post-origin {
+    position: relative;
+    display: flex;
+    align-items: center;
+    font-weight: 700;
+    color: black;
+  }
+
+  .post-origin:after {
+    @include create-circle(1px);
+    content: "";
+    border: 1px solid black;
+    margin-left: 2px;
+  }
+}
+
+/* User Icons */
+
+.user-icon-container {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+
+  .user-icon {
+    @include create-circle(18px);
+  }
+}
+
+.top-level .user-icon:not(.nested) {
+  @include create-circle(28px);
+}
+
+/* Score and Utility Buttons */
+
+.utility-buttons {
+  display: flex;
+  min-width: 100%;
+  height: 32px;
+
+  a,
+  button {
+    display: flex;
+    align-items: center;
+    max-height: 32px;
+    font-size: 13px;
+    font-weight: 700;
+    color: $gray;
+  }
+}
+
+/* stylelint-disable */
+
+.vertical-score-container,
+.horizontal-score-container {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  max-width: 40px;
+  width: 100%;
+  padding-top: 10px;
+  font-size: 14px;
+  font-weight: 700;
+  background-color: #f8f9fa;
+
+  .arrow {
+    position: relative;
+    overflow: hidden;
+    width: 21px;
+    height: 20px;
+  }
+
+  .arrow::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    display: block;
+    width: 32px;
+    height: 40px;
+    background: no-repeat center image-url("arrow.png");
+  }
+
+  .arrow-down::before {
+    transform: rotate(180deg);
+  }
+}
+
+.horizontal-score-container {
+  $arrow-margin: 5px;
+  flex-flow: row nowrap;
+  min-width: 64px;
+  max-height: 28px;
+  padding-top: 0;
+  font-size: 12px;
+  background-color: #ffffff;
+
+  .arrow::before {
+    top: unset;
+    max-height: 28px;
+    margin-right: $arrow-margin;
+  }
+
+  .arrow-down::before {
+    max-height: 28px;
+    margin-right: 0;
+    margin-left: $arrow-margin;
+  }
+}
+
+/* Alerts and Notices */
+
+.alert,
+.notice {
+  max-width: 100%;
+}
+
+@media (max-width: 1070px) {
+  .logo-text {
+    display: none;
+  }
+}
+
+@media (min-width: 1070px) {
+  .logo-container {
+    min-width: 134px;
+  }
+}

@@ -9,3 +9,15 @@
   height: $size;
   border-radius: 50%;
 }
+
+@mixin rounded-corners(
+  $height,
+  $border,
+  $width: 100%,
+  $radius: $height * 0.75
+) {
+  width: $width;
+  height: $height;
+  border: 1px solid $border;
+  border-radius: $radius;
+}
