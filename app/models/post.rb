@@ -4,6 +4,7 @@ class Post < ApplicationRecord
 
   belongs_to :poster, class_name: 'User'
   belongs_to :origin
+  has_many :comments
 
   def get_data
     {

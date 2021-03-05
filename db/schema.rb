@@ -10,10 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_23_234310) do
+ActiveRecord::Schema.define(version: 2021_03_03_232411) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "comments", force: :cascade do |t|
+    t.bigint "poster_id"
+    t.bigint "post_id"
+    t.bigint "parent_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["parent_id"], name: "index_comments_on_parent_id"
+    t.index ["post_id"], name: "index_comments_on_post_id"
+    t.index ["poster_id"], name: "index_comments_on_poster_id"
+  end
 
   create_table "moderator_origins", force: :cascade do |t|
     t.bigint "origin_id"
@@ -38,6 +49,8 @@ ActiveRecord::Schema.define(version: 2021_02_23_234310) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "poster_id"
     t.bigint "origin_id"
+    t.bigint "comments_id"
+    t.index ["comments_id"], name: "index_posts_on_comments_id"
     t.index ["origin_id"], name: "index_posts_on_origin_id"
     t.index ["poster_id"], name: "index_posts_on_poster_id"
   end
@@ -55,9 +68,13 @@ ActiveRecord::Schema.define(version: 2021_02_23_234310) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "comments", "posts"
+  add_foreign_key "comments", "users", column: "parent_id"
+  add_foreign_key "comments", "users", column: "poster_id"
   add_foreign_key "moderator_origins", "origins"
   add_foreign_key "moderator_origins", "users", column: "moderator_id"
   add_foreign_key "origins", "users", column: "creator_id"
+  add_foreign_key "posts", "comments", column: "comments_id"
   add_foreign_key "posts", "origins"
   add_foreign_key "posts", "users", column: "poster_id"
 end
