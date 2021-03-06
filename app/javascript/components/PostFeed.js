@@ -6,7 +6,12 @@ const PostFeed = (props) => {
   return (
     <React.Fragment>
       {props.posts.map((post) => (
-        <li className="postfeed-post-container">
+        <li
+          className="postfeed-post-container"
+          onClick={() =>
+            (window.location.href = `/f/${post.origin}/${post.id}`)
+          }
+        >
           <Post data={post}></Post>
         </li>
       ))}

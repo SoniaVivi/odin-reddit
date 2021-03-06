@@ -2,7 +2,7 @@ class Comment < ApplicationRecord
   validates :poster, :post, presence: true
   belongs_to :poster, class_name: 'User'
   belongs_to :post
-  belongs_to :parent, class_name: 'Comment'
+  belongs_to :parent, class_name: 'Comment', optional: true
 
   has_many :children, class_name: 'Comment'
 end

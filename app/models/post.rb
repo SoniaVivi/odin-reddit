@@ -17,6 +17,8 @@ class Post < ApplicationRecord
       post_type: subject_type,
       title: title,
       edited: updated_at,
+      comment_quantity: comments.length,
+      id: id,
     }
   end
 end

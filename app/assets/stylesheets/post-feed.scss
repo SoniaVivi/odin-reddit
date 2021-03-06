@@ -1,5 +1,6 @@
 .postfeed {
-  > li {
+  > .postfeed-post-container {
+    display: flex;
     min-height: 96px;
     width: auto;
     height: auto;
@@ -13,9 +14,12 @@
   }
 }
 
-.postfeed-post-container {
+.post-wrapper {
   display: flex;
+  flex-flow: row wrap;
 }
+
+/* Voting Arrows and Score */
 
 .vertical-score-post-container {
   display: flex;
@@ -27,6 +31,8 @@
   font-weight: 700;
   background-color: #f8f9fa;
 }
+
+/* Voting Arrows */
 
 .arrow {
   position: relative;
@@ -58,6 +64,8 @@
   }
 }
 
+/* Post Title Description Container */
+
 .post-metadata {
   display: flex;
   font-size: 12px;
@@ -86,5 +94,17 @@
     content: "";
     border: 1px solid black;
     margin-left: 2px;
+  }
+}
+
+.post-buttons {
+  min-width: 100%;
+  height: 32px;
+
+  a,
+  button {
+    font-size: 13px;
+    font-weight: 700;
+    color: $gray;
   }
 }

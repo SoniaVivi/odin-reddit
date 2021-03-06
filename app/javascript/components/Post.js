@@ -2,11 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const Post = (props) => {
-  const getMillisecondsPast = (timePosted) =>
-    new Date(new Date() - new Date(timePosted));
-
   const getTimePosted = (timePosted) => {
-    let millisecondsPast = getMillisecondsPast(timePosted);
+    let millisecondsPast = new Date(new Date() - new Date(timePosted));
     let getTime = {
       years: () => millisecondsPast.getUTCFullYear() - 1970,
       months: () => millisecondsPast.getMonth(),
@@ -37,24 +34,37 @@ const Post = (props) => {
         </div>
         <button className="arrow arrow-down"></button>
       </div>
-      <div className="post-details-container">
-        <div className="post-metadata">
-          <a href={`/f/${props.data.origin}`} className="post-origin">
-            f/{props.data.origin}
-          </a>
-          <p> Posted by </p>
-          <a href={`/user/${props.data.poster}/overview`} className="poster">
-            {props.data.poster}
-          </a>
-          <pre className="time">
-            {" "}
-            {(() => getTimePosted(props.data.created_at))()}
-          </pre>
+      <div className="post-wrapper">
+        <div className="post-details-container">
+          <div className="post-metadata">
+            <a href={`/f/${props.data.origin}`} className="post-origin">
+              f/{props.data.origin}
+            </a>
+            <p> Posted by </p>
+            <a href={`/user/${props.data.poster}/overview`} className="poster">
+              {props.data.poster}
+            </a>
+            <pre className="time">
+              {" "}
+              {(() => getTimePosted(props.data.created_at))()}
+            </pre>
+          </div>
+          <h1>{props.data.title}</h1>
+          <p>{props.data.description}</p>
         </div>
-        <h1>{props.data.title}</h1>
-        <p>{props.data.description}</p>
+        <div className="post-image"></div>
+        <div className="post-buttons">
+          <a
+            href={`/f/${props.data.origin}/${props.data.id}`}
+            onClick={(e) => e.stopPropagation()}
+          >
+            {props.data.comment_quantity} Comments
+          </a>
+          <button onClick={(e) => e.stopPropagation()}>Share</button>
+          <button>Save</button>
+          <button>...</button>
+        </div>
       </div>
-      <div className="post-image"></div>
     </React.Fragment>
   );
 };
