@@ -7,6 +7,7 @@ class PostsController < ApplicationController
     posts.each { |post| @posts << post.get_data }
   end
   def show
+    @post = Post.find(params[:id]).get_data
   end
   def new
   end

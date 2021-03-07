@@ -54,13 +54,10 @@ const Post = (props) => {
         </div>
         <div className="post-image"></div>
         <div className="post-buttons">
-          <a
-            href={`/f/${props.data.origin}/${props.data.id}`}
-            onClick={(e) => e.stopPropagation()}
-          >
+          <a href={`/f/${props.data.origin}/${props.data.id}`}>
             {props.data.comment_quantity} Comments
           </a>
-          <button onClick={(e) => e.stopPropagation()}>Share</button>
+          <button>Share</button>
           <button>Save</button>
           <button>...</button>
         </div>
