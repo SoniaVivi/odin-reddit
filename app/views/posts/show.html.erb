@@ -1,7 +1,7 @@
 <% content_for :head do %>
-  <%= stylesheet_link_tag 'posts_show' %>
+  <%= stylesheet_link_tag 'posts_show', class: "page-specific" %>
 <% end %>
-<div class="col-sm-8 ">
-  <%= react_component("Post", {data: @post}, class: "post-container no-grey-side-area" ) %>
-</div>
+<%= react_component("PostShow",
+                   {post: @post, comments: @comments},
+                   class: "col-sm-8 post-content-container") %>
 <%= react_component("SideBar", {}, class: "col-sm-3") %>
