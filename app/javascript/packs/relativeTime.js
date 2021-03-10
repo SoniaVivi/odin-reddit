@@ -1,21 +1,20 @@
 const relativeTime = (time) => {
   const getMilliseconds = () => {
-    return (
-      new Date().getTime() -
-      new Date(Date.parse(time + "Z")).getTime() +
-      new Date().getTimezoneOffset() * 60000
-    );
+    return Date.now() - Date.parse(time + "Z");
   };
   const getTimePosted = () => {
-    let millisecondsPast = new Date(getMilliseconds());
+    let millisecondsPast = getMilliseconds();
     let getTime = {
-      years: () => millisecondsPast.getUTCFullYear() - 1970,
-      months: () => millisecondsPast.getMonth(),
+      years: () => new Date(millisecondsPast).getUTCFullYear() - 1970,
+      months: () =>
+        new Date(
+          millisecondsPast + new Date().getTimezoneOffset() * 60000
+        ).getMonth(),
       weeks: () => millisecondsPast / 604800000,
       days: () => millisecondsPast / 86400000,
-      hours: () => millisecondsPast / 36000000,
-      minutes: () => millisecondsPast / 600000,
-      seconds: () => millisecondsPast / 10000,
+      hours: () => millisecondsPast / 3600000,
+      minutes: () => millisecondsPast / 60000,
+      seconds: () => millisecondsPast / 1000,
       "just now": () => {},
     };
     for (const [units, func] of Object.entries(getTime)) {
