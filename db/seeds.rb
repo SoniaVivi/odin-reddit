@@ -37,3 +37,56 @@ titles.each_with_index do |title, i|
     subject_type: 'text',
   )
 end
+Post.all.each do |post|
+  Comment.create!(
+    poster_id: 1,
+    post_id: post.id,
+    body: "Whazzzup #{post.title}",
+  )
+  Comment.create!(
+    poster_id: 1,
+    post_id: post.id,
+    body: "Whazzzup #{post.title}",
+  )
+  com =
+    Comment.create!(
+      poster_id: 1,
+      post_id: post.id,
+      body: "Whazzzup #{post.title}",
+    )
+
+  com =
+    Comment.create!(
+      poster_id: 1,
+      post_id: post.id,
+      body: "Whazzzup #{post.title}",
+      parent_id: com.id,
+    )
+
+  Comment.create!(
+    poster_id: 1,
+    post_id: post.id,
+    body: "Whazzzup #{post.title}",
+    parent_id: com.id,
+  )
+
+  Comment.create!(
+    poster_id: 1,
+    post_id: post.id,
+    body: "Whazzzup #{post.title}",
+    parent_id: com.id,
+  )
+
+  Comment.create!(
+    poster_id: 1,
+    post_id: post.id,
+    body: "Whazzzup #{post.title}",
+    parent_id: com.id,
+  )
+
+  Comment.create!(
+    poster_id: 1,
+    post_id: post.id,
+    body: "Whazzzup #{post.title}",
+  )
+end

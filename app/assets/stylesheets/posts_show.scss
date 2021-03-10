@@ -6,3 +6,23 @@ body {
   background-color: #f1f6fe;
   min-height: 100vh;
 }
+
+.comment-section {
+  height: 100%;
+}
+
+.post-content {
+  height: calc(100% - 34px);
+  margin-bottom: 17px;
+  background-color: #ffffff;
+}
+
+.post-content-container {
+  min-height: 100%;
+  padding-top: 32px;
+  padding-left: 32px;
+}
+
+.post-container {
+  border: unset;
+}

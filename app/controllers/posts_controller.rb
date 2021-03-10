@@ -7,7 +7,11 @@ class PostsController < ApplicationController
     posts.each { |post| @posts << post.get_data }
   end
   def show
-    @post = Post.find(params[:id]).get_data
+    post = Post.find(params[:id])
+    @post = post.get_data
+    @comments = post.comments.where(parent_id: nil).map  do |comment|
+      comment.get_tree
+    end
   end
   def new
   end

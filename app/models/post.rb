@@ -8,7 +8,7 @@ class Post < ApplicationRecord
 
   def get_data
     {
-      created_at: created_at.strftime('%FT%T'),
+      created_at: created_at.strftime('%FT%H:%M:%S'),
       description: description,
       origin: origin.title,
       poster: poster.name,
