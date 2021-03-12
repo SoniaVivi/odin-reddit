@@ -59,28 +59,28 @@ Post.all.each do |post|
     Comment.create!(
       poster_id: 1,
       post_id: post.id,
-      body: "Whazzzup #{post.title}",
+      body: "Whazzzup #{post.title} 2",
       parent_id: com.id,
     )
 
   Comment.create!(
     poster_id: 1,
     post_id: post.id,
-    body: "Whazzzup #{post.title}",
+    body: "Whazzzup #{post.title} 3",
     parent_id: com.id,
   )
 
   Comment.create!(
     poster_id: 1,
     post_id: post.id,
-    body: "Whazzzup #{post.title}",
+    body: "Whazzzup #{post.title} 3",
     parent_id: com.id,
   )
 
   Comment.create!(
     poster_id: 1,
     post_id: post.id,
-    body: "Whazzzup #{post.title}",
+    body: "Whazzzup #{post.title} 3",
     parent_id: com.id,
   )
 

@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import relativeTime from "../packs/relativeTime";
+import PosterTime from "./PosterTime";
 
 const Post = (props) => {
   return (
@@ -17,24 +17,20 @@ const Post = (props) => {
       </div>
       <div className="post-wrapper">
         <div className="post-details-container">
-          <div className="post-metadata">
+          <div className="poster-time-container">
             <a href={`/f/${props.data.origin}`} className="post-origin">
               f/{props.data.origin}
             </a>
-            <p> Posted by </p>
-            <a href={`/user/${props.data.poster}/overview`} className="poster">
-              {props.data.poster}
-            </a>
-            <pre className="time">
-              {" "}
-              {(() => relativeTime(props.data.created_at))()}
-            </pre>
+            <PosterTime
+              poster={props.data.poster}
+              time="props.data.created-at"
+            ></PosterTime>
           </div>
           <h1>{props.data.title}</h1>
           <p>{props.data.description}</p>
         </div>
         <div className="post-image"></div>
-        <div className="post-buttons">
+        <div className="utility-buttons">
           <a href={`/f/${props.data.origin}/${props.data.id}`}>
             {props.data.comment_quantity} Comments
           </a>

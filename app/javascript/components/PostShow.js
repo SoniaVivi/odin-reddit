@@ -9,7 +9,12 @@ const PostShow = (props) => {
       <div className="post-container no-grey-side-area">
         <Post data={props.post}></Post>
       </div>
-      <CommentSection comments={props.comments}></CommentSection>
+      <div className="comment-section">
+        <CommentSection
+          comments={props.comments}
+          isTopLevel="true"
+        ></CommentSection>
+      </div>
     </div>
   );
 };

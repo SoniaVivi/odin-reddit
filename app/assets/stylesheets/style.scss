@@ -22,6 +22,68 @@ a {
   text-decoration: none;
 }
 
+.utility-buttons {
+  min-width: 100%;
+  height: 32px;
+
+  a,
+  button {
+    font-size: 13px;
+    font-weight: 700;
+    color: $gray;
+  }
+}
+
+/* Poster username and time styling */
+
+.poster-time-container {
+  display: flex;
+  font-size: 12px;
+
+  * {
+    color: $gray;
+  }
+
+  a,
+  p,
+  pre {
+    margin-bottom: 0;
+    white-space: pre;
+    color: $gray;
+  }
+
+  .post-origin {
+    position: relative;
+    display: flex;
+    align-items: center;
+    font-weight: 700;
+    color: black;
+  }
+
+  .post-origin:after {
+    @include create-circle(1px);
+    content: "";
+    border: 1px solid black;
+    margin-left: 2px;
+  }
+}
+
+/* User Icons */
+
+.user-icon-container {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+
+  .user-icon {
+    @include create-circle(18px);
+  }
+}
+
+.top-level .user-icon:not(.nested) {
+  @include create-circle(28px);
+}
+
 /* Alerts and Notices */
 
 .alert,

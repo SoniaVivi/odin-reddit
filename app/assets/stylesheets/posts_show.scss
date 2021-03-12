@@ -7,10 +7,6 @@ body {
   min-height: 100vh;
 }
 
-.comment-section {
-  height: 100%;
-}
-
 .post-content {
   height: calc(100% - 34px);
   margin-bottom: 17px;
@@ -25,4 +21,40 @@ body {
 
 .post-container {
   border: unset;
+}
+
+.comment-nesting-line {
+  $margin: 10px;
+  width: 2px;
+  height: calc(100% - #{$margin});
+  margin: $margin 0;
+  background-color: #edeff1;
+}
+
+.comment-section {
+  height: 100%;
+}
+
+.comment {
+  padding-right: 0;
+  padding-left: 32px;
+}
+
+.comment:not(.top-level) {
+  padding-left: 21px;
+}
+
+.comment-container {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.comment-body {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.nested-comment-container {
+  display: flex;
+  flex-flow: column nowrap;
 }

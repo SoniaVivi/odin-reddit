@@ -13,6 +13,11 @@ class Comment < ApplicationRecord
     return self.get_data, child_comments
   end
   def get_data
-    { poster: poster.name, body: body, parent: parent_id, id: id }
+    {
+      poster: poster.name,
+      body: body,
+      created_at: created_at.strftime('%FT%H:%M:%S'),
+      id: id,
+    }
   end
 end
