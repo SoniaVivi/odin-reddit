@@ -1,20 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
-import PosterTime from "./PosterTime";
+import PosterTime from "./shared/PosterTime";
+import ScoreDisplay from "./shared/ScoreDisplay";
 
 const Post = (props) => {
   return (
     <React.Fragment>
-      <div className="vertical-score-post-container">
-        <button className="arrow arrow-up"></button>
-        <div className="postfeed-score">
-          {(() =>
-            props.data.score > 1000
-              ? (props.data.score / 1000).toString().slice(0, 3) + "k"
-              : props.data.score)()}
-        </div>
-        <button className="arrow arrow-down"></button>
-      </div>
+      <ScoreDisplay score={props.data.score} type="post"></ScoreDisplay>
       <div className="post-wrapper">
         <div className="post-details-container">
           <div className="poster-time-container">
@@ -23,7 +15,7 @@ const Post = (props) => {
             </a>
             <PosterTime
               poster={props.data.poster}
-              time="props.data.created-at"
+              time={props.data.created_at}
             ></PosterTime>
           </div>
           <h1>{props.data.title}</h1>

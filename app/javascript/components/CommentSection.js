@@ -1,13 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
-import relativeTime from "../packs/relativeTime";
 import Comment from "./Comment.js";
 
 const CommentSection = (props) => {
   const calcClassName = () => (props.isTopLevel ? " top-level" : " nested");
   return (
     <React.Fragment>
-      {console.log(props.comments)}
       {props.comments.map((nestedComments) => {
         if (nestedComments.length === 1) {
           return (

@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-import PosterTime from "./PosterTime";
+import PosterTime from "./shared/PosterTime";
+import ScoreDisplay from "./shared/ScoreDisplay";
 
 const Comment = (props) => {
   return (
@@ -12,7 +13,7 @@ const Comment = (props) => {
           width="24"
           height="24"
         ></img>
-        <div class="comment-nesting-line"></div>
+        <div className="comment-nesting-line"></div>
       </div>
       <div className="comment-body-container row">
         <div className="poster-time-container">
@@ -23,6 +24,7 @@ const Comment = (props) => {
         </div>
         <div>{props.data.body}</div>
         <div className="utility-buttons">
+          <ScoreDisplay score={props.data.score} type="comment"></ScoreDisplay>
           <button>Reply</button>
           <button>Share</button>
           <button>Report</button>
