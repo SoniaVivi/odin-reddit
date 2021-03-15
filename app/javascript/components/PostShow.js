@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import Post from "./Post";
 import CommentSection from "./CommentSection";
+import CommentEditor from "./CommentEditor";
 
 const PostShow = (props) => {
   return (
@@ -10,6 +11,7 @@ const PostShow = (props) => {
         <Post data={props.post}></Post>
       </div>
       <div className="comment-section">
+        <CommentEditor></CommentEditor>
         <CommentSection
           comments={props.comments}
           isTopLevel="true"
