@@ -1,6 +1,3 @@
-@import "bootstrap/bootstrap", "_variables", "_mixins", "header",
-  "trending-posts", "post";
-
 /* General Rules */
 
 * {
@@ -20,6 +17,10 @@ body {
 
 a {
   text-decoration: none;
+}
+
+.disable-scroll {
+  overflow: hidden;
 }
 
 /* Poster username and time styling */
