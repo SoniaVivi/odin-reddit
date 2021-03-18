@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-import PosterTime from "./shared/PosterTime";
-import ScoreDisplay from "./shared/ScoreDisplay";
+import PosterTime from "../shared/PosterTime";
+import ScoreDisplay from "../shared/ScoreDisplay";
 
 const Comment = (props) => {
   return (
@@ -9,7 +9,7 @@ const Comment = (props) => {
       <div className="user-icon-container">
         <img
           className={"user-icon" + props.className}
-          src={require("../../assets/images/test-user-icon.png")}
+          src={require("../../../assets/images/test-user-icon.png")}
           width="24"
           height="24"
         ></img>

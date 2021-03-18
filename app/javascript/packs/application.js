@@ -10,6 +10,7 @@ import "channels";
 import "./reloadStyles";
 
 Rails.start();
+global.Rails = Rails;
 Turbolinks.start();
 ActiveStorage.start();
 // Support component names relative to this directory:

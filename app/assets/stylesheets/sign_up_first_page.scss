@@ -1,0 +1,81 @@
+img.signup.first-page {
+  width: 130px;
+  height: 100%;
+  background-color: #000000;
+}
+
+.account-forms-container.signup.first-page {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  max-width: 300px;
+  margin-left: 20px;
+}
+
+.heading.signup.first-page {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.agreement-text.signup.first-page {
+  font-size: 13px;
+}
+
+.top.signup.first-page,
+.bottom.signup.first-page {
+  @include rounded-corners(52px, $blue, 100%, 5px);
+  @include center-children();
+  justify-content: flex-start;
+  padding-left: 70px;
+  margin-top: 10px;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: $blue;
+}
+
+.top.signup.first-page {
+  margin-top: 45px;
+}
+
+button.signup.first-page {
+  margin-top: 30px;
+}
+
+.divider.signup.first-page {
+  display: flex;
+  align-items: center;
+  height: 74px;
+
+  p {
+    margin: 0 20px;
+    line-height: 74px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #a0a3a4;
+  }
+}
+
+.divider.signup.first-page::before,
+.divider.signup.first-page::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 1px;
+  background-color: $light-gray;
+}
+
+.continue.signup.first-page {
+  @include rounded-corners(40px, $blue);
+  margin-top: 10px;
+  font-weight: 500;
+  color: #ffffff;
+  background-color: $blue;
+}
+
+input.signup.first-page {
+  @include rounded-corners(48px, #e2e2e2, 100%, 5px);
+  height: 48px;
+  padding-left: 10px;
+  font-size: 12px;
+}

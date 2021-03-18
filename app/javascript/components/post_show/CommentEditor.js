@@ -20,8 +20,8 @@ const CommentEditor = (props) => {
           <button>...</button>
         </div>
         <div className="new-comment-options">
-          <button class="new-comment-options">Markdown Mode</button>
-          <button class="new-comment-options">Comment</button>
+          <button className="new-comment-options">Markdown Mode</button>
+          <button className="new-comment-options">Comment</button>
         </div>
       </div>
     </div>

@@ -48,22 +48,23 @@ $margin-left: 17px;
 .login-container {
   width: 245px;
   margin-left: $margin-left;
+}
 
-  > button {
-    @include center-children();
-    @include rounded-corners(32px, $blue, 120px);
-    margin-left: $margin-left;
-    font-weight: 700;
-  }
+.login-button,
+.signup-button {
+  @include center-children();
+  @include rounded-corners(32px, $blue, 120px);
+  margin-left: $margin-left;
+  font-weight: 700;
+}
 
-  > button:first-child {
-    color: $blue;
-  }
+.login-button {
+  color: $blue;
+}
 
-  > button:nth-child(2) {
-    color: #ffffff;
-    background-color: $blue;
-  }
+.signup-button {
+  color: #ffffff;
+  background-color: $blue;
 }
 
 .user-account-modal-wrapper {
@@ -83,84 +84,6 @@ $margin-left: 17px;
   width: 850px;
   height: 650px;
   background-color: #ffffff;
-
-  img {
-    width: 130px;
-    height: 100%;
-    background-color: #000000;
-  }
-}
-
-.account-forms-container {
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: center;
-  max-width: 300px;
-  margin-left: 20px;
-
-  p:first-child {
-    font-size: 16px;
-    font-weight: 500;
-    margin: 0;
-  }
-
-  p:nth-child(2) {
-    font-size: 13px;
-  }
-
-  button:not(.continue) {
-    @include rounded-corners(52px, $blue, 100%, 5px);
-    @include center-children();
-    justify-content: flex-start;
-    padding-left: 70px;
-    margin-top: 10px;
-    font-size: 14px;
-    font-weight: 700;
-    text-transform: uppercase;
-    color: $blue;
-  }
-
-  button.top {
-    margin-top: 30px;
-  }
-
-  .divider {
-    display: flex;
-    align-items: center;
-    height: 74px;
-
-    p {
-      margin: 0 20px;
-      line-height: 74px;
-      font-size: 15px;
-      font-weight: 600;
-      color: #a0a3a4;
-    }
-  }
-
-  .divider::before,
-  .divider::after {
-    content: "";
-    display: block;
-    width: 100%;
-    height: 1px;
-    background-color: $light-gray;
-  }
-
-  .continue {
-    @include rounded-corners(40px, $blue);
-    margin-top: 10px;
-    font-weight: 500;
-    color: #ffffff;
-    background-color: $blue;
-  }
-
-  input.first-page {
-    @include rounded-corners(48px, #e2e2e2, 100%, 5px);
-    height: 48px;
-    padding-left: 10px;
-    font-size: 12px;
-  }
 }
 
 .user-container {
