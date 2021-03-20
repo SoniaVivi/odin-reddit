@@ -3,6 +3,8 @@ require 'json'
 
 class Users::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [:create]
+  skip_before_action :verify_authenticity_token
+  respond_to :json
 
   # before_action :configure_account_update_params, only: [:update]
 
