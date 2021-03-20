@@ -9,16 +9,29 @@ class Users::SessionsController < Devise::SessionsController
   # end
 
   # POST /resource/sign_in
-  # def create
-  #   super
-  # end
+  def create
+    user = User.find_for_database_authentication(email: params['email'])
+    return invalid_login_attempt unless user
+
+    if user.valid_password?(params['password'])
+      sign_in :user, user
+      return render json: { logged_in: true }
+    end
+
+    invalid_login_attempt
+  end
 
   # DELETE /resource/sign_out
   # def destroy
   #   super
   # end
 
-  # protected
+  protected
+
+  def invalid_login_attempt
+    set_flash_message(:alert, :invalid)
+    render json: flash[:alert], status: 401
+  end
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_in_params

@@ -12,7 +12,12 @@
   </head>
 
   <body>
-    <%= react_component("Header", {}, class: "header") %>
+    <%= react_component("Header",
+                       {
+                         username: current_user.nil? ? "" : current_user.name,
+                         logged_in: current_user.nil? ? false : true,
+                       },
+                       class: "header") %>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <div class="container-xl">

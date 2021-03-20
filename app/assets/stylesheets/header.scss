@@ -78,7 +78,8 @@ $margin-left: 17px;
   background: rgba(0, 0, 0, 0.4);
 }
 
-.user-account-modal {
+.parent.user-account-modal {
+  position: relative;
   display: flex;
   justify-content: flex-start;
   width: 850px;
@@ -86,6 +87,12 @@ $margin-left: 17px;
   background-color: #ffffff;
 }
 
-.user-container {
-  width: 70px;
+.user-account-modal.exit-button {
+  $size: 20px;
+  $position: 15px;
+  position: absolute;
+  top: $position;
+  right: $position - 10px;
+  width: $size;
+  height: $size;
 }

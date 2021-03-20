@@ -1,25 +1,18 @@
 import React from "react";
 import PropTypes from "prop-types";
-import UserAccountModal from "./header/UserAccountModal";
+import UserAccountModal from "./userAccountModal/UserAccountModal";
+import sendAjaxRequest from "./shared/sendAjaxRequest";
+import UserDropDownMenu from "./UserDropDownMenu";
 
-const Header = () => {
-  const toParamString = (key, val) => `${key}=${val}`;
-  const signup = () =>
-    Rails.ajax({
-      type: "POST",
-      url: "/users",
-      dataType: "json",
-      data: (() => {
-        // const request = `user=${JSON.stringify({
-        //   name: "TesterUser",
-        //   email: "test@test.com",
-        //   password: "test123456",
-        //   password_confirmation: "test123456",
-        // })}`;
-        // return request;
-      })(),
-      success: (data) => console.log(data),
-    });
+const Header = (props) => {
+  const logout = () => {
+    if (props.session_id !== "") {
+      sendAjaxRequest("DELETE", "/users/sign_out", "")
+        .then(() => location.reload())
+        .catch((error) => console.log(error));
+    }
+  };
+
   return (
     <React.Fragment>
       <a className="logo-container" href="/">
@@ -28,10 +21,21 @@ const Header = () => {
       </a>
       <input className="search header-search"></input>
       <div className="login-container ">
-        <UserAccountModal type="login"></UserAccountModal>
-        <UserAccountModal type="signup"></UserAccountModal>
+        {props.logged_in
+          ? ""
+          : [
+              <UserAccountModal type="login"></UserAccountModal>,
+              <UserAccountModal type="signup"></UserAccountModal>,
+            ]}
       </div>
-      <div className="user-container"></div>
+      {props.logged_in ? (
+        <UserDropDownMenu
+          name={props.username}
+          logoutFunc={logout}
+        ></UserDropDownMenu>
+      ) : (
+        ""
+      )}
     </React.Fragment>
   );
 };

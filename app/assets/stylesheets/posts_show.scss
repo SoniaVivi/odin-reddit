@@ -68,6 +68,8 @@ div.comment-editor {
   padding-left: 2px;
 }
 
+/* Comment Editor */
+
 textarea.comment-editor {
   height: 138px;
   padding-top: 8px;
@@ -137,7 +139,37 @@ button.new-comment-options:first-child {
   border: none;
 }
 
-button.new-comment-options:last-child {
+button.new-comment-options.submit {
   width: 104px;
-  background-color: #bebfbf;
+  background-color: #c3c3c4;
+  color: #ffffff;
+}
+
+.logged-out-editor {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  height: 56px;
+  padding: 10px;
+  margin: 0 auto;
+  border: 1px solid $light-gray;
+  border-radius: 3px;
+
+  p {
+    font-weight: 500;
+    color: #818181;
+  }
+}
+
+.logged-out-editor-account-buttons {
+  display: flex;
+  justify-content: flex-end;
+
+  .signup-button,
+  .login-button {
+    width: 85px;
+    height: 32px;
+    margin-left: 8px;
+  }
 }

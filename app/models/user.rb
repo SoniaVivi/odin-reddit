@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   validates :name, presence: true
   validates :name, length: { in: 3..24}
+  validates :name, uniqueness: true
 
   has_many :posts, foreign_key: 'poster_id'
 end
