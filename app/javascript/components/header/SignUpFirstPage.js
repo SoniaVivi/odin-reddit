@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import PropTypes from "prop-types";
+import createClassNamesFunction from "../shared/createClassNamesFunction";
 
 const SignUpFirstPage = (props) => {
-  const generateClassNames = (classNames = "") =>
-    `${classNames} ${props.classNames}`;
+  const generateClassNames = createClassNamesFunction(props.classNames);
+  const [emailText, setEmailText] = useState("");
+  const isValidEmail = useRef(false);
 
   return (
     <React.Fragment>
@@ -22,10 +24,28 @@ const SignUpFirstPage = (props) => {
         <div className={generateClassNames("divider")}>
           <p>OR</p>
         </div>
-        <input placeholder="EMAIL" className={generateClassNames()}></input>
+        <input
+          placeholder="EMAIL"
+          className={generateClassNames()}
+          type="email"
+          required
+          onChange={(e) => {
+            if (e.target.validity.valid) {
+              setEmailText(e.target.value);
+              isValidEmail.current = true;
+            } else {
+              isValidEmail.current = false;
+            }
+          }}
+        ></input>
         <button
           className={generateClassNames("continue")}
-          onClick={props.secondPage}
+          onClick={() => {
+            if (isValidEmail.current == true) {
+              props.emailFunc(emailText);
+              props.secondPage();
+            }
+          }}
         >
           Continue
         </button>

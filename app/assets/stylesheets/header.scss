@@ -86,6 +86,21 @@ $margin-left: 17px;
   background-color: #ffffff;
 }
 
+input.signup.first-page:valid,
+.forms.signup.second-page input:valid {
+  border: 1px solid $blue;
+}
+
+// input.signup.first-page:valid,
+// .forms.signup.second-page input:invalid {
+//   border-color: #f72210;
+// }
+
+input.signup.first-page:focus,
+.forms.signup.second-page input:focus {
+  outline-width: 0;
+}
+
 .user-container {
   width: 70px;
 }
