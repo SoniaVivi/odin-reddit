@@ -2,76 +2,65 @@ import React, { useState, useRef } from "react";
 import PropTypes from "prop-types";
 import SignUpFirstPage from "./SignUpFirstPage";
 import SignUpSecondPage from "./SignUpSecondPage";
+import sendAjaxRequest from "../shared/sendAjaxRequest";
+import toggleScroll from "../shared/toggleScroll";
+import ModalWrapper from "./ModalWrapper";
+import ModalButtons from "./ModalButtons";
 
 const UserAccountModal = (props) => {
-  const [isButtonMode, setIsButtonMode] = useState(false);
+  const [isButtonMode, setIsButtonMode] = useState(true);
   const [isFirstPage, setIsFirstpage] = useState(true);
   const email = useRef("");
   const username = useRef("");
   const password = useRef("");
-  const checkIfUserNameExists = (name) => {
-    return new Promise((resolve, reject) => {
-      Rails.ajax({
-        type: "POST",
-        url: "/users/check_username",
-        dataType: "json",
-        data: `username=${name}`,
-        success: (data) => resolve(data),
-        error: (e) => reject(e),
-      });
-    });
-  };
-  const submitFunc = () => {
-    return new Promise((resolve, reject) => {
-      Rails.ajax({
-        type: "POST",
-        url: "/users",
-        dataType: "json",
-        data: (() => {
-          console.log(username.current, email.current, password.current);
-          return `user=${JSON.stringify({
-            name: username.current,
-            email: email.current,
-            password: password.current,
-            password_confirmation: password.current,
-          })}`;
-        })(),
-        success: (data) => {
-          resolve({
-            data,
-            toButtonMode: () => {
-              setIsButtonMode(true);
-              setIsFirstpage(true);
-            },
-          });
-        },
-        error: (e) => reject(e),
-      });
-    });
-  };
 
   const generateText = () => (props.type == "login" ? "Log In" : "Sign Up");
   const generateClassNames = () =>
     `${props.type} ${isFirstPage ? "first-page" : "second-page"}`;
 
-  if (isButtonMode) {
-    return (
-      <button
-        onClick={() => setIsButtonMode((prevState) => !prevState)}
-        className={props.type + "-button"}
-      >
-        {generateText()}
-      </button>
+  const checkIfUserNameExists = (name) =>
+    sendAjaxRequest("POST", "/users/check_username", `username=${name}`);
+  const exitModal = () => {
+    setIsButtonMode(true);
+    setIsFirstpage(true);
+    toggleScroll();
+  };
+  const modalButton = (
+    <ModalButtons
+      clickFunc={() => setIsButtonMode((prevState) => !prevState)}
+      classNames={props.type + "-button"}
+      text={generateText()}
+    ></ModalButtons>
+  );
+
+  const submitFunc = () => {
+    return sendAjaxRequest(
+      "POST",
+      "/users",
+      `user=${JSON.stringify({
+        name: username.current,
+        email: email.current,
+        password: password.current,
+        password_confirmation: password.current,
+      })}`,
+      {
+        toButtonMode: exitModal,
+      }
     );
+  };
+
+  if (isButtonMode) {
+    return modalButton;
   }
 
+  toggleScroll();
   if (props.type == "signup") {
-    document.querySelector("body").classList.add("disable-scroll");
-
     return (
-      <div className={`user-account-modal-wrapper ${generateClassNames()}`}>
-        <div className={`user-account-modal ${generateClassNames()}`}>
-          {(() => {
+      <React.Fragment>
+        {modalButton}
+        <ModalWrapper
+          classNames={generateClassNames()}
+          data={() => {
             if (isFirstPage) {
               return (
                 <SignUpFirstPage
@@ -98,12 +87,20 @@ const UserAccountModal = (props) => {
                 ></SignUpSecondPage>
               );
             }
-          })()}
-        </div>
-      </div>
+          }}
+        ></ModalWrapper>
+      </React.Fragment>
     );
   } else if (props.type == "login") {
-    return null;
+    return (
+      <React.Fragment>
+        {modalButton}
+        <ModalWrapper
+          classNames={generateClassNames()}
+          data={() => {}}
+        ></ModalWrapper>
+      </React.Fragment>
+    );
   }
 };
 

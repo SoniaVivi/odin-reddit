@@ -8,6 +8,7 @@ const SignUpSecondPage = (props) => {
   const [password, setPassword] = useState("");
   const isValidUsername = useRef(false);
   const isValidPassword = useRef(false);
+
   return (
     <React.Fragment>
       <div className={generateClassNames("header")}>
@@ -27,7 +28,7 @@ const SignUpSecondPage = (props) => {
             onChange={async (e) => {
               if (e.target.validity.valid) {
                 const response = await props.checkUsernameFunc(e.target.value);
-                console.log(response);
+
                 const exists = response.exists;
                 if (!exists) {
                   setUsername(e.target.value);
@@ -41,6 +42,7 @@ const SignUpSecondPage = (props) => {
           <input
             placeholder="PASSWORD"
             minLength="6"
+            type="password"
             required
             onChange={(e) => {
               if (e.target.validity.valid) {
@@ -70,7 +72,6 @@ const SignUpSecondPage = (props) => {
               props
                 .submit()
                 .then((response) => {
-                  console.log(response.data);
                   response.toButtonMode();
                 })
                 .catch((e) => console.log(e));
