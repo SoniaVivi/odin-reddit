@@ -2,10 +2,11 @@ import React, { useState, useRef } from "react";
 import PropTypes from "prop-types";
 import SignUpFirstPage from "./SignUpFirstPage";
 import SignUpSecondPage from "./SignUpSecondPage";
+import LoginPage from "./LoginPage";
 import sendAjaxRequest from "../shared/sendAjaxRequest";
 import toggleScroll from "../shared/toggleScroll";
 import ModalWrapper from "./ModalWrapper";
-import ModalButtons from "./ModalButtons";
+import ModalButton from "./ModalButton";
 
 const UserAccountModal = (props) => {
   const [isButtonMode, setIsButtonMode] = useState(true);
@@ -26,14 +27,14 @@ const UserAccountModal = (props) => {
     toggleScroll();
   };
   const modalButton = (
-    <ModalButtons
+    <ModalButton
       clickFunc={() => setIsButtonMode((prevState) => !prevState)}
       classNames={props.type + "-button"}
       text={generateText()}
-    ></ModalButtons>
+    ></ModalButton>
   );
 
-  const submitFunc = () => {
+  const userSignup = () => {
     return sendAjaxRequest(
       "POST",
       "/users",
@@ -60,14 +61,23 @@ const UserAccountModal = (props) => {
         {modalButton}
         <ModalWrapper
           classNames={generateClassNames()}
+          exitFunc={exitModal}
           data={() => {
             if (isFirstPage) {
               return (
-                <SignUpFirstPage
-                  secondPage={() => setIsFirstpage((prevState) => !prevState)}
-                  classNames={generateClassNames()}
-                  emailFunc={(emailInput) => (email.current = emailInput)}
-                ></SignUpFirstPage>
+                <React.Fragment>
+                  <img
+                    src=""
+                    width="10"
+                    height="100"
+                    className="user-account-modal"
+                  ></img>
+                  <SignUpFirstPage
+                    secondPage={() => setIsFirstpage((prevState) => !prevState)}
+                    classNames={generateClassNames()}
+                    emailFunc={(emailInput) => (email.current = emailInput)}
+                  ></SignUpFirstPage>
+                </React.Fragment>
               );
             } else {
               return (
@@ -83,7 +93,7 @@ const UserAccountModal = (props) => {
                   setUsernameFunc={(newUsername) =>
                     (username.current = newUsername)
                   }
-                  submit={submitFunc}
+                  submit={userSignup}
                 ></SignUpSecondPage>
               );
             }
@@ -97,7 +107,20 @@ const UserAccountModal = (props) => {
         {modalButton}
         <ModalWrapper
           classNames={generateClassNames()}
-          data={() => {}}
+          exitFunc={exitModal}
+          data={() => {
+            return (
+              <React.Fragment>
+                <img
+                  src=""
+                  width="10"
+                  height="100"
+                  className="user-account-modal"
+                ></img>
+                <LoginPage></LoginPage>
+              </React.Fragment>
+            );
+          }}
         ></ModalWrapper>
       </React.Fragment>
     );

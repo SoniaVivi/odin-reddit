@@ -78,7 +78,8 @@ $margin-left: 17px;
   background: rgba(0, 0, 0, 0.4);
 }
 
-.user-account-modal {
+.parent.user-account-modal {
+  position: relative;
   display: flex;
   justify-content: flex-start;
   width: 850px;
@@ -86,7 +87,118 @@ $margin-left: 17px;
   background-color: #ffffff;
 }
 
-input.signup.first-page:valid,
+.user-account-modal.exit-button {
+  $size: 20px;
+  $position: 15px;
+  position: absolute;
+  top: $position;
+  right: $position - 10px;
+  width: $size;
+  height: $size;
+}
+
+/* First page of User Account Modal */
+
+img.user-account-modal {
+  width: 130px;
+  height: 100%;
+  background-color: #000000;
+}
+
+.account-forms-container.user-account-modal {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  max-width: 300px;
+  margin-left: 20px;
+}
+
+.heading.user-account-modal {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.agreement-text.user-account-modal {
+  font-size: 13px;
+}
+
+.user-account-modal.divider {
+  display: flex;
+  align-items: center;
+  height: 74px;
+
+  p {
+    margin: 0 20px;
+    line-height: 74px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #a0a3a4;
+  }
+}
+
+.user-account-modal.divider.login {
+  height: 42px;
+}
+
+.user-account-modal.divider::before,
+.user-account-modal.divider::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 1px;
+  background-color: $light-gray;
+}
+
+button.user-account-modal:not(.submit) {
+  @include rounded-corners(52px, $blue, 100%, 5px);
+  @include center-children();
+  justify-content: flex-start;
+  padding-left: 70px;
+  margin-top: 10px;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: $blue;
+}
+
+button.user-account-modal.top {
+  margin-top: 45px;
+}
+
+button.user-account-modal.top.login {
+  margin-top: 35px;
+}
+
+input.user-account-modal.first-page {
+  @include rounded-corners(48px, #e2e2e2, 100%, 5px);
+  height: 48px;
+  padding-left: 10px;
+  font-size: 12px;
+}
+
+input.user-account-modal.first-page[type="password"] {
+  margin-top: 15px;
+}
+
+.user-account-modal.first-page.submit {
+  @include rounded-corners(40px, $blue);
+  margin-top: 10px;
+  font-weight: 500;
+  color: #ffffff;
+  background-color: $blue;
+}
+
+.user-account-modal.link-text {
+  font-size: 12px;
+  margin-top: 10px;
+}
+
+.user-account-modal.link-text.login {
+  margin-top: 25px;
+}
+/* end */
+
+input.user-account-modal.first-page:valid,
 .forms.signup.second-page input:valid {
   border: 1px solid $blue;
 }
@@ -96,7 +208,7 @@ input.signup.first-page:valid,
 //   border-color: #f72210;
 // }
 
-input.signup.first-page:focus,
+input.user-account-modal.first-page:focus,
 .forms.signup.second-page input:focus {
   outline-width: 0;
 }

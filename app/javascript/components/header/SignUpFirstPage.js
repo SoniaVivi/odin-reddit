@@ -9,24 +9,21 @@ const SignUpFirstPage = (props) => {
 
   return (
     <React.Fragment>
-      <img src="" width="10" height="100" className={props.classNames}></img>
-      <div className={generateClassNames("account-forms-container")}>
-        <p className={generateClassNames("heading")}>Sign up</p>
-        <p className={generateClassNames("agreement-text")}>
+      <div className="account-forms-container user-account-modal">
+        <p className="heading user-account-modal">Sign up</p>
+        <p className="agreement-text user-account-modal">
           By continuing, you agree to our User Agreement and Privacy Policy.
         </p>
-        <button className={generateClassNames("top")}>
-          Continue with Google
-        </button>
-        <button className={generateClassNames("bottom")}>
+        <button className="user-account-modal top">Continue with Google</button>
+        <button className="user-account-modal bottom">
           Continue with Apple
         </button>
-        <div className={generateClassNames("divider")}>
+        <div className="user-account-modal divider">
           <p>OR</p>
         </div>
         <input
           placeholder="EMAIL"
-          className={generateClassNames()}
+          className="user-account-modal first-page"
           type="email"
           required
           onChange={(e) => {
@@ -39,7 +36,7 @@ const SignUpFirstPage = (props) => {
           }}
         ></input>
         <button
-          className={generateClassNames("continue")}
+          className="user-account-modal first-page submit"
           onClick={() => {
             if (isValidEmail.current == true) {
               props.emailFunc(emailText);
@@ -49,8 +46,11 @@ const SignUpFirstPage = (props) => {
         >
           Continue
         </button>
-        <p className={generateClassNames()}>
-          Already a user? <a>Log in</a>
+        <p className="user-account-modal link-text">
+          Already a user?{" "}
+          <strong>
+            <a>Log in</a>
+          </strong>
         </p>
       </div>
     </React.Fragment>

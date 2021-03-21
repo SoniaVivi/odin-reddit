@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const ModalButtons = (props) => {
+const ModalButton = (props) => {
   return (
     <button onClick={props.clickFunc} className={props.classNames}>
       {props.text}
@@ -9,4 +9,4 @@ const ModalButtons = (props) => {
   );
 };
 
-export default ModalButtons;
+export default ModalButton;
