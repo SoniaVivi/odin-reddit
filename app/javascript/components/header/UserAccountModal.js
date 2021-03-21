@@ -50,6 +50,15 @@ const UserAccountModal = (props) => {
     );
   };
 
+  const userSignin = (email, password) => {
+    return sendAjaxRequest(
+      "POST",
+      "/users/sign_in",
+      `user=${JSON.stringify({ email, password })}`,
+      { toButtonMode: exitModal }
+    );
+  };
+
   if (isButtonMode) {
     return modalButton;
   }
@@ -117,7 +126,7 @@ const UserAccountModal = (props) => {
                   height="100"
                   className="user-account-modal"
                 ></img>
-                <LoginPage></LoginPage>
+                <LoginPage signinFunc={userSignin}></LoginPage>
               </React.Fragment>
             );
           }}

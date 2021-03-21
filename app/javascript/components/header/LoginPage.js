@@ -3,10 +3,9 @@ import PropTypes from "prop-types";
 import createClassNamesFunction from "../shared/createClassNamesFunction";
 
 const LoginPage = (props) => {
-  const generateClassNames = createClassNamesFunction(props.classNames);
-  const [username, setUsername] = useState("");
+  const [emailText, setEmailText] = useState("");
   const [password, setPassword] = useState("");
-  const isValidUsername = useRef(false);
+  const isValidEmail = useRef(false);
   const isValidPassword = useRef(false);
 
   return (
@@ -27,17 +26,43 @@ const LoginPage = (props) => {
           <p>OR</p>
         </div>
         <input
-          placeholder="USERNAME"
+          placeholder="EMAIL"
           className="user-account-modal first-page"
+          type="email"
           required
+          onChange={(e) => {
+            if (e.target.validity.valid) {
+              setEmailText(e.target.value);
+              return (isValidEmail.current = true);
+            }
+            isValidEmail.current = false;
+          }}
         ></input>
         <input
           placeholder="PASSWORD"
           className="user-account-modal first-page"
           type="password"
+          minLength="6"
           required
+          onChange={(e) => {
+            if (e.target.validity.valid) {
+              setPassword(e.target.value);
+              return (isValidPassword.current = true);
+            }
+            isValidPassword.current = false;
+          }}
         ></input>
-        <button className="user-account-modal first-page submit login">
+        <button
+          className="user-account-modal first-page submit login"
+          onClick={() => {
+            props
+              .signinFunc(emailText, password)
+              .then((response) => {
+                location.reload();
+              })
+              .catch((e) => console.log(e));
+          }}
+        >
           Log in
         </button>
         <p className="user-account-modal link-text">
