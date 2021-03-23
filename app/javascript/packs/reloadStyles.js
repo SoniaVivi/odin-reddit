@@ -11,7 +11,13 @@ const reload = (() => {
     window.setTimeout(() => {
       const style = document.querySelector(".page-specific");
       if (style && window.location.href.match(/f\/(.*)\//) === null) {
-        style.remove();
+        style.setAttribute("disabled", "true"); //Allows styles to "reload" when
+      } else if (
+        //going index -> post -> index
+        style.hasAttribute("disabled") && //using the history back/forward
+        window.location.href.match(/f\/(.*)\//) //buttons
+      ) {
+        style.removeAttribute("disabled");
       }
 
       start();
