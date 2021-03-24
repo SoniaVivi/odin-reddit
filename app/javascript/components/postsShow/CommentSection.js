@@ -9,11 +9,13 @@ const CommentSection = (props) => {
       {props.comments.map((nestedComments) => {
         if (nestedComments.length === 1) {
           return (
-            <div className={"comment col-11" + calcClassName()}>
+            <div className={"comment" + calcClassName()}>
               <Comment
                 data={nestedComments[0]}
                 className={calcClassName()}
                 logged_in={props.logged_in}
+                current_user_id={props.current_user_id}
+                post_id={props.post_id}
               ></Comment>
             </div>
           );
@@ -23,16 +25,20 @@ const CommentSection = (props) => {
               <CommentSection
                 comments={nestedComments[1]}
                 logged_in={props.logged_in}
+                current_user_id={props.current_user_id}
+                post_id={props.post_id}
               ></CommentSection>
             </div>
           );
           return (
-            <div className={"comment col-11" + calcClassName()}>
+            <div className={"comment" + calcClassName()}>
               <Comment
                 data={nestedComments[0]}
                 className={calcClassName()}
                 children={children}
                 logged_in={props.logged_in}
+                current_user_id={props.current_user_id}
+                post_id={props.post_id}
               ></Comment>
             </div>
           );

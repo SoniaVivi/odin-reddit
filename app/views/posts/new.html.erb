@@ -1,0 +1,7 @@
+<% content_for :head do %>
+  <%= stylesheet_link_tag 'posts_new', class: "page-specific" %>
+<% end %>
+<div class="w-100"></div>
+<%= react_component("NewPostEditor",
+                    {originName: @origin_name},
+                    class: "col-sm-8" ) %>

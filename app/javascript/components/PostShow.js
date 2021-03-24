@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Post from "./Post";
-import CommentSection from "./post_show/CommentSection";
-import CommentEditor from "./post_show/CommentEditor";
+import CommentSection from "./postsShow/CommentSection";
+import CommentEditor from "./postsShow/CommentEditor";
 
 const PostShow = (props) => {
   return (
@@ -12,16 +12,20 @@ const PostShow = (props) => {
       </div>
       <div className="comment-section">
         <CommentEditor
-          post={
+          data={
             !props.logged_in
               ? null
               : { poster_id: props.current_user_id, post_id: props.post.id }
           }
+          logged_in={props.logged_in ? true : false}
+          top_level={true}
         ></CommentEditor>
         <CommentSection
           comments={props.comments}
           isTopLevel="true"
           logged_in={props.logged_in}
+          current_user_id={!props.logged_in ? null : props.current_user_id}
+          post_id={props.post.id}
         ></CommentSection>
       </div>
     </div>

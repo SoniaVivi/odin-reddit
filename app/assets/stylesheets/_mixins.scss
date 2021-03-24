@@ -21,3 +21,9 @@
   border: 1px solid $border;
   border-radius: $radius;
 }
+
+@mixin centered-column() {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+}

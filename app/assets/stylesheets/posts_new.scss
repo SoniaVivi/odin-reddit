@@ -1,0 +1,193 @@
+@import "_variables", "_mixins";
+
+$border: 1px solid $light-gray;
+
+.heading-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  border-bottom: 1px solid #ffffff;
+
+  h1 {
+    font-size: 18px;
+  }
+
+  button {
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 600;
+    color: $blue;
+  }
+}
+
+.origin-selector {
+  align-self: flex-start;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 298px;
+  height: 38px;
+  margin-bottom: 8px;
+  border-radius: 3px;
+  font-weight: 500;
+  font-size: 15px;
+  border: 1px solid #ffffff;
+  background-color: #ffffff;
+}
+
+.new-post-editor {
+  @include centered-column();
+  background-color: #ffffff;
+  border-radius: 5px;
+  border: $border;
+
+  > * {
+    width: 100%;
+    padding: 0 16px;
+    margin-bottom: 16px;
+  }
+
+  input {
+    width: calc(100% - 32px);
+    height: 39px;
+    border-radius: 3px;
+    border: 1px solid $light-gray;
+  }
+
+  input:focus,
+  textarea:focus {
+    outline: none;
+    border-color: #000000;
+  }
+}
+
+div.new-post-type-menu {
+  display: flex;
+  height: 53px;
+  padding: 0;
+}
+
+button.new-post-type-menu {
+  flex-basis: 25%;
+  flex-grow: 1;
+  border-bottom: $border;
+  font-weight: 500;
+  font-size: 15px;
+  color: #878a8c;
+}
+
+button.new-post-type-menu:not(:last-child) {
+  border-right: $border;
+}
+
+button.new-post-type-menu.active {
+  border-bottom: 2px solid $blue;
+  color: $blue;
+}
+
+div.text-post-editor {
+  @include centered-column();
+  margin: 0 auto;
+  margin-bottom: 16px;
+  border-radius: 3px;
+  border: $border;
+
+  > * {
+    width: 100%;
+  }
+}
+
+div.text-post-editor.focus {
+  border-color: #000000;
+}
+
+.editor-markup-buttons {
+  $background: #f6f7f8;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-height: 40px;
+  background-color: $background;
+
+  div {
+    display: flex;
+  }
+
+  button {
+    @include center-children();
+    $size: 30px;
+    width: $size;
+    height: $size;
+    font-size: 14px;
+  }
+
+  .markdown-button {
+    @include rounded-corners(24px, $background, 119px);
+    font-size: 13px;
+    font-weight: 700;
+    color: $blue;
+  }
+
+  .markdown-button:hover {
+    $color: #e5e6e7;
+    background-color: $color;
+    border: $color;
+  }
+}
+
+textarea {
+  $padding: 12px;
+  height: 138px;
+  padding-top: $padding;
+  padding-left: $padding;
+  font-size: 14px;
+}
+
+.post-buttons-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.post-tags-container {
+  height: 59px;
+
+  button {
+    @include rounded-corners(34px, #878a8c, auto);
+    padding: 0 17px;
+    margin-right: 5px;
+  }
+}
+
+.submission-buttons-container {
+  display: flex;
+
+  button {
+    font-size: 15px;
+    font-weight: 700;
+  }
+}
+
+.save-draft {
+  @include rounded-corners(32px, $blue, 128px);
+  color: $blue;
+}
+
+.post.submit {
+  $color: #d0d0d0;
+  @include rounded-corners(32px, $color, 82px);
+  margin-left: 8px;
+  background-color: $color;
+  color: #ffffff;
+}
+
+.new-post-footer {
+  padding: 16px;
+  margin-bottom: 0;
+  font-weight: 500;
+  font-size: 14px;
+  background-color: #f6f7f8;
+
+  p:first-child {
+    margin-bottom: 5px;
+  }
+}

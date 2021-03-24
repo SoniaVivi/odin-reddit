@@ -1,6 +1,11 @@
 class CommentsController < ApplicationController
   def create
-    puts '---------------------------', create_params, '---------------------------'
+    new_comment = Comment.new(create_params)
+    if new_comment.save
+      return render json: {success: true}
+    else
+      return render json: {success: false}
+    end
   end
 
   private

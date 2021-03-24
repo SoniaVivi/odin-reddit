@@ -14,6 +14,7 @@ class PostsController < ApplicationController
     end
   end
   def new
+    @origin_name = Origin.find_by("title = ?", params[:title]).title
   end
   def create
   end
