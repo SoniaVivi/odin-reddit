@@ -10,11 +10,10 @@ class Users::SessionsController < Devise::SessionsController
 
   # POST /resource/sign_in
   def create
-    user_params = JSON.parse(params['user'])
-    user = User.find_for_database_authentication(email: user_params['email'])
+    user = User.find_for_database_authentication(email: params['email'])
     return invalid_login_attempt unless user
 
-    if user.valid_password?(user_params['password'])
+    if user.valid_password?(params['password'])
       sign_in :user, user
       return render json: { logged_in: true }
     end

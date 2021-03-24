@@ -6,6 +6,7 @@
                      post: @post,
                      comments: @comments,
                      logged_in:  current_user.nil? ? false : true,
+                     current_user_id: current_user.nil? ? "" : current_user.id,
                     },
                    class: "col-sm-8 post-content-container") %>
 <%= react_component("SideBar", {}, class: "col-sm-3") %>

@@ -15,15 +15,17 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
-    if (params['user'].class.name == 'String')
-      new_user = User.new(JSON.parse(params['user']))
-      if new_user.save
-        render json: { response: true }
-      else
-        render json: { response: false }
-      end
+    new_user =
+      User.new(
+        name: params[:name],
+        email: params[:email],
+        password: params[:password],
+        password_confirmation: params[:password_confirmation],
+      )
+    if new_user.save
+      render json: { response: true }
     else
-      super
+      render json: { response: false }
     end
   end
 
@@ -55,7 +57,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
+    devise_parameter_sanitizer.permit(
+      :sign_up,
+      keys: %i[name email password password_confirmation],
+    )
   end
 
   # If you have extra params to permit, append them to the sanitizer.

@@ -10,4 +10,5 @@ Rails.application.routes.draw do
   get 'f/:title', to: 'origins#show'
   get 'f/:origin_title/:id', to: 'posts#show'
   resource :post
+  resource :comment
 end

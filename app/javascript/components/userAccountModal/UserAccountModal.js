@@ -20,7 +20,7 @@ const UserAccountModal = (props) => {
     `${props.type} ${isFirstPage ? "first-page" : "second-page"}`;
 
   const checkIfUserNameExists = (name) =>
-    sendAjaxRequest("POST", "/users/check_username", `username=${name}`);
+    sendAjaxRequest("POST", "/users/check_username", { username: name });
   const exitModal = () => {
     setIsButtonMode(true);
     setIsFirstpage(true);
@@ -38,12 +38,13 @@ const UserAccountModal = (props) => {
     return sendAjaxRequest(
       "POST",
       "/users",
-      `user=${JSON.stringify({
+      {
         name: username.current,
         email: email.current,
         password: password.current,
         password_confirmation: password.current,
-      })}`,
+      },
+
       {
         toButtonMode: exitModal,
       }
@@ -54,7 +55,7 @@ const UserAccountModal = (props) => {
     return sendAjaxRequest(
       "POST",
       "/users/sign_in",
-      `user=${JSON.stringify({ email, password })}`,
+      { email, password },
       { toButtonMode: exitModal }
     );
   };
