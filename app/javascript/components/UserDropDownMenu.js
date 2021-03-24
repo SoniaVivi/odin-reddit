@@ -35,7 +35,7 @@ const UserDropDownMenu = (props) => {
       >
         <strong>More Stuff</strong>
         <div className="menu-option logout">
-          <img className="icon"></img>
+          {/* <img className="icon"></img> */}
           <button onClick={props.logoutFunc}>Log Out</button>
         </div>
       </li>
