@@ -11,9 +11,8 @@ const PosterTime = (props) => {
       let getTime = {
         years: () => new Date(millisecondsPast).getUTCFullYear() - 1970,
         months: () =>
-          new Date(
-            millisecondsPast + new Date().getTimezoneOffset() * 60000
-          ).getMonth(),
+          new Date().getMonth() -
+          new Date(Date.parse(props.time + "Z")).getMonth(),
         weeks: () => millisecondsPast / 604800000,
         days: () => millisecondsPast / 86400000,
         hours: () => millisecondsPast / 3600000,
