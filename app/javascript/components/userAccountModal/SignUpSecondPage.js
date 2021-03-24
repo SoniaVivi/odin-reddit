@@ -72,7 +72,7 @@ const SignUpSecondPage = (props) => {
               props
                 .submit()
                 .then((response) => {
-                  response.toButtonMode();
+                  response.signin().then(() => location.reload());
                 })
                 .catch((e) => console.log(e));
             }

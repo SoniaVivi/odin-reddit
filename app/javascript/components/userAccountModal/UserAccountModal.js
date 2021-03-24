@@ -34,6 +34,15 @@ const UserAccountModal = (props) => {
     ></ModalButton>
   );
 
+  const userSignin = (email, password) => {
+    return sendAjaxRequest(
+      "POST",
+      "/users/sign_in",
+      { email, password },
+      { toButtonMode: exitModal }
+    );
+  };
+
   const userSignup = () => {
     return sendAjaxRequest(
       "POST",
@@ -46,17 +55,8 @@ const UserAccountModal = (props) => {
       },
 
       {
-        toButtonMode: exitModal,
+        signin: () => userSignin(email.current, password.current),
       }
-    );
-  };
-
-  const userSignin = (email, password) => {
-    return sendAjaxRequest(
-      "POST",
-      "/users/sign_in",
-      { email, password },
-      { toButtonMode: exitModal }
     );
   };
 
