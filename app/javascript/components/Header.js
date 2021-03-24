@@ -7,8 +7,8 @@ import UserDropDownMenu from "./UserDropDownMenu";
 const Header = (props) => {
   const logout = () => {
     if (props.session_id !== "") {
-      sendAjaxRequest("DELETE", "/users/sign_out", `id=${props.session_id}`)
-        .then((response) => location.reload())
+      sendAjaxRequest("DELETE", "/users/sign_out", "")
+        .then(() => location.reload())
         .catch((error) => console.log(error));
     }
   };
@@ -21,14 +21,14 @@ const Header = (props) => {
       </a>
       <input className="search header-search"></input>
       <div className="login-container ">
-        {props.session_id !== ""
+        {props.logged_in
           ? ""
           : [
               <UserAccountModal type="login"></UserAccountModal>,
               <UserAccountModal type="signup"></UserAccountModal>,
             ]}
       </div>
-      {props.session_id !== "" ? (
+      {props.logged_in ? (
         <UserDropDownMenu
           name={props.username}
           logoutFunc={logout}

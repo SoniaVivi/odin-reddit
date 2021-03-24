@@ -19,6 +19,7 @@ class Comment < ApplicationRecord
       created_at: created_at.strftime('%FT%H:%M:%S'),
       id: id,
       score: score,
+      parent_id: parent_id,
     }
   end
 end

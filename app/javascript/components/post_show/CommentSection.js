@@ -13,13 +13,17 @@ const CommentSection = (props) => {
               <Comment
                 data={nestedComments[0]}
                 className={calcClassName()}
+                logged_in={props.logged_in}
               ></Comment>
             </div>
           );
         } else {
           let children = (
             <div className="nested-comment-container row">
-              <CommentSection comments={nestedComments[1]}></CommentSection>
+              <CommentSection
+                comments={nestedComments[1]}
+                logged_in={props.logged_in}
+              ></CommentSection>
             </div>
           );
           return (
@@ -28,6 +32,7 @@ const CommentSection = (props) => {
                 data={nestedComments[0]}
                 className={calcClassName()}
                 children={children}
+                logged_in={props.logged_in}
               ></Comment>
             </div>
           );

@@ -15,7 +15,7 @@
     <%= react_component("Header",
                        {
                          username: current_user.nil? ? "" : current_user.name,
-                         session_id: current_user.nil? ? "" : session[current_user.id],
+                         logged_in: current_user.nil? ? false : true,
                        },
                        class: "header") %>
     <p class="notice"><%= notice %></p>

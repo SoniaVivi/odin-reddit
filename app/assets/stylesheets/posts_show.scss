@@ -141,3 +141,32 @@ button.new-comment-options:last-child {
   width: 104px;
   background-color: #bebfbf;
 }
+
+.logged-out-editor {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  height: 56px;
+  padding: 10px;
+  margin: 0 auto;
+  border: 1px solid $light-gray;
+  border-radius: 3px;
+
+  p {
+    font-weight: 500;
+    color: #818181;
+  }
+}
+
+.logged-out-editor-account-buttons {
+  display: flex;
+  justify-content: flex-end;
+
+  .signup-button,
+  .login-button {
+    width: 85px;
+    height: 32px;
+    margin-left: 8px;
+  }
+}

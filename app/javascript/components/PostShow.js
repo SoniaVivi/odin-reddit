@@ -11,10 +11,11 @@ const PostShow = (props) => {
         <Post data={props.post}></Post>
       </div>
       <div className="comment-section">
-        <CommentEditor></CommentEditor>
+        <CommentEditor logged_in={props.logged_in}></CommentEditor>
         <CommentSection
           comments={props.comments}
           isTopLevel="true"
+          logged_in={props.logged_in}
         ></CommentSection>
       </div>
     </div>
