@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Post from "./Post";
-import CommentSection from "./post_show/CommentSection";
-import CommentEditor from "./post_show/CommentEditor";
+import CommentSection from "./postsShow/CommentSection";
+import CommentEditor from "./postsShow/CommentEditor";
 
 const PostShow = (props) => {
   return (

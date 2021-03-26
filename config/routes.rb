@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   end
   post 'users/check_username', to: 'users#check_username'
   get 'f/:title', to: 'origins#show'
-  get 'f/:origin_title/:id', to: 'posts#show'
-  resource :post
+  get 'f/:title/submit', to: 'posts#new'
+  get 'f/:title/:id', to: 'posts#show'
   resource :comment
 end

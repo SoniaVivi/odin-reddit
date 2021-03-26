@@ -9,15 +9,16 @@
 const reload = (() => {
   const start = () => {
     window.setTimeout(() => {
-      const style = document.querySelector(".page-specific");
-      if (style && window.location.href.match(/f\/(.*)\//) === null) {
-        style.setAttribute("disabled", "true"); //Allows styles to "reload" when
-      } else if (
-        //going index -> post -> index
-        style.hasAttribute("disabled") && //using the history back/forward
-        window.location.href.match(/f\/(.*)\//) //buttons
-      ) {
-        style.removeAttribute("disabled");
+      const styleElems = document.querySelectorAll(".page-specific");
+      for (const style of styleElems) {
+        if (style && window.location.href.match(/f\/(.*)\//) === null) {
+          style.setAttribute("disabled", "true");
+        } else if (
+          style.hasAttribute("disabled") &&
+          window.location.href.match(/f\/(.*)\//)
+        ) {
+          style.removeAttribute("disabled");
+        }
       }
 
       start();

@@ -23,6 +23,16 @@
     <div class="container-xl">
       <div class="row col-lg-12 content">
         <%= yield %>
+        <% if (request.original_url.match?(/\/f\//)) %>
+          <% origin = Origin.find_by("title = ?", params[:title]) %>
+
+          <%= react_component("SideBar",
+                                {
+                                  originTitle: origin.title,
+                                  originCreationDate: origin.created_at,
+                                },
+                                class: "col-sm-3 sidebar") %>
+        <% end %>
       </div>
     </div>
   </body>
