@@ -51,7 +51,7 @@ const Comment = (props) => {
                           }
                     }
                     logged_in={props.logged_in ? true : false}
-                    top_leve={false}
+                    top_level={false}
                   ></CommentEditor>
                 );
               } else if (props.logged_in == false) {

@@ -41,11 +41,11 @@ const CommentEditor = (props) => {
               className="new-comment-options submit"
               onClick={() =>
                 submitComment()
-                  .then((response) => console.log(response))
+                  .then((response) => location.reload())
                   .catch((error) => console.log(error))
               }
             >
-              Comment
+              {props.top_level ? "Comment" : "Reply"}
             </button>
           </div>
         </div>

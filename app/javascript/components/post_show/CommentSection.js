@@ -9,7 +9,7 @@ const CommentSection = (props) => {
       {props.comments.map((nestedComments) => {
         if (nestedComments.length === 1) {
           return (
-            <div className={"comment col-11" + calcClassName()}>
+            <div className={"comment" + calcClassName()}>
               <Comment
                 data={nestedComments[0]}
                 className={calcClassName()}
@@ -31,7 +31,7 @@ const CommentSection = (props) => {
             </div>
           );
           return (
-            <div className={"comment col-11" + calcClassName()}>
+            <div className={"comment" + calcClassName()}>
               <Comment
                 data={nestedComments[0]}
                 className={calcClassName()}

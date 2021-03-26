@@ -92,8 +92,13 @@ textarea.comment-editor:focus {
   border: 1px solid $light-gray;
 
   button:not(.new-comment-options) {
-    width: $height;
+    flex-basis: $height;
+    max-width: $height;
     height: $height;
+  }
+
+  div {
+    flex-shrink: 1;
   }
 }
 
@@ -135,12 +140,13 @@ button.new-comment-options {
 }
 
 button.new-comment-options:first-child {
-  width: 144px;
+  flex-basis: 144px;
+  line-height: 12px;
   border: none;
 }
 
 button.new-comment-options.submit {
-  width: 104px;
+  flex-basis: 104px;
   background-color: #c3c3c4;
   color: #ffffff;
 }
