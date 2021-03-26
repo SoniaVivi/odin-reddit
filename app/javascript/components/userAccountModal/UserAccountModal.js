@@ -14,17 +14,21 @@ const UserAccountModal = (props) => {
   const email = useRef("");
   const username = useRef("");
   const password = useRef("");
+  const [firstLoad, setFirstLoad] = useState(true);
 
   const generateText = () => (props.type == "login" ? "Log In" : "Sign Up");
   const generateClassNames = () =>
     `${props.type} ${isFirstPage ? "first-page" : "second-page"}`;
-
   const checkIfUserNameExists = (name) =>
     sendAjaxRequest("POST", "/users/check_username", { username: name });
   const exitModal = () => {
+    setFirstLoad((prevState) => !prevState);
     setIsButtonMode(true);
     setIsFirstpage(true);
     toggleScroll();
+    if (props.exit) {
+      props.exit();
+    }
   };
   const modalButton = (
     <ModalButton
@@ -60,15 +64,21 @@ const UserAccountModal = (props) => {
     );
   };
 
-  if (isButtonMode) {
+  const modalSideBanner = (
+    <img src="" width="10" height="100" className="user-account-modal"></img>
+  );
+
+  if (isButtonMode && !props.disableButtonMode) {
     return modalButton;
+  } else if (isButtonMode && props.disableButtonMode == "true" && !firstLoad) {
+    return null;
   }
 
   toggleScroll();
   if (props.type == "signup") {
     return (
       <React.Fragment>
-        {modalButton}
+        {props.disableButtonMode == "true" ? "" : modalButton}
         <ModalWrapper
           classNames={generateClassNames()}
           exitFunc={exitModal}
@@ -76,12 +86,7 @@ const UserAccountModal = (props) => {
             if (isFirstPage) {
               return (
                 <React.Fragment>
-                  <img
-                    src=""
-                    width="10"
-                    height="100"
-                    className="user-account-modal"
-                  ></img>
+                  {modalSideBanner}
                   <SignUpFirstPage
                     secondPage={() => setIsFirstpage((prevState) => !prevState)}
                     classNames={generateClassNames()}
@@ -114,19 +119,14 @@ const UserAccountModal = (props) => {
   } else if (props.type == "login") {
     return (
       <React.Fragment>
-        {modalButton}
+        {props.disableButtonMode == "true" ? "" : modalButton}
         <ModalWrapper
           classNames={generateClassNames()}
           exitFunc={exitModal}
           data={() => {
             return (
               <React.Fragment>
-                <img
-                  src=""
-                  width="10"
-                  height="100"
-                  className="user-account-modal"
-                ></img>
+                {modalSideBanner}
                 <LoginPage signinFunc={userSignin}></LoginPage>
               </React.Fragment>
             );

@@ -14,6 +14,8 @@ const CommentSection = (props) => {
                 data={nestedComments[0]}
                 className={calcClassName()}
                 logged_in={props.logged_in}
+                current_user_id={props.current_user_id}
+                post_id={props.post_id}
               ></Comment>
             </div>
           );
@@ -23,6 +25,8 @@ const CommentSection = (props) => {
               <CommentSection
                 comments={nestedComments[1]}
                 logged_in={props.logged_in}
+                current_user_id={props.current_user_id}
+                post_id={props.post_id}
               ></CommentSection>
             </div>
           );
@@ -33,6 +37,8 @@ const CommentSection = (props) => {
                 className={calcClassName()}
                 children={children}
                 logged_in={props.logged_in}
+                current_user_id={props.current_user_id}
+                post_id={props.post_id}
               ></Comment>
             </div>
           );

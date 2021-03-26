@@ -7,14 +7,14 @@ const CommentEditor = (props) => {
   const [commentText, setCommentText] = useState("");
   const submitComment = () => {
     return sendAjaxRequest("POST", "/comment", {
-      poster_id: props.post.poster_id,
-      post_id: props.post.post_id,
-      parent_id: props.post.parent_id ? props.post.parent_id : "",
+      poster_id: props.data.poster_id,
+      post_id: props.data.post_id,
+      parent_id: props.data.parent_id ? props.data.parent_id : "",
       body: commentText,
     });
   };
 
-  if (props.post) {
+  if (props.logged_in) {
     return (
       <div className="comment-editor row">
         <textarea
