@@ -8,7 +8,7 @@ const PostShow = (props) => {
   return (
     <div className="post-content">
       <div className="post-container no-grey-side-area">
-        <Post data={props.post}></Post>
+        <Post data={props.post} loggedIn={props.logged_in}></Post>
       </div>
       <div className="comment-section">
         <CommentEditor

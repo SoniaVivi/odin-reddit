@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
   def create
-    new_comment = Comment.new(create_params)
+    new_comment = Comment.new(create_params.merge({poster_id: current_user.id}))
     if new_comment.save
       return render json: {success: true}
     else
@@ -11,6 +11,6 @@ class CommentsController < ApplicationController
   private
 
   def create_params
-    params.permit(:poster_id, :parent_id, :post_id, :body)
+    params.permit(:parent_id, :post_id, :body)
   end
 end

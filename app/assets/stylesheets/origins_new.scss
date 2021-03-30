@@ -1,0 +1,152 @@
+@import "_variables", "_mixins";
+$sidebar_width: 140px;
+
+body {
+  max-height: 100vh;
+  background-color: #ffffff;
+}
+
+.alert,
+.notice {
+  display: none;
+}
+
+.container-xl,
+.content {
+  position: relative;
+  min-width: 100%;
+  max-height: 100%;
+  height: calc(100vh - 48px);
+  margin: 0;
+  padding: 0;
+}
+
+.origin-create-sidebar {
+  position: absolute;
+  width: $sidebar_width;
+  min-height: 100%;
+  padding: 0;
+  margin: 0;
+  background-image: linear-gradient(135deg, $blue, $white, $blue);
+}
+
+.origin-new-content {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  width: 396px + $sidebar_width + 16px;
+  padding-left: $sidebar_width + 16px;
+}
+
+h1 {
+  font-size: 16px;
+
+  &:after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 1px;
+    margin-top: 16px;
+    background-color: $light-gray;
+  }
+}
+
+strong {
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.community-container {
+  margin-top: 25px;
+
+  &:nth-child(2) {
+    margin-top: 10px;
+  }
+}
+
+.subtitle {
+  margin-bottom: 5px;
+  font-size: 12px;
+  color: $gray;
+}
+
+#community-name {
+  @include rounded-form(56px);
+  resize: none;
+}
+
+#create-community-description {
+  @include rounded-form(64px);
+}
+
+#create-community {
+  @include rounded-corners(32px, $blue, 163px);
+  align-self: flex-end;
+  margin-top: 40px;
+  font-weight: 600;
+  font-size: 15px;
+  background-color: $blue;
+  color: $white;
+
+  &:hover {
+    background-color: $light-blue;
+  }
+
+  &.invalid {
+    border: 2px solid #f42;
+  }
+}
+
+#community-topic {
+  display: flex;
+  padding: 0;
+}
+
+.radio-container {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.radio-icon {
+  @include create-circle(16px);
+  border: 1px solid $gray;
+
+  &.selected {
+    border-color: $blue;
+    background: radial-gradient($white, $white 25%, $blue 37%, $blue);
+  }
+}
+
+.radio-label,
+.subtitle.radio {
+  margin-left: 10px;
+  font-weight: 500;
+}
+
+.nsfw-heading,
+.nsfw-label {
+  font-size: 14px;
+}
+
+.nsfw-container {
+  display: flex;
+}
+
+.nsfw-icon {
+  @include rounded-border(2px, $gray);
+  @include center-children();
+  $size: 20px;
+  width: $size;
+  height: $size;
+  border-width: 2px;
+  color: $white;
+  user-select: none;
+
+  &.selected {
+    background-color: $blue;
+  }
+}
+
+.nsfw-label {
+  margin-left: 10px;
+}

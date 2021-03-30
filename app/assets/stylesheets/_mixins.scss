@@ -27,3 +27,32 @@
   flex-flow: column nowrap;
   align-items: center;
 }
+
+@mixin bottom-divider($color) {
+  border: 1px solid $color;
+}
+
+@mixin modal-positioning {
+  position: fixed;
+  z-index: 100000000;
+
+  * {
+    z-index: 100000000 - 1;
+  }
+}
+
+@mixin rounded-border($radius, $color) {
+  border: 1px solid $color;
+  border-radius: $radius;
+}
+
+@mixin rounded-form($height, $width: 100%, $border-color: $light-gray) {
+  @include rounded-border(3px, $border-color);
+  width: $width;
+  height: $height;
+
+  &:focus {
+    outline: none;
+    border: 2px solid #000000;
+  }
+}

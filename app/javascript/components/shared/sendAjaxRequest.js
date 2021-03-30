@@ -1,5 +1,4 @@
 const sendAjaxRequest = (type, url, data, onSuccess = {}) => {
-  console.log(data);
   return new Promise((resolve, reject) => {
     Rails.ajax({
       type: type,

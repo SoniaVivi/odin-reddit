@@ -1,28 +1,21 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
+import onOutsideClick from "../shared/onOutsideClick";
 
 const UserDropDownMenu = (props) => {
   const [areVisible, setAreVisible] = useState(false);
 
   return (
     <ul
-      className={`user-menu-container ${areVisible ? "border" : ""}`}
-      onClick={(e) => {
-        setAreVisible((prevState) => !prevState);
-        const container = e.target;
-        const closeMenu = (mouseUpEvent) => {
-          let clickedElement = mouseUpEvent.target;
-
-          if (!container.contains(clickedElement)) {
-            setAreVisible((prevState) => !prevState);
-            document.removeEventListener("mouseup", closeMenu);
-          }
-        };
-        document.addEventListener("mouseup", closeMenu);
-      }}
+      className={`user-menu-container popup-container ${
+        areVisible ? "border" : ""
+      }`}
+      onClick={(e) =>
+        onOutsideClick(e, () => setAreVisible((prevState) => !prevState))
+      }
     >
       <li className="user-menu-section">
-        <img src={require("../../assets/images/test-user-icon.png")}></img>
+        <img src={require("../../../assets/images/test-user-icon.png")}></img>
         <div className="user-info-container">
           <p>{props.name}</p>
           <p>X karma</p>

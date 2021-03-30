@@ -7,7 +7,7 @@ import UserAccountModal from "../userAccountModal/UserAccountModal";
 
 const Comment = (props) => {
   const [showEditor, setShowEditor] = useState(false);
-  console.log(props, props.data.body);
+
   return (
     <div className={"comment-container" + props.className}>
       <div className="user-icon-container">
@@ -28,7 +28,13 @@ const Comment = (props) => {
         </div>
         <div>{props.data.body}</div>
         <div className="utility-buttons">
-          <ScoreDisplay score={props.data.score} type="comment"></ScoreDisplay>
+          <ScoreDisplay
+            score={props.data.score}
+            type="Comment"
+            id={props.data.id}
+            voteType={props.data.vote_type}
+            loggedIn={props.logged_in}
+          ></ScoreDisplay>
           <button onClick={() => setShowEditor((prevState) => !prevState)}>
             Reply
           </button>

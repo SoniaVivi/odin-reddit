@@ -1,0 +1,5 @@
+<% content_for :head do %>
+  <%= stylesheet_link_tag 'origins_new', class: "page-specific", data: "create" %>
+<% end %>
+<div class="origin-create-sidebar"></div>
+<%= react_component("OriginNew", {}, class: "origin-new-content" ) %>

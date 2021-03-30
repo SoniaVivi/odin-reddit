@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import SidebarButton from "./sidebar/SidebarButton";
 
 const SideBar = (props) => {
   const formatDate = (date) => {
@@ -10,6 +11,28 @@ const SideBar = (props) => {
     dateArray[1] += ",";
     return dateArray.join(" ");
   };
+  const alternatingButton = () => {
+    if (props.postPage) {
+      return (
+        <SidebarButton
+          text="Join"
+          onClick={() => {}}
+          loggedIn={props.loggedIn}
+        ></SidebarButton>
+      );
+    } else if (props.loggedIn) {
+      return (
+        <SidebarButton
+          text="Create Post"
+          onClick={() =>
+            (window.location.href = `/f/${props.originTitle}/submit`)
+          }
+          loggedIn={props.loggedIn}
+        ></SidebarButton>
+      );
+    }
+  };
+
   return (
     <React.Fragment>
       <div className="community-info">
@@ -38,13 +61,15 @@ const SideBar = (props) => {
           <p className="origin-creation-date">
             Created {formatDate(props.originCreationDate)}
           </p>
-          <a className="create-post" href={`/f/${props.originTitle}/submit`}>
-            Create Post
-          </a>
+          {alternatingButton()}
         </div>
-        <div className="community-options-container">
-          <button className="community-options">Community Options</button>
-        </div>
+        {props.loggedIn ? (
+          <div className="community-options-container">
+            <button className="community-options">Community Options</button>
+          </div>
+        ) : (
+          ""
+        )}
       </div>
       <div></div>
       <div></div>

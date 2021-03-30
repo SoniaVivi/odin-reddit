@@ -4,13 +4,13 @@ $margin-left: 17px;
   $side-padding: 20px;
   display: flex;
   flex-wrap: nowrap;
-  justify-content: space-between;
+  // justify-content: space-between;
+  align-items: center;
   width: 100%;
   height: 48px;
-  padding-top: 8px;
-  padding-left: $side-padding;
-  padding-right: $side-padding;
-  background-color: #ffffff;
+  padding: 8px $side-padding 5px $side-padding;
+  border-bottom: 1px solid $light-gray;
+  background-color: $white;
 
   > * {
     display: flex;
@@ -26,6 +26,7 @@ $margin-left: 17px;
   .logo {
     @include create-circle(32px);
     background-color: #fe471c;
+    margin-bottom: 5px;
   }
 
   > p {
@@ -35,6 +36,8 @@ $margin-left: 17px;
   }
 }
 
+/* Search bar */
+
 .header-search {
   max-width: 656px;
   width: 100%;
@@ -43,6 +46,10 @@ $margin-left: 17px;
   border: 1px solid $light-gray;
   border-radius: 3px;
   background-color: #f6f7f8;
+}
+
+.header-search.logged-in {
+  max-width: 234px;
 }
 
 .login-container {
@@ -63,14 +70,13 @@ $margin-left: 17px;
 }
 
 .signup-button {
-  color: #ffffff;
+  color: $white;
   background-color: $blue;
 }
 
 .user-account-modal-wrapper {
   @include center-children();
-  position: fixed;
-  z-index: 100000000;
+  @include modal-positioning();
   top: 0;
   left: 0;
   width: 100%;
@@ -84,7 +90,7 @@ $margin-left: 17px;
   justify-content: flex-start;
   width: 850px;
   height: 650px;
-  background-color: #ffffff;
+  background-color: $white;
 }
 
 .user-account-modal.exit-button {
