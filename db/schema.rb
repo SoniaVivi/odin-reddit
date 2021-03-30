@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_27_093306) do
+ActiveRecord::Schema.define(version: 2021_04_02_055714) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 2021_03_27_093306) do
     t.datetime "updated_at", precision: 6, null: false
     t.text "body"
     t.bigint "parent_id"
-    t.integer "score"
+    t.integer "score", default: 0
     t.index ["parent_id"], name: "index_comments_on_parent_id"
     t.index ["post_id"], name: "index_comments_on_post_id"
     t.index ["poster_id"], name: "index_comments_on_poster_id"
@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 2021_03_27_093306) do
   create_table "posts", force: :cascade do |t|
     t.string "title"
     t.text "description"
-    t.integer "score"
+    t.integer "score", default: 0
     t.integer "subject_id"
     t.string "subject_type"
     t.datetime "created_at", precision: 6, null: false
@@ -71,6 +71,17 @@ ActiveRecord::Schema.define(version: 2021_03_27_093306) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "votes", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "voteable_type"
+    t.bigint "voteable_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "vote_type", null: false
+    t.index ["user_id"], name: "index_votes_on_user_id"
+    t.index ["voteable_type", "voteable_id"], name: "index_votes_on_voteable"
+  end
+
   add_foreign_key "comments", "comments", column: "parent_id"
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users", column: "poster_id"
@@ -80,4 +91,5 @@ ActiveRecord::Schema.define(version: 2021_03_27_093306) do
   add_foreign_key "posts", "comments", column: "comments_id"
   add_foreign_key "posts", "origins"
   add_foreign_key "posts", "users", column: "poster_id"
+  add_foreign_key "votes", "users"
 end

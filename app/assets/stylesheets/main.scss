@@ -134,6 +134,13 @@ p {
   .arrow-down::before {
     transform: rotate(180deg);
   }
+
+  .arrow-up.voted::before {
+    background: no-repeat center image-url("up-arrow.png");
+  }
+  .arrow-down.voted::before {
+    background: no-repeat center image-url("down-arrow.png");
+  }
 }
 
 .horizontal-score-container {

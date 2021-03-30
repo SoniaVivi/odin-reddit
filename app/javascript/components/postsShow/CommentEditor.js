@@ -7,7 +7,6 @@ const CommentEditor = (props) => {
   const [commentText, setCommentText] = useState("");
   const submitComment = () => {
     return sendAjaxRequest("POST", "/comment", {
-      poster_id: props.data.poster_id,
       post_id: props.data.post_id,
       parent_id: props.data.parent_id ? props.data.parent_id : "",
       body: commentText,

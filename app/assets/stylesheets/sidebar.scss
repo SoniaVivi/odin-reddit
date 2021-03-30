@@ -1,4 +1,4 @@
-.sidebar {
+div.sidebar {
   padding-top: 15px;
 }
 
@@ -52,26 +52,23 @@ $margin: 8px;
   margin-bottom: $margin;
 }
 
-.community-miscellaneous a {
+button.sidebar {
   @include rounded-corners(32px, $blue);
   @include center-children();
-  margin-bottom: $margin + 8px;
+  margin-bottom: $margin;
   font-weight: 500;
   background-color: $blue;
   color: #ffffff;
 }
 
 .community-miscellaneous::before,
-.community-miscellaneous::after {
+.community-options-container::before {
   content: "";
   display: block;
   width: 100%;
   height: 1px;
-  background-color: $light-gray;
-}
-
-.community-miscellaneous::before {
   margin-bottom: $margin;
+  background-color: $light-gray;
 }
 
 .community-options {

@@ -34,6 +34,15 @@ const TextPostEditor = (props) => {
         placeholder="Text (required)"
         onFocus={() => props.onFocus("text-post-editor focus")}
         onBlur={() => props.onFocus("text-post-editor")}
+        minLength="1"
+        maxLength="10000"
+        onChange={(event) => {
+          if (event.target.validity.valid) {
+            props.setDescription(event.target.value);
+          } else {
+            props.setDescription("");
+          }
+        }}
       ></textarea>
     </div>
   );

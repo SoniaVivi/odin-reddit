@@ -180,6 +180,10 @@ textarea {
   color: #ffffff;
 }
 
+.post.submit.valid {
+  background-color: $blue;
+}
+
 .new-post-footer {
   padding: 16px;
   margin-bottom: 0;

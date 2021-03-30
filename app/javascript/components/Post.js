@@ -4,9 +4,15 @@ import PosterTime from "./shared/PosterTime";
 import ScoreDisplay from "./shared/ScoreDisplay";
 
 const Post = (props) => {
+  console.log(props);
   return (
     <React.Fragment>
-      <ScoreDisplay score={props.data.score} type="post"></ScoreDisplay>
+      <ScoreDisplay
+        score={props.data.score}
+        type="Post"
+        id={props.data.id}
+        voteType={props.data.vote_type}
+      ></ScoreDisplay>
       <div className="post-wrapper">
         <div className="post-details-container">
           <div className="poster-time-container">
