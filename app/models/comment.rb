@@ -10,6 +10,8 @@ class Comment < ApplicationRecord
   include ActiveModel::Validations
   validates :poster, :post, presence: true
   validates_with ParentPostValidator
+  after_create :new_vote_for_comment
+
   belongs_to :poster, class_name: 'User'
   belongs_to :post
   belongs_to :parent, class_name: 'Comment', optional: true
@@ -35,9 +37,20 @@ class Comment < ApplicationRecord
       vote_type: get_vote(user_id),
     }
   end
+
+  private
+
   def get_vote(id)
     return nil if id.nil? || !votes.exists?(user_id: id)
 
     votes.where(user_id: id)[0].vote_type
+  end
+  def new_vote_for_comment
+    Vote.create(
+      user_id: poster.id,
+      voteable_type: 'Comment',
+      voteable_id: id,
+      vote_type: 'up',
+    )
   end
 end

@@ -33,6 +33,7 @@ const Comment = (props) => {
             type="Comment"
             id={props.data.id}
             voteType={props.data.vote_type}
+            loggedIn={props.logged_in}
           ></ScoreDisplay>
           <button onClick={() => setShowEditor((prevState) => !prevState)}>
             Reply

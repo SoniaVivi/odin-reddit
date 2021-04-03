@@ -12,6 +12,7 @@ const Post = (props) => {
         type="Post"
         id={props.data.id}
         voteType={props.data.vote_type}
+        loggedIn={props.loggedIn}
       ></ScoreDisplay>
       <div className="post-wrapper">
         <div className="post-details-container">

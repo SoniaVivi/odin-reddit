@@ -1,6 +1,7 @@
 class Post < ApplicationRecord
   validates :title, length: { in: 1..256 }
   validates :description, length: { in: 0..10_000 }
+  after_create :new_vote_for_post
 
   belongs_to :poster, class_name: 'User'
   belongs_to :origin
@@ -23,9 +24,20 @@ class Post < ApplicationRecord
       vote_type: get_vote(user_id),
     }
   end
+
+  private
+
   def get_vote(id)
     return nil if id.nil? || !votes.exists?(user_id: id)
 
     votes.where(user_id: id)[0].vote_type
+  end
+  def new_vote_for_post
+    Vote.create(
+      voteable_type: 'Post',
+      voteable_id: id,
+      vote_type: 'up',
+      user_id: poster.id,
+    )
   end
 end

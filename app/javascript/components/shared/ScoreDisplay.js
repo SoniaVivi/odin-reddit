@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import sendAjaxRequest from "./sendAjaxRequest";
+import UserAccountModal from "../userAccountModal/UserAccountModal";
 
 const ScoreDisplay = (props) => {
   const [voteType, setVoteType] = useState(props.voteType);
   const [score, setScore] = useState(props.score);
+  const [showModal, setShowModal] = useState(false);
 
   const newVote = (type) =>
     sendAjaxRequest("POST", "/vote", {
@@ -40,12 +42,11 @@ const ScoreDisplay = (props) => {
       return "horizontal-score-container";
     }
   };
-
   return (
     <div className={calcClassName()}>
       <button
         className={"arrow arrow-up" + (voteType == "up" ? " voted" : "")}
-        onClick={() => onVote("up")}
+        onClick={() => (props.loggedIn ? onVote("up") : setShowModal(true))}
       ></button>
       <div className="score">
         {(() =>
@@ -53,8 +54,17 @@ const ScoreDisplay = (props) => {
       </div>
       <button
         className={"arrow arrow-down" + (voteType == "down" ? " voted" : "")}
-        onClick={() => onVote("down")}
+        onClick={() => (props.loggedIn ? onVote("down") : setShowModal(true))}
       ></button>
+      {showModal ? (
+        <UserAccountModal
+          type="signup"
+          disableButtonMode="true"
+          exit={() => setShowModal(false)}
+        ></UserAccountModal>
+      ) : (
+        ""
+      )}
     </div>
   );
 };

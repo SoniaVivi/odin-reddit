@@ -7,10 +7,11 @@ class PostsController < ApplicationController
     posts.each { |post| @posts << post.get_data }
   end
   def show
+    id = current_user ? current_user.id : nil
     post = Post.find(params[:id])
-    @post = post.get_data(current_user.id)
+    @post = post.get_data(id )
     @comments = post.comments.where(parent_id: nil).map  do |comment|
-      comment.get_tree(current_user.id)
+      comment.get_tree(id)
     end
   end
   def new

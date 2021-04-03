@@ -11,7 +11,7 @@ def generate_random_number
 end
 
 test_user =
-  User.create email: 'test@example.com',
+  User.create email: 'test@test.com',
               password: 'test_password',
               password_confirmation: 'test_password',
               name: 'test_user_555'
