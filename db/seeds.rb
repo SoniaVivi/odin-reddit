@@ -31,14 +31,16 @@ titles = [
   'Pig',
   'Rabbit',
 ]
+
 titles.each_with_index do |title, i|
-  Post.create(
+  text = Text.create(description: (title * 9))
+  Post.create!(
     title: title,
-    description: title * 9,
     score: generate_random_number,
     origin_id: test_origin.id,
     poster_id: test_user.id,
-    subject_type: 'text',
+    subject_type: 'Text',
+    subject_id: text.id,
   )
 end
 Post.all.each do |post|

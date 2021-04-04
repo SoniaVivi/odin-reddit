@@ -85,6 +85,15 @@ button.new-post-type-menu.active {
   color: $blue;
 }
 
+/* Post Editors */
+
+textarea.link-post-editor {
+  width: 100%;
+  height: 66px;
+  border: $border;
+  margin-bottom: 16px;
+}
+
 div.text-post-editor {
   @include centered-column();
   margin: 0 auto;

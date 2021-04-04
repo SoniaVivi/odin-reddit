@@ -18,20 +18,20 @@ class PostsController < ApplicationController
     @origin_name = Origin.find_by("title = ?", params[:title]).title
   end
   def create
-    if user_signed_in?
-      post_params = create_params
-      origin = Origin.find_by('title = ?', post_params[:title]);
-      return render json: {success: false} if origin.nil?
+    return render json: {success: false} if !user_signed_in?
+    post_params = create_params
+    origin = Origin.find_by('title = ?', post_params[:title]);
+    return render json: {success: false} if origin.nil?
+    subject = create_subject(post_params)
 
-      post = Post.new(title: post_params[:post_title],
-                      description: post_params[:description],
-                      poster_id: current_user.id,
-                      origin_id: origin.id)
-      if post.save
-        render json: {post: post_path(title: origin.title, id: post.id)}
-      else
-        render json: {success: false}
-      end
+    post = Post.new(title: post_params[:post_title],
+                    poster_id: current_user.id,
+                    origin_id: origin.id,
+                    subject_type: post_params[:post_type],
+                    subject_id: subject.id
+                  )
+    if post.save
+      render json: {post: post_path(title: origin.title, id: post.id)}
     else
       render json: {success: false}
     end
@@ -52,9 +52,19 @@ class PostsController < ApplicationController
   private
 
   def create_params
-    params.permit(:post_title, :title, :description)
+    params.permit(:post_title, :title, :post_type, :description, :url)
   end
   def destroy_params
     params.permit(:id)
+  end
+  def create_subject(subject_params)
+    case subject_params[:post_type]
+    when 'Text'
+      Text.create(description: subject_params[:description])
+    when 'Link'
+      Link.create(url: subject_params[:url])
+    else
+      nil
+    end
   end
 end

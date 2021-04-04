@@ -2,17 +2,51 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import NewPostMenu from "./postsNew/NewPostMenu";
 import TextPostEditor from "./postsNew/TextPostEditor";
+import LinkPostEditor from "./postsNew/LinkPostEditor";
 import sendAjaxRequest from "./shared/sendAjaxRequest";
 
 const NewPostEditor = (props) => {
   const [activePostTab, setActivePostTab] = useState("Post");
-  const changeActiveTab = (text) => setActivePostTab(text);
+  const [postClassNames, setPostClassNames] = useState("text-post-editor");
+  const [title, setTitle] = useState("");
+  const [postType, setPostType] = useState("Text");
+  const [postData, setPostData] = useState("");
+  const changeActiveTab = (text) => {
+    const post_types = {
+      Post: "Text",
+      Link: "Link",
+      "Images and Video": "Image",
+    };
+    const classNames = {
+      Post: "text-post-editor",
+      Link: "link-post-editor",
+      "Images and Video": "image-post-editor",
+    };
+    setPostClassNames(classNames[text]);
+    setPostType(post_types[text]);
+    setActivePostTab(text);
+  };
   const getTabClasses = (text) =>
     `new-post-type-menu${text == activePostTab ? " active" : ""}`;
-  const [textPostClasses, setTextPostClasses] = useState("text-post-editor");
-  const [title, setTitle] = useState("");
-  const [postType, setPostType] = useState("text");
-  const [postData, setPostData] = useState("");
+  const getEditor = () => {
+    if (postType == "Text") {
+      return (
+        <TextPostEditor
+          onFocus={setPostClassNames}
+          classNames={postClassNames}
+          setPostData={setPostData}
+        ></TextPostEditor>
+      );
+    } else if (postType == "Link") {
+      return (
+        <LinkPostEditor
+          onFocus={setPostClassNames}
+          classNames={postClassNames}
+          setPostData={setPostData}
+        ></LinkPostEditor>
+      );
+    }
+  };
 
   return (
     <React.Fragment>
@@ -20,7 +54,7 @@ const NewPostEditor = (props) => {
         <h1>Create a post</h1>
         <button>Drafts</button>
       </div>
-      <div classname="new-post-editor-container">
+      <div className="new-post-editor-container">
         <button className="origin-selector">f/{props.originName}</button>
         <div className="new-post-editor">
           <NewPostMenu
@@ -41,11 +75,7 @@ const NewPostEditor = (props) => {
             maxLength="300"
           ></input>
           <div>
-            <TextPostEditor
-              onFocus={setTextPostClasses}
-              classNames={textPostClasses}
-              setDescription={setPostData}
-            ></TextPostEditor>
+            {getEditor()}
             <div className="post-buttons-wrapper">
               <div className="post-tags-container">
                 <button>+ OC</button>
@@ -61,7 +91,8 @@ const NewPostEditor = (props) => {
                     if (title != "" && postData != "")
                       sendAjaxRequest("POST", `/f/${props.originName}/submit`, {
                         post_title: title,
-                        description: postData,
+                        post_type: postType,
+                        ...postData,
                       })
                         .then((response) => {
                           if (response.success == false) {

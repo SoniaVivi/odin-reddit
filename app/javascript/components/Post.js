@@ -8,6 +8,17 @@ import PostPopupMenu from "./postsShow/PostPopupMenu";
 const Post = (props) => {
   const [showMenu, setShowMenu] = useState(false);
   const [displayThis, setDisplayThis] = useState(null);
+  const checkPostType = (type) => props.data.post_type == type;
+  const formattedLink = () => {
+    const link = props.data.subject.url;
+    const topLevelDomain = link.match(/\.\w{2,3}\b/)[0];
+    const maxLength = link.indexOf(topLevelDomain) + topLevelDomain.length + 7;
+    if (link.length <= maxLength) {
+      return link;
+    }
+    return link.slice(0, maxLength) + "...";
+  };
+  const getLinkImg = () => <img className="post-thumbnail"></img>;
 
   return (
     <React.Fragment>
@@ -29,10 +40,21 @@ const Post = (props) => {
               time={props.data.created_at}
             ></PosterTime>
           </div>
-          <h1>{props.data.title}</h1>
-          <p>{props.data.description}</p>
+          <h1 className={checkPostType("Link") ? "link-post" : ""}>
+            {props.data.title}
+          </h1>
+          {checkPostType("Link") ? (
+            <a className="post-link" href={props.data.subject.url}>
+              {formattedLink()}
+            </a>
+          ) : (
+            ""
+          )}
+          {checkPostType("Text") ? <p>{props.data.subject.description}</p> : ""}
         </div>
-        <div className="post-image"></div>
+        <div className="post-image">
+          {checkPostType("Link") ? getLinkImg() : ""}
+        </div>
         <div className="utility-buttons">
           <a href={`/f/${props.data.origin}/${props.data.id}`}>
             {props.data.comment_quantity} Comments

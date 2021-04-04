@@ -1,17 +1,17 @@
 class Post < ApplicationRecord
   validates :title, length: { in: 1..256 }
-  validates :description, length: { in: 0..10_000 }
   after_create :new_vote_for_post
 
   belongs_to :poster, class_name: 'User'
   belongs_to :origin
+  belongs_to :subject, polymorphic: true
   has_many :comments
   has_many :votes, as: :voteable
 
   def get_data(user_id = nil)
     {
       created_at: created_at.strftime('%FT%H:%M:%S'),
-      description: description,
+      subject: subject.get_data,
       origin: origin.title,
       poster: poster.name,
       score: score,

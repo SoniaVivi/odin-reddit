@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_04_061506) do
+ActiveRecord::Schema.define(version: 2021_04_05_023555) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,13 @@ ActiveRecord::Schema.define(version: 2021_04_04_061506) do
     t.index ["parent_id"], name: "index_comments_on_parent_id"
     t.index ["post_id"], name: "index_comments_on_post_id"
     t.index ["poster_id"], name: "index_comments_on_poster_id"
+  end
+
+  create_table "links", force: :cascade do |t|
+    t.string "url"
+    t.string "domain"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "moderator_origins", force: :cascade do |t|
@@ -44,7 +51,6 @@ ActiveRecord::Schema.define(version: 2021_04_04_061506) do
 
   create_table "posts", force: :cascade do |t|
     t.string "title"
-    t.text "description"
     t.integer "score", default: 0
     t.integer "subject_id"
     t.string "subject_type"
@@ -56,6 +62,12 @@ ActiveRecord::Schema.define(version: 2021_04_04_061506) do
     t.index ["comments_id"], name: "index_posts_on_comments_id"
     t.index ["origin_id"], name: "index_posts_on_origin_id"
     t.index ["poster_id"], name: "index_posts_on_poster_id"
+  end
+
+  create_table "texts", force: :cascade do |t|
+    t.text "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", force: :cascade do |t|

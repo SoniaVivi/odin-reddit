@@ -38,9 +38,9 @@ const TextPostEditor = (props) => {
         maxLength="10000"
         onChange={(event) => {
           if (event.target.validity.valid) {
-            props.setDescription(event.target.value);
+            props.setPostData({ description: event.target.value });
           } else {
-            props.setDescription("");
+            props.setPostData("");
           }
         }}
       ></textarea>
