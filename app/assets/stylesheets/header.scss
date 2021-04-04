@@ -69,8 +69,7 @@ $margin-left: 17px;
 
 .user-account-modal-wrapper {
   @include center-children();
-  position: fixed;
-  z-index: 100000000;
+  @include modal-positioning();
   top: 0;
   left: 0;
   width: 100%;

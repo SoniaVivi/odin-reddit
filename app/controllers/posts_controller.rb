@@ -40,10 +40,21 @@ class PostsController < ApplicationController
   end
   def update
   end
+  def destroy
+    post = Post.find(destroy_params[:id])
+    if post.poster.id == current_user.id && post.destroy
+      render json: {success: true}
+    else
+      render json: {success: false}
+    end
+  end
 
   private
 
   def create_params
     params.permit(:post_title, :title, :description)
+  end
+  def destroy_params
+    params.permit(:id)
   end
 end

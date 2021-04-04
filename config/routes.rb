@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get 'f/:title/submit', to: 'posts#new'
   post 'f/:title/submit', to: 'posts#create'
   get 'f/:title/:id', to: 'posts#show', as: 'post'
+  delete '/post', to: 'posts#destroy'
   resource :comment
   resource :vote, only: [:index, :create, :destroy]
 end

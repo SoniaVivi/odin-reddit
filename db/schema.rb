@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_02_055714) do
+ActiveRecord::Schema.define(version: 2021_04_04_061506) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -83,7 +83,6 @@ ActiveRecord::Schema.define(version: 2021_04_02_055714) do
   end
 
   add_foreign_key "comments", "comments", column: "parent_id"
-  add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users", column: "poster_id"
   add_foreign_key "moderator_origins", "origins"
   add_foreign_key "moderator_origins", "users", column: "moderator_id"

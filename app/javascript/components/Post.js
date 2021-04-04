@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import PosterTime from "./shared/PosterTime";
 import ScoreDisplay from "./shared/ScoreDisplay";
+import onOutsideClick from "./shared/onOutsideClick";
+import PostPopupMenu from "./postsShow/PostPopupMenu";
 
 const Post = (props) => {
-  console.log(props);
+  const [showMenu, setShowMenu] = useState(false);
+  const [displayThis, setDisplayThis] = useState(null);
+
   return (
     <React.Fragment>
       <ScoreDisplay
@@ -34,8 +38,26 @@ const Post = (props) => {
             {props.data.comment_quantity} Comments
           </a>
           <button>Share</button>
+          <button>Edit Post</button>
           <button>Save</button>
-          <button>...</button>
+          <button>Hide</button>
+          <div
+            onClick={(e) =>
+              onOutsideClick(e, () => setShowMenu((prevState) => !prevState))
+            }
+          >
+            ...
+            {showMenu ? (
+              <PostPopupMenu
+                postId={props.data.id}
+                origin={props.data.origin}
+                modal={(modal) => setDisplayThis(modal)}
+              />
+            ) : (
+              ""
+            )}
+            {displayThis ? displayThis : ""}
+          </div>
         </div>
       </div>
     </React.Fragment>

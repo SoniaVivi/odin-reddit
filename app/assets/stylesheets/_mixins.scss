@@ -27,3 +27,21 @@
   flex-flow: column nowrap;
   align-items: center;
 }
+
+@mixin bottom-divider($color) {
+  border: 1px solid $color;
+}
+
+@mixin modal-positioning {
+  position: fixed;
+  z-index: 100000000;
+
+  * {
+    z-index: 100000000 - 1;
+  }
+}
+
+@mixin rounded-border($radius, $color) {
+  border: 1px solid $color;
+  border-radius: $radius;
+}

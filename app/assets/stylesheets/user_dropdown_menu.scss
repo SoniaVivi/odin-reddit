@@ -11,6 +11,7 @@
   padding-left: 0;
   border: 1px solid $background;
   background-color: $background;
+  z-index: 30;
 
   li:first-child {
     flex-flow: row nowrap;
