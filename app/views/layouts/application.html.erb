@@ -13,11 +13,13 @@
 
   <body>
     <%= react_component("Header",
-                       {
-                         username: current_user.nil? ? "" : current_user.name,
-                         logged_in: current_user.nil? ? false : true,
-                       },
-                       class: "header") %>
+                      {
+                        username: (current_user.name if !current_user.nil?),
+                        loggedIn: !current_user.nil?,
+                        originName: (params[:title] if
+                                                  params.has_key?(:title)),
+                      },
+                      class: "header") %>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <div class="container-xl">

@@ -1,0 +1,65 @@
+.subscriptions-menu {
+  @include rounded-border(5px, $white);
+  align-self: flex-start;
+  flex-flow: column nowrap;
+  width: 270px;
+  // margin-top: -5px;
+  padding-left: 10px;
+  background-color: $white;
+}
+
+.subscriptions-menu:hover {
+  border-color: $light-gray;
+}
+
+.subscriptions-menu.border {
+  padding-bottom: 16px;
+}
+
+.subscription-button-wrapper {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  min-height: 36px;
+  z-index: 20;
+}
+
+.hidden {
+  display: none;
+}
+
+.subscription-button-wrapper:first-child * {
+  font-weight: 500;
+}
+
+.subscription-icon {
+  $size: 22px;
+  @include create-circle($size);
+  min-width: $size;
+  border: 1px solid $white;
+  background-image: linear-gradient(135deg, $blue, $white, $blue);
+}
+
+.subscription-button,
+.user-button:not(.subscription-button-wrapper, .subscription-icon) {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  font-size: 14px;
+}
+.user-button.subscription-icon {
+  border-radius: unset;
+}
+
+.user-button.subscription-button {
+  color: #1c1c1c;
+}
+
+.subscription-divider {
+  font-size: 10px;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: $dark-gray;
+}

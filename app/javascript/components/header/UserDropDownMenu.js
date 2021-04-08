@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import onOutsideClick from "./shared/onOutsideClick";
+import onOutsideClick from "../shared/onOutsideClick";
 
 const UserDropDownMenu = (props) => {
   const [areVisible, setAreVisible] = useState(false);
@@ -15,7 +15,7 @@ const UserDropDownMenu = (props) => {
       }
     >
       <li className="user-menu-section">
-        <img src={require("../../assets/images/test-user-icon.png")}></img>
+        <img src={require("../../../assets/images/test-user-icon.png")}></img>
         <div className="user-info-container">
           <p>{props.name}</p>
           <p>X karma</p>
