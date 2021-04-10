@@ -8,4 +8,6 @@ class User < ApplicationRecord
   validates :name, uniqueness: true
 
   has_many :posts, foreign_key: 'poster_id'
+  has_many :moderator_origins, foreign_key: 'moderator_id'
+  has_many :origins, through: :moderator_origins
 end

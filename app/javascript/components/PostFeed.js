@@ -12,7 +12,8 @@ const PostFeed = (props) => {
             const blacklistedTags = ["BUTTON", "A"];
             if (
               e.target.dataset.redirect !== "false" &&
-              !blacklistedTags.includes(e.target.nodeName)
+              !blacklistedTags.includes(e.target.nodeName) &&
+              !e.target.hasAttribute("data-menu-button")
             ) {
               window.location.href = `/f/${post.origin}/${post.id}`;
             }

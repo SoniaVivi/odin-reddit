@@ -18,7 +18,7 @@ class OriginsController < ApplicationController
     origin.posts
           .order(created_at: :desc)
           .each do |post|
-            @posts << post.get_data
+            @posts << get_post_data(post)
     end
   end
 

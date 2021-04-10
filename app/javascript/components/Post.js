@@ -67,6 +67,7 @@ const Post = (props) => {
             onClick={(e) =>
               onOutsideClick(e, () => setShowMenu((prevState) => !prevState))
             }
+            data-menu-button="true"
           >
             ...
             {showMenu ? (
@@ -74,6 +75,8 @@ const Post = (props) => {
                 postId={props.data.id}
                 origin={props.data.origin}
                 modal={(modal) => setDisplayThis(modal)}
+                isPoster={props.data.isPoster}
+                isModerator={props.data.isModerator}
               />
             ) : (
               ""
