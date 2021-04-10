@@ -11,13 +11,19 @@ const reload = (() => {
     window.setTimeout(() => {
       const styleElems = document.querySelectorAll(".page-specific");
       for (const style of styleElems) {
-        if (style && window.location.href.match(/f\/(.*)\//) === null) {
-          style.setAttribute("disabled", "true");
-        } else if (
+        if (
           style.hasAttribute("disabled") &&
-          window.location.href.match(/f\/(.*)\//)
+          (window.location.href.match(/f\/(.*)\//) ||
+            window.location.href.match(/\/origins\/create/))
         ) {
           style.removeAttribute("disabled");
+          return;
+        } else if (window.location.href.match(/\/origins\/create/)) {
+          return;
+        }
+
+        if (style && window.location.href.match(/f\/(.*)\//) === null) {
+          style.setAttribute("disabled", "true");
         }
       }
 

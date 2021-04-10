@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_05_023555) do
+ActiveRecord::Schema.define(version: 2021_04_09_181219) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,6 +46,9 @@ ActiveRecord::Schema.define(version: 2021_04_05_023555) do
     t.string "title"
     t.bigint "creator_id"
     t.datetime "created_at", precision: 6
+    t.text "description"
+    t.boolean "nsfw", default: false
+    t.string "community_type", default: "public"
     t.index ["creator_id"], name: "index_origins_on_creator_id"
   end
 
