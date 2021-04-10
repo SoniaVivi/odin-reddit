@@ -1,4 +1,9 @@
 class OriginsController < ApplicationController
+  def index
+    @rankings = Origin.all
+                     .map {|o| o.get_rank}
+                     .sort {|a, b| b[:count] <=> a[:count]}
+  end
   def new
   end
   def create
@@ -14,11 +19,13 @@ class OriginsController < ApplicationController
   end
   def show
     origin = Origin.find_by("title = ?", params[:title].downcase)
+    @subscribed = (user_signed_in? &&
+      current_user.subscribed_origins.where("title = ?", params[:title]).exists?)
     @posts = []
     origin.posts
           .order(created_at: :desc)
           .each do |post|
-            @posts << post.get_data
+            @posts << get_post_data(post)
     end
   end
 

@@ -22,7 +22,10 @@ const Header = (props) => {
       </a>
       {doIf(
         props.loggedIn,
-        <SubscriptionsMenu currentOrigin={props.originName} />
+        <SubscriptionsMenu
+          currentOrigin={props.originName}
+          subscriptions={props.subscriptions}
+        />
       )}
       <input
         className={`search header-search ${doIf(props.loggedIn, "logged-in")}`}

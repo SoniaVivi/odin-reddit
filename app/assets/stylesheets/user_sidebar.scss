@@ -1,0 +1,66 @@
+.user-metadata {
+  display: flex;
+  margin-top: 13px;
+
+  > * {
+    display: flex;
+    flex-flow: column nowrap;
+    flex-grow: 1;
+  }
+
+  strong {
+    font-size: 14px;
+    font-weight: 500;
+  }
+}
+
+.user-sidebar.col-3 > * {
+  border: 1px solid #cccccc;
+  border-radius: 3px;
+}
+
+.user-info {
+  display: flex;
+  flex-flow: column nowrap;
+  height: 300px;
+  padding: 13px;
+  background-image: linear-gradient(
+    to bottom,
+    #35a8fb,
+    #35a8fb 32.7526%,
+    $white 32.7526%
+  );
+}
+
+.user-icon {
+  $size: 86px;
+  width: $size;
+  height: $size;
+  margin-top: 16px;
+  border: 3px solid $white;
+}
+
+.user-name {
+  font-size: 13px;
+  color: #000000;
+}
+
+.user-options {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 19px;
+
+  button {
+    flex-basis: calc(50% - 4px);
+  }
+}
+
+.user-more-options {
+  @include rounded-corners(30px, $white, 128px);
+  align-self: flex-end;
+  margin-top: 13px;
+
+  &:hover {
+    background-color: $light-gray;
+  }
+}

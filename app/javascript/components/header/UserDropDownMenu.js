@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import onOutsideClick from "../shared/onOutsideClick";
+import MenuSection from "./MenuSection";
 
 const UserDropDownMenu = (props) => {
   const [areVisible, setAreVisible] = useState(false);
@@ -21,17 +22,20 @@ const UserDropDownMenu = (props) => {
           <p>X karma</p>
         </div>
       </li>
-      <li
-        className={`user-menu-section ${
-          areVisible ? "visible" : "not-visible"
-        }`}
-      >
-        <strong>More Stuff</strong>
-        <div className="menu-option logout">
-          {/* <img className="icon"></img> */}
-          <button onClick={props.logoutFunc}>Log Out</button>
-        </div>
-      </li>
+      <MenuSection
+        sectionName="My Stuff"
+        buttons={[
+          <button onClick={() => (window.location.href = "/user/me")}>
+            Profile
+          </button>,
+        ]}
+        visible={areVisible}
+      />
+      <MenuSection
+        sectionName="More Stuff"
+        buttons={[<button onClick={props.logoutFunc}>Log Out</button>]}
+        visible={areVisible}
+      />
     </ul>
   );
 };

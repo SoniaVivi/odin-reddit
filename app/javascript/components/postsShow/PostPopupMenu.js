@@ -38,18 +38,24 @@ const PostPopupMenu = (props) => {
 
   return (
     <div className="popup-container post">
-      <button className="post-menu-button">Edit Post</button>
+      <button className="post-menu-button" onClick={props.editPost}>
+        Edit Post
+      </button>
       <button className="post-menu-button">Save</button>
       <button className="post-menu-button">Hide</button>
-      <button
-        className="post-menu-button"
-        onClick={() => {
-          props.modal(deleteModal);
-          toggleScroll();
-        }}
-      >
-        Delete
-      </button>
+      {props.isPoster || props.isModerator ? (
+        <button
+          className="post-menu-button"
+          onClick={() => {
+            props.modal(deleteModal);
+            toggleScroll();
+          }}
+        >
+          Delete
+        </button>
+      ) : (
+        ""
+      )}
       <button className="post-menu-button">Mark as spoiler</button>
       <button className="post-menu-button">Mark as NSFW</button>
       <button className="post-menu-button">Send me reply notifications</button>

@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import UserAccountModal from "../userAccountModal/UserAccountModal";
 
-const SidebarButton = (props) => {
+const CreatePostButton = (props) => {
   const [hasActiveModal, setHasActiveModal] = useState(false);
+
   return (
     <React.Fragment>
       <button
@@ -16,7 +16,7 @@ const SidebarButton = (props) => {
           }
         }}
       >
-        {props.text}
+        Create Post
       </button>
       {hasActiveModal ? (
         <UserAccountModal
@@ -31,4 +31,4 @@ const SidebarButton = (props) => {
   );
 };
 
-export default SidebarButton;
+export default CreatePostButton;

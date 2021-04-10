@@ -1,0 +1,18 @@
+<% content_for :head, flush: true do %>
+  <%= stylesheet_link_tag 'post',
+      class: "page-specific",
+      controller: controller.controller_name,
+      action: controller.action_name %>
+  <%= stylesheet_link_tag 'user_show',
+      class: "page-specific",
+      controller: controller.controller_name,
+      action: controller.action_name %>
+<% end %>
+<%= react_component("UserShow",
+                    {overview: @overview,
+                     comments: @comments,
+                     loggedIn: user_signed_in?,
+                     posts: @posts,
+                     sameUser: user_signed_in? && current_user.id == @user.id,
+                     sidebar: @sidebar},
+                    class: "row" ) %>

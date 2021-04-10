@@ -1,34 +1,29 @@
 import React from "react";
 import PropTypes from "prop-types";
-import SidebarButton from "./sidebar/SidebarButton";
+import CreatePostButton from "./sidebar/CreatePostButton";
+import SubscribeButton from "./shared/SubscribeButton";
+import formatDate from "./shared/formatDate";
 
 const SideBar = (props) => {
-  const formatDate = (date) => {
-    let dateArray = new Date(Date.parse(date))
-      .toDateString()
-      .split(" ")
-      .slice(1);
-    dateArray[1] += ",";
-    return dateArray.join(" ");
-  };
   const alternatingButton = () => {
     if (props.postPage) {
       return (
-        <SidebarButton
-          text="Join"
+        <SubscribeButton
           onClick={() => {}}
           loggedIn={props.loggedIn}
-        ></SidebarButton>
+          joined={props.joined}
+          sidebar={true}
+          originName={props.originTitle}
+        ></SubscribeButton>
       );
     } else if (props.loggedIn) {
       return (
-        <SidebarButton
-          text="Create Post"
+        <CreatePostButton
           onClick={() =>
             (window.location.href = `/f/${props.originTitle}/submit`)
           }
           loggedIn={props.loggedIn}
-        ></SidebarButton>
+        ></CreatePostButton>
       );
     }
   };
@@ -49,7 +44,7 @@ const SideBar = (props) => {
         </p>
         <div className="origin-statistics-container">
           <div className="statistic total-members">
-            <strong>X</strong>
+            <strong>{props.subscribers}</strong>
             <p>Members</p>
           </div>
           <div className="statistic online-users">

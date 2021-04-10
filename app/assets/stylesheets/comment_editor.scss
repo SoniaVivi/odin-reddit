@@ -4,6 +4,17 @@ div.comment-editor {
   flex-flow: column nowrap;
   align-items: center;
   padding-left: 2px;
+
+  &.editor {
+    flex-grow: 1;
+    width: unset;
+    margin-left: 22px;
+  }
+}
+
+.comment-update-container {
+  display: flex;
+  padding: 22px 0 29px 35px;
 }
 
 .markup-buttons,
@@ -19,29 +30,30 @@ textarea.comment-editor {
   border: 1px solid $light-gray;
   border-bottom: none;
   outline: none;
+
+  &:focus {
+    border: 1px solid black;
+    border-bottom: none;
+  }
 }
 
-textarea.comment-editor:focus {
-  border: 1px solid black;
-  border-bottom: none;
-}
+$markup-height: 30px;
 
 .markup-buttons {
-  $height: 30px;
-  height: #{$height + 6px};
+  height: #{$markup-height + 6px};
   background-color: #f6f7f8;
   border-radius: 3px;
   border: 1px solid $light-gray;
 
-  button:not(.new-comment-options) {
-    flex-basis: $height;
-    max-width: $height;
-    height: $height;
-  }
-
   div {
     flex-shrink: 1;
   }
+}
+
+.markup-button {
+  flex-basis: $markup-height;
+  max-width: $markup-height;
+  height: $markup-height;
 }
 
 textarea.comment-editor:focus + .markup-buttons {
@@ -52,15 +64,15 @@ textarea.comment-editor:focus + .markup-buttons {
 .formatting-container {
   display: flex;
   align-items: top;
-}
 
-.formatting-container::after {
-  content: "";
-  display: inline-block;
-  width: 1px;
-  height: calc(100% - 4px);
-  margin: 0 4px;
-  background-color: $light-gray;
+  &::after {
+    content: "";
+    display: inline-block;
+    width: 1px;
+    height: calc(100% - 4px);
+    margin: 0 4px;
+    background-color: $light-gray;
+  }
 }
 
 .structural-formatting-buttons::after {
@@ -79,18 +91,18 @@ button.new-comment-options {
   border: 1px solid #bebfbf;
   font-size: 13px;
   font-weight: 700;
-}
 
-button.new-comment-options:first-child {
-  flex-basis: 144px;
-  line-height: 12px;
-  border: none;
-}
+  &:first-child {
+    flex-basis: 144px;
+    line-height: 12px;
+    border: none;
+  }
 
-button.new-comment-options.submit {
-  flex-basis: 104px;
-  background-color: #c3c3c4;
-  color: #ffffff;
+  &.submit {
+    flex-basis: 104px;
+    background-color: #c3c3c4;
+    color: #ffffff;
+  }
 }
 
 .logged-out-editor {

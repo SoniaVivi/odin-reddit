@@ -21,5 +21,6 @@ module OdinReddit
 
     #establish model connections for console
     console { ActiveRecord::Base.connection }
+    config.assets.configure { |env| env.export_concurrent = false }
   end
 end

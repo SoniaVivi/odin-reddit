@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_09_181219) do
+ActiveRecord::Schema.define(version: 2021_04_11_122131) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -67,6 +67,15 @@ ActiveRecord::Schema.define(version: 2021_04_09_181219) do
     t.index ["poster_id"], name: "index_posts_on_poster_id"
   end
 
+  create_table "subscriptions", force: :cascade do |t|
+    t.bigint "subscriber_id"
+    t.bigint "origin_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["origin_id"], name: "index_subscriptions_on_origin_id"
+    t.index ["subscriber_id"], name: "index_subscriptions_on_subscriber_id"
+  end
+
   create_table "texts", force: :cascade do |t|
     t.text "description"
     t.datetime "created_at", precision: 6, null: false
@@ -105,5 +114,7 @@ ActiveRecord::Schema.define(version: 2021_04_09_181219) do
   add_foreign_key "posts", "comments", column: "comments_id"
   add_foreign_key "posts", "origins"
   add_foreign_key "posts", "users", column: "poster_id"
+  add_foreign_key "subscriptions", "origins"
+  add_foreign_key "subscriptions", "users", column: "subscriber_id"
   add_foreign_key "votes", "users"
 end

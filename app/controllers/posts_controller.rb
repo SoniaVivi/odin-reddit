@@ -7,11 +7,10 @@ class PostsController < ApplicationController
     posts.each { |post| @posts << post.get_data }
   end
   def show
-    id = current_user ? current_user.id : nil
     post = Post.find(params[:id])
-    @post = post.get_data(id )
+    @post = get_post_data(post)
     @comments = post.comments.where(parent_id: nil).map  do |comment|
-      comment.get_tree(id)
+      comment.get_tree(user_signed_in? ? current_user.id : nil)
     end
   end
   def new
@@ -39,10 +38,21 @@ class PostsController < ApplicationController
   def edit
   end
   def update
+    post_params = update_params
+    post = Post.find(update_params[:id])
+    if (!post.nil? &&
+      user_signed_in? &&
+      post.poster.id == current_user.id &&
+      post.subject.update(description: post_params[:body]))
+        render json: {success: true}
+    else
+      render json: {success: false}
+    end
   end
   def destroy
     post = Post.find(destroy_params[:id])
-    if post.poster.id == current_user.id && post.destroy
+    if ((post.poster.id == current_user.id ||
+          post.origin.moderators.exists?(current_user.id)) && post.destroy)
       render json: {success: true}
     else
       render json: {success: false}
@@ -66,5 +76,8 @@ class PostsController < ApplicationController
     else
       nil
     end
+  end
+  def update_params
+    params.permit(:id, :body)
   end
 end

@@ -1,0 +1,10 @@
+<% content_for :head do %>
+  <%= stylesheet_link_tag 'origins_index',
+      class: "page-specific",
+      controller: controller.controller_name,
+      action: controller.action_name %>
+<% end %>
+<%= react_component("OriginIndex",
+                    {rankings: @rankings},
+                    id: "origin-index",
+                    class: "row" ) %>
