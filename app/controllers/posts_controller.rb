@@ -10,7 +10,7 @@ class PostsController < ApplicationController
     post = Post.find(params[:id])
     @post = get_post_data(post)
     @comments = post.comments.where(parent_id: nil).map  do |comment|
-      comment.get_tree(id)
+      comment.get_tree(user_signed_in? ? current_user.id : nil)
     end
   end
   def new

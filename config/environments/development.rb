@@ -76,5 +76,15 @@ Rails.application.configure do
 
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
   config.assets.precompile +=
-    %w[style.css posts_show.css posts_new.css origins_new.css]
+    %w[
+      style.css
+      posts_show.css
+      posts_new.css
+      origins_new.css
+      origin_header.css
+      comment_editor.css
+      application.css
+      application.js
+      reloadStyles.js
+    ]
 end

@@ -56,3 +56,9 @@
     border: 2px solid #000000;
   }
 }
+
+@mixin button-font-styling($color: $white) {
+  font-size: 16px;
+  font-weight: 500;
+  color: $color;
+}

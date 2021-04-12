@@ -49,7 +49,7 @@ const SideBar = (props) => {
         </p>
         <div className="origin-statistics-container">
           <div className="statistic total-members">
-            <strong>X</strong>
+            <strong>{props.subscribers}</strong>
             <p>Members</p>
           </div>
           <div className="statistic online-users">

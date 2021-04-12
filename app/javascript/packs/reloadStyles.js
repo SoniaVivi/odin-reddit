@@ -10,19 +10,22 @@ const reload = (() => {
   const start = () => {
     window.setTimeout(() => {
       const styleElems = document.querySelectorAll(".page-specific");
+      const [currentController, currentAction] = _getPresentLocation();
+
       for (const style of styleElems) {
+        const controller = style.getAttribute("controller");
+        const action = style.getAttribute("action");
+
         if (
-          style.hasAttribute("disabled") &&
-          (window.location.href.match(/f\/(.*)\//) ||
-            window.location.href.match(/\/origins\/create/))
+          controller == currentController &&
+          action == currentAction &&
+          style.hasAttribute("disabled")
         ) {
           style.removeAttribute("disabled");
-          return;
-        } else if (window.location.href.match(/\/origins\/create/)) {
-          return;
-        }
-
-        if (style && window.location.href.match(/f\/(.*)\//) === null) {
+        } else if (
+          (controller != currentController || action != currentAction) &&
+          !style.hasAttribute("disabled")
+        ) {
           style.setAttribute("disabled", "true");
         }
       }
@@ -30,6 +33,15 @@ const reload = (() => {
       start();
     }, 10);
   };
+
+  const _getPresentLocation = () => {
+    const locationElem = document.querySelector(".location");
+    return [
+      locationElem.getAttribute("controller"),
+      locationElem.getAttribute("action"),
+    ];
+  };
+
   return { start };
 })();
 window.onload = () => {

@@ -3,10 +3,15 @@ import PropTypes from "prop-types";
 import { doIf } from "../shared/helpers";
 
 const SubscriptionButton = (props) => {
-  const getClassNames = (isWrapper = false) =>
-    `subscription-button${doIf(isWrapper, "-wrapper")} ${
-      props.type == "user" ? "user" : "subscription"
+  const getClassNames = (isWrapper = false) => {
+    const classNames = {
+      user: "users",
+      subscription: "subscribed-origin",
+    };
+    return `subscription-button${doIf(isWrapper, "-wrapper")} ${
+      classNames[props.type]
     }-button`;
+  };
 
   return (
     <div

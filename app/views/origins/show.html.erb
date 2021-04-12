@@ -1,3 +1,15 @@
+<% content_for :head, flush: true do %>
+  <%= stylesheet_link_tag 'origin_header',
+      class: "page-specific",
+      controller: controller.controller_name,
+      action: controller.action_name %>
+<% end %>
+<%= react_component("OriginHeader",
+                    {originName: params[:title],
+                    joined: @subscribed,
+                    loggedIn: user_signed_in?,
+                    },
+                     class: "col-12 origin-header-container") %>
 <div class="w-100"></div>
 <div class="col-sm-1"></div>
 <%= react_component("PostFeed", {posts: @posts}, class: "postfeed col-sm-8" ) %>

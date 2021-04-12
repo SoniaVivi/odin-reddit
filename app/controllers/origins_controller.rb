@@ -14,6 +14,8 @@ class OriginsController < ApplicationController
   end
   def show
     origin = Origin.find_by("title = ?", params[:title].downcase)
+    @subscribed = (user_signed_in? &&
+      current_user.subscribed_origins.where("title = ?", params[:title]).exists?)
     @posts = []
     origin.posts
           .order(created_at: :desc)

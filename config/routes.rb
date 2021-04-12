@@ -16,4 +16,5 @@ Rails.application.routes.draw do
   delete '/post', to: 'posts#destroy'
   resource :comment
   resource :vote, only: [:index, :create, :destroy]
+  resource :subscription, only: [:create, :destroy]
 end

@@ -1,6 +1,12 @@
-<% content_for :head do %>
-  <%= stylesheet_link_tag 'posts_show', class: "page-specific" %>
-  <%= stylesheet_link_tag 'comment_editor', class: "page-specific" %>
+<% content_for :head, flush: true do %>
+  <%= stylesheet_link_tag 'posts_show',
+      class: "page-specific",
+      controller: controller.controller_name,
+      action: controller.action_name %>
+  <%= stylesheet_link_tag 'comment_editor',
+      class: "page-specific",
+      controller: controller.controller_name,
+      action: controller.action_name %>
 <% end %>
 <%= react_component("PostShow",
                    {

@@ -8,6 +8,20 @@ const SubscriptionsMenu = (props) => {
   const [areVisible, setAreVisible] = useState(false);
   const getClasses = (defaultClass) =>
     areVisible ? defaultClass : `hidden ${defaultClass}`;
+  const displaySubscriptions = () => {
+    let buttons = [];
+    for (const [title, url] of Object.entries(props.subscriptions)) {
+      buttons.push(
+        <SubscriptionButton
+          text={title}
+          type="subscription"
+          hidden={!areVisible}
+          onClick={() => (window.location.href = url)}
+        />
+      );
+    }
+    return buttons;
+  };
 
   return (
     <div
@@ -21,6 +35,10 @@ const SubscriptionsMenu = (props) => {
         type="subscription"
         hidden={!true}
       />
+      <strong className={getClasses("subscription-divider")}>
+        My Communities
+      </strong>
+      {displaySubscriptions()}
       <strong className={getClasses("subscription-divider")}>Other</strong>
       <SubscriptionButton
         text="Create Community"

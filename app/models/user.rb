@@ -10,4 +10,15 @@ class User < ApplicationRecord
   has_many :posts, foreign_key: 'poster_id'
   has_many :moderator_origins, foreign_key: 'moderator_id'
   has_many :origins, through: :moderator_origins
+  has_many :subscriptions, foreign_key: 'subscriber_id'
+  has_many :subscribed_origins, through: :subscriptions, source: 'origin'
+
+  def get_subscriptions
+    user_subscriptions = {}
+    subscriptions.each do |subscription|
+      title = subscription.origin.title
+      user_subscriptions[title] = "/f/#{title}"
+    end
+    user_subscriptions
+  end
 end
