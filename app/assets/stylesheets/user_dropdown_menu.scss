@@ -1,3 +1,5 @@
+@import "_variables", "_mixins";
+
 .user-menu-container {
   $background: #ffffff;
   flex-flow: column nowrap;

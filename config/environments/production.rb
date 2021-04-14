@@ -117,5 +117,14 @@ Rails.application.configure do
   # config.active_record.database_selector = { delay: 2.seconds }
   # config.active_record.database_resolver = ActiveRecord::Middleware::DatabaseSelector::Resolver
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
-  config.assets.precompile += 'style.css'
+  config.assets.precompile +=
+    %w[
+      posts_show.css
+      posts_new.css
+      origins_new.css
+      origin_header.css
+      comment_editor.css
+      application.css
+      application.js
+    ]
 end
