@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import UserAccountModal from "../userAccountModal/UserAccountModal";
-import sendAjaxRequest from "../shared/sendAjaxRequest";
+import sendAjaxRequest from "./sendAjaxRequest";
 
 const SubscribeButton = (props) => {
   const [joined, setJoined] = useState(props.joined);
@@ -25,7 +25,7 @@ const SubscribeButton = (props) => {
   return (
     <React.Fragment>
       <button
-        className="origin-header-join-button"
+        className={props.sidebar ? "sidebar" : "origin-header-join-button"}
         onMouseEnter={() => (joined ? setButtonText("Leave") : "")}
         onMouseLeave={() => (joined ? setButtonText("Joined") : "")}
         onClick={() =>

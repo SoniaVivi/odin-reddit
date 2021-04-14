@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import SubscribeButton from "./originsShow/SubscribeButton";
+import SubscribeButton from "./shared/SubscribeButton";
 
 const OriginHeader = (props) => {
   return (

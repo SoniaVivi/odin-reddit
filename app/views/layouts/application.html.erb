@@ -41,7 +41,11 @@
                                   loggedIn: !current_user.nil?,
                                   postPage: action_name == 'show' &&
                                             controller_name == 'posts',
-                                  subscribers: origin.subscribers.count
+                                  subscribers: origin.subscribers.count,
+                                  joined: (user_signed_in? && current_user
+                                            .subscribed_origins
+                                            .where("title = ?",
+                                              params[:title]).exists?),
                                 },
                                 class: "col-sm-3 sidebar") %>
         <% end %>
