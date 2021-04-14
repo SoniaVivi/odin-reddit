@@ -1,5 +1,3 @@
-@import "_variables", "_mixins";
-
 .subscriptions-menu {
   @include rounded-border(5px, $white);
   align-self: flex-start;
