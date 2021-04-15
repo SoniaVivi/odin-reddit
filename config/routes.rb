@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get 'f/:title', to: 'origins#show', as: 'origin'
   get '/origins/create', to: 'origins#new'
   post '/origins/create', to: 'origins#create'
+  get '/origins/leaderboard/', to: 'origins#index'
   get 'f/:title/submit', to: 'posts#new'
   post 'f/:title/submit', to: 'posts#create'
   get 'f/:title/:id', to: 'posts#show', as: 'post'

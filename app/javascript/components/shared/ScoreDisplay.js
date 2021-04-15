@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import sendAjaxRequest from "./sendAjaxRequest";
 import UserAccountModal from "../userAccountModal/UserAccountModal";
+import formatScore from "./formatScore";
 
 const ScoreDisplay = (props) => {
   const [voteType, setVoteType] = useState(props.voteType);
@@ -48,10 +49,7 @@ const ScoreDisplay = (props) => {
         className={"arrow arrow-up" + (voteType == "up" ? " voted" : "")}
         onClick={() => (props.loggedIn ? onVote("up") : setShowModal(true))}
       ></button>
-      <div className="score">
-        {(() =>
-          score > 1000 ? (score / 1000).toString().slice(0, 3) + "k" : score)()}
-      </div>
+      <div className="score">{formatScore(score)}</div>
       <button
         className={"arrow arrow-down" + (voteType == "down" ? " voted" : "")}
         onClick={() => (props.loggedIn ? onVote("down") : setShowModal(true))}

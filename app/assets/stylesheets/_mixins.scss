@@ -29,7 +29,7 @@
 }
 
 @mixin bottom-divider($color) {
-  border: 1px solid $color;
+  border-bottom: 1px solid $color;
 }
 
 @mixin modal-positioning {
@@ -61,4 +61,9 @@
   font-size: 16px;
   font-weight: 500;
   color: $color;
+}
+
+@mixin subtitle-styling {
+  font-size: 14px;
+  color: $gray;
 }

@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import SubscribeButton from "./shared/SubscribeButton";
+import CreatePostButton from "./sidebar/CreatePostButton";
 
 const SideBar = (props) => {
   const formatDate = (date) => {
@@ -24,13 +24,12 @@ const SideBar = (props) => {
       );
     } else if (props.loggedIn) {
       return (
-        <SidebarButton
-          text="Create Post"
+        <CreatePostButton
           onClick={() =>
             (window.location.href = `/f/${props.originTitle}/submit`)
           }
           loggedIn={props.loggedIn}
-        ></SidebarButton>
+        ></CreatePostButton>
       );
     }
   };

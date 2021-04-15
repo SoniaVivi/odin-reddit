@@ -36,6 +36,15 @@ const SubscriptionsMenu = (props) => {
         hidden={!true}
       />
       <strong className={getClasses("subscription-divider")}>
+        Fakedit Feeds
+      </strong>
+      <SubscriptionButton
+        text="Top Communities"
+        type="subscription"
+        hidden={!areVisible}
+        onClick={() => (window.location.href = "/origins/leaderboard")}
+      />
+      <strong className={getClasses("subscription-divider")}>
         My Communities
       </strong>
       {displaySubscriptions()}

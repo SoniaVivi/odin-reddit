@@ -84,5 +84,6 @@ Rails.application.configure do
       comment_editor.css
       application.css
       application.js
+      origins_index.css
     ]
 end

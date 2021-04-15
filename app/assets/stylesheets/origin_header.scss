@@ -5,7 +5,7 @@
 }
 .origin-header-container {
   position: absolute;
-  top: 48px;
+  top: $header-height;
   left: 0;
   width: 100vw;
   max-width: 100%;
@@ -42,8 +42,7 @@
 }
 
 .origin-header-url {
-  font-size: 14px;
-  color: $gray;
+  @include subtitle-styling();
 }
 
 .origin-header-join-button {

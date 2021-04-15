@@ -1,4 +1,9 @@
 class OriginsController < ApplicationController
+  def index
+    @rankings = Origin.all
+                     .map {|o| o.get_rank}
+                     .sort {|a, b| b[:count] <=> a[:count]}
+  end
   def new
   end
   def create
