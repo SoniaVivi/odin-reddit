@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import CreatePostButton from "./sidebar/CreatePostButton";
+import SubscribeButton from "./shared/SubscribeButton";
 
 const SideBar = (props) => {
   const formatDate = (date) => {
