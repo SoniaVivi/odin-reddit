@@ -5,8 +5,10 @@
 }
 
 @mixin create-circle($size) {
-  width: $size;
-  height: $size;
+  max-width: $size;
+  max-height: $size;
+  min-width: $size;
+  min-height: $size;
   border-radius: 50%;
 }
 

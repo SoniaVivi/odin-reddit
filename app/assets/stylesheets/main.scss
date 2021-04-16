@@ -169,6 +169,60 @@ p {
   }
 }
 
+/* CreatePostLink Styles */
+
+.create-post-link {
+  display: flex;
+  align-items: center;
+  height: 58px;
+  padding: 0 8px;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  background-color: $white;
+
+  .user-icon {
+    @include create-circle(38px);
+    border: 1px solid $light-gray;
+    background-image: linear-gradient(
+      to right,
+      $blue,
+      $white,
+      $gray,
+      $white,
+      $blue
+    );
+  }
+
+  input {
+    @include rounded-form(38px);
+    flex-grow: 1;
+    height: 38px;
+    margin-left: 8px;
+    padding-left: 16px;
+    font-size: 14px;
+    background-color: #f6f7f8;
+
+    &:focus,
+    &:hover {
+      border: 1px solid $blue;
+    }
+  }
+}
+
+.create-post-link-button {
+  $size: 40px;
+  width: $size;
+  height: $size;
+  margin-left: 6px;
+  border-radius: 4px;
+  border: 1px solid $light-gray;
+  background-color: $light-gray;
+
+  &:nth-child(3) {
+    margin-left: 12px;
+  }
+}
+
 /* Alerts and Notices */
 
 .alert,
