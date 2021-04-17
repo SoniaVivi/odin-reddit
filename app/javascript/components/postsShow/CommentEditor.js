@@ -5,21 +5,38 @@ import UserAccountModal from "../userAccountModal/UserAccountModal";
 
 const CommentEditor = (props) => {
   const [commentText, setCommentText] = useState("");
-  const submitComment = () => {
-    return sendAjaxRequest("POST", "/comment", {
+  const submit = () => (props.updateEditor ? updateComment() : submitComment());
+
+  const submitComment = () =>
+    sendAjaxRequest("POST", "/comment", {
       post_id: props.data.post_id,
       parent_id: props.data.parent_id ? props.data.parent_id : "",
       body: commentText,
     });
+  const updateComment = () =>
+    sendAjaxRequest("PUT", "/comment", {
+      comment_id: props.commentId,
+      body: commentText,
+    });
+
+  const getSubmitText = () => {
+    if (!props.updateEditor) {
+      return props.top_level ? "Comment" : "Reply";
+    }
+    return "Save Edits";
   };
 
   if (props.logged_in) {
     return (
-      <div className="comment-editor row">
+      <div
+        className={`comment-editor ${props.updateEditor ? "editor" : "row"}`}
+      >
         <textarea
           className="col-10 comment-editor"
           onChange={(e) => setCommentText(e.target.value)}
-        ></textarea>
+        >
+          {props.content}
+        </textarea>
         <div className="col-10 markup-buttons">
           <div className="text-formatting-buttons formatting-container">
             <button>B</button>
@@ -39,12 +56,16 @@ const CommentEditor = (props) => {
             <button
               className="new-comment-options submit"
               onClick={() =>
-                submitComment()
-                  .then((response) => location.reload())
+                submit()
+                  .then((response) => {
+                    if ("success" in response && response.success) {
+                      location.reload();
+                    }
+                  })
                   .catch((error) => console.log(error))
               }
             >
-              {props.top_level ? "Comment" : "Reply"}
+              {getSubmitText()}
             </button>
           </div>
         </div>

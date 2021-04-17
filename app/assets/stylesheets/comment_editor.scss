@@ -4,6 +4,17 @@ div.comment-editor {
   flex-flow: column nowrap;
   align-items: center;
   padding-left: 2px;
+
+  &.editor {
+    flex-grow: 1;
+    width: unset;
+    margin-left: 22px;
+  }
+}
+
+.comment-update-container {
+  display: flex;
+  padding: 22px 0 29px 35px;
 }
 
 .markup-buttons,

@@ -20,6 +20,7 @@ class Comment < ApplicationRecord
   def get_data(user_id)
     {
       poster: poster.name,
+      poster_id: poster.id,
       body: body,
       created_at: created_at.strftime('%FT%H:%M:%S'),
       id: id,
