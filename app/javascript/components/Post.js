@@ -4,10 +4,12 @@ import PosterTime from "./shared/PosterTime";
 import ScoreDisplay from "./shared/ScoreDisplay";
 import onOutsideClick from "./shared/onOutsideClick";
 import PostPopupMenu from "./postsShow/PostPopupMenu";
+import PostEditor from "./postsShow/PostEditor";
 
 const Post = (props) => {
   const [showMenu, setShowMenu] = useState(false);
   const [displayThis, setDisplayThis] = useState(null);
+  const [editPost, setEditPost] = useState(false);
   const checkPostType = (type) => props.data.post_type == type;
   const formattedLink = () => {
     const link = props.data.subject.url;
@@ -19,7 +21,32 @@ const Post = (props) => {
     return link.slice(0, maxLength) + "...";
   };
   const getLinkImg = () => <img className="post-thumbnail"></img>;
+  const popupMenu = () => (
+    <PostPopupMenu
+      postId={props.data.id}
+      origin={props.data.origin}
+      modal={(modal) => setDisplayThis(modal)}
+      isPoster={props.data.isPoster}
+      isModerator={props.data.isModerator}
+      editPost={() => setEditPost((prevState) => !prevState)}
+    />
+  );
 
+  const textPostBody = () => {
+    if (!editPost) {
+      return <p>{props.data.subject.description}</p>;
+    } else {
+      return (
+        <PostEditor
+          updateEditor={true}
+          id={props.data.id}
+          content={props.data.subject.description}
+          logged_in={true}
+          exit={() => setEditPost((prevState) => !prevState)}
+        />
+      );
+    }
+  };
   return (
     <React.Fragment>
       <ScoreDisplay
@@ -50,7 +77,7 @@ const Post = (props) => {
           ) : (
             ""
           )}
-          {checkPostType("Text") ? <p>{props.data.subject.description}</p> : ""}
+          {checkPostType("Text") ? textPostBody() : ""}
         </div>
         <div className="post-image">
           {checkPostType("Link") ? getLinkImg() : ""}
@@ -60,7 +87,9 @@ const Post = (props) => {
             {props.data.comment_quantity} Comments
           </a>
           <button>Share</button>
-          <button>Edit Post</button>
+          <button onClick={() => setEditPost((prevState) => !prevState)}>
+            Edit Post
+          </button>
           <button>Save</button>
           <button>Hide</button>
           <div
@@ -70,17 +99,7 @@ const Post = (props) => {
             data-menu-button="true"
           >
             ...
-            {showMenu ? (
-              <PostPopupMenu
-                postId={props.data.id}
-                origin={props.data.origin}
-                modal={(modal) => setDisplayThis(modal)}
-                isPoster={props.data.isPoster}
-                isModerator={props.data.isModerator}
-              />
-            ) : (
-              ""
-            )}
+            {showMenu ? popupMenu() : ""}
             {displayThis ? displayThis : ""}
           </div>
         </div>

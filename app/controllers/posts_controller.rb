@@ -38,6 +38,16 @@ class PostsController < ApplicationController
   def edit
   end
   def update
+    post_params = update_params
+    post = Post.find(update_params[:id])
+    if (!post.nil? &&
+      user_signed_in? &&
+      post.poster.id == current_user.id &&
+      post.subject.update(description: post_params[:body]))
+        render json: {success: true}
+    else
+      render json: {success: false}
+    end
   end
   def destroy
     post = Post.find(destroy_params[:id])
@@ -66,5 +76,8 @@ class PostsController < ApplicationController
     else
       nil
     end
+  end
+  def update_params
+    params.permit(:id, :body)
   end
 end

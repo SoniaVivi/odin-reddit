@@ -38,7 +38,9 @@ const PostPopupMenu = (props) => {
 
   return (
     <div className="popup-container post">
-      <button className="post-menu-button">Edit Post</button>
+      <button className="post-menu-button" onClick={props.editPost}>
+        Edit Post
+      </button>
       <button className="post-menu-button">Save</button>
       <button className="post-menu-button">Hide</button>
       {props.isPoster || props.isModerator ? (
