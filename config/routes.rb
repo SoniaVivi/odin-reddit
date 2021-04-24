@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root 'posts#index'
+  get '/user/:name', to: 'users#show', as: 'user'
   devise_for :users, controllers: {
     sessions: 'users/sessions', registrations: 'users/registrations'
   }

@@ -34,6 +34,43 @@ p {
   z-index: 20;
 }
 
+.secondary-header {
+  position: absolute;
+  top: $header-height;
+  left: 0;
+}
+
+.top-divider {
+  border-top: 1px solid $light-gray;
+}
+
+.bottom-divider {
+  border-bottom: 1px solid $light-gray;
+}
+
+.no-border {
+  border: unset;
+}
+
+.blue-button {
+  $default-color: $blue;
+  @include rounded-corners(32px, $default-color);
+  font-weight: 500;
+  font-size: 16px;
+  color: $white;
+  background-color: $default-color;
+
+  &:hover {
+    $color: $light-blue;
+    background-color: $color;
+    border-color: $color;
+  }
+}
+
+.soft-border {
+  border-radius: 3px;
+}
+
 /* Poster username and time styling */
 
 .poster-time-container {
@@ -64,8 +101,12 @@ p {
     @include create-circle(1px);
     content: "";
     border: 1px solid black;
-    margin-left: 2px;
+    margin-left: 4px;
   }
+}
+
+.poster-time {
+  margin-left: 3px;
 }
 
 /* User Icons */

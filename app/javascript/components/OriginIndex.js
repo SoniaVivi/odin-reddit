@@ -6,7 +6,7 @@ import RankingsContainer from "./originsIndex/RankingsContainer";
 const OriginIndex = (props) => {
   return (
     <React.Fragment>
-      <div className="origin-index-header">
+      <div className="origin-index-header secondary-header">
         <h1>Today's Top Growing Communities</h1>
         <p>Lorem ipsum dolor sit amet, id eirmod ornatus volutpat cum</p>
       </div>

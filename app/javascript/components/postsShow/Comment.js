@@ -65,7 +65,6 @@ const Comment = (props) => {
 
   return (
     <div className={"comment-container" + props.className}>
-      {console.log(props)}
       <CommentDescender className={props.className} />
       <div className="comment-body-container row">
         <div className="poster-time-container">

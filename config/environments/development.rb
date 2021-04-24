@@ -85,5 +85,7 @@ Rails.application.configure do
       application.css
       application.js
       origins_index.css
+      user_show.css
+      post.css
     ]
 end

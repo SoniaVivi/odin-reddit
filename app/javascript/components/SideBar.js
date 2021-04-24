@@ -2,16 +2,9 @@ import React from "react";
 import PropTypes from "prop-types";
 import CreatePostButton from "./sidebar/CreatePostButton";
 import SubscribeButton from "./shared/SubscribeButton";
+import formatDate from "./shared/formatDate";
 
 const SideBar = (props) => {
-  const formatDate = (date) => {
-    let dateArray = new Date(Date.parse(date))
-      .toDateString()
-      .split(" ")
-      .slice(1);
-    dateArray[1] += ",";
-    return dateArray.join(" ");
-  };
   const alternatingButton = () => {
     if (props.postPage) {
       return (

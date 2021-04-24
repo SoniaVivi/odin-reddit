@@ -11,9 +11,6 @@ $side-padding: 17px;
 }
 
 .origin-index-header {
-  position: absolute;
-  top: $header-height;
-  left: 0;
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;

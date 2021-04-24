@@ -17,7 +17,7 @@ class Comment < ApplicationRecord
     return self.get_data(current_user_id), child_comments
   end
 
-  def get_data(user_id)
+  def get_data(user_id = nil)
     {
       poster: poster.name,
       poster_id: poster.id,
