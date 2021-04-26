@@ -1,4 +1,4 @@
-@import "_variables", "_mixins";
+@import "../_variables", "../_mixins";
 $side-padding: 17px;
 
 #origin-index {
@@ -64,6 +64,7 @@ $side-padding: 17px;
 
 #categories {
   min-width: 129px;
+  margin-left: 25px;
 }
 
 .category {
@@ -130,4 +131,28 @@ $side-padding: 17px;
 
 .rank-origin-title {
   margin-left: 10px;
+}
+
+@media (max-width: 1030px) {
+  #origin-sidebar {
+    display: none;
+  }
+}
+
+@media (max-width: 756px) {
+  #origin-index {
+    width: 100%;
+    padding: 0;
+    padding-top: 20px;
+    margin: 0;
+  }
+
+  #categories {
+    display: none;
+  }
+
+  #rankings {
+    width: 100%;
+    margin: 0;
+  }
 }

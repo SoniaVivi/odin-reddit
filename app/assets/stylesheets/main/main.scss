@@ -71,6 +71,11 @@ p {
   border-radius: 3px;
 }
 
+.subtitle {
+  font-size: 14px;
+  color: $gray;
+}
+
 /* Poster username and time styling */
 
 .poster-time-container {
@@ -129,7 +134,8 @@ p {
 
 .utility-buttons {
   display: flex;
-  min-width: 100%;
+  flex-basis: 100%;
+  flex-shrink: 1;
   height: 32px;
 
   > a,
@@ -159,19 +165,16 @@ p {
   background-color: #f8f9fa;
 
   .arrow {
-    position: relative;
+    @include center-children();
     overflow: hidden;
     width: 21px;
     height: 20px;
+    padding: 0;
   }
 
   .arrow::before {
     content: "";
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    display: block;
-    width: 32px;
+    flex-basis: 32px;
     height: 40px;
     background: no-repeat center image-url("arrow.png");
   }
@@ -207,46 +210,6 @@ p {
     max-height: 28px;
     margin-right: 0;
     margin-left: $arrow-margin;
-  }
-}
-
-/* CreatePostLink Styles */
-
-.create-post-link {
-  display: flex;
-  align-items: center;
-  height: 58px;
-  padding: 0 8px;
-  border: 1px solid #cccccc;
-  border-radius: 4px;
-  background-color: $white;
-
-  .user-icon {
-    @include create-circle(38px);
-    border: 1px solid $light-gray;
-    background-image: linear-gradient(
-      to right,
-      $blue,
-      $white,
-      $gray,
-      $white,
-      $blue
-    );
-  }
-
-  input {
-    @include rounded-form(38px);
-    flex-grow: 1;
-    height: 38px;
-    margin-left: 8px;
-    padding-left: 16px;
-    font-size: 14px;
-    background-color: #f6f7f8;
-
-    &:focus,
-    &:hover {
-      border: 1px solid $blue;
-    }
   }
 }
 

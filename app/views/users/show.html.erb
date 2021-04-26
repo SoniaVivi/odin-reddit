@@ -1,9 +1,5 @@
 <% content_for :head, flush: true do %>
-  <%= stylesheet_link_tag 'post',
-      class: "page-specific",
-      controller: controller.controller_name,
-      action: controller.action_name %>
-  <%= stylesheet_link_tag 'user_show',
+  <%= stylesheet_link_tag 'users/user_show',
       class: "page-specific",
       controller: controller.controller_name,
       action: controller.action_name %>

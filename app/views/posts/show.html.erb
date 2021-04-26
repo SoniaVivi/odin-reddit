@@ -1,9 +1,5 @@
 <% content_for :head, flush: true do %>
-  <%= stylesheet_link_tag 'posts_show',
-      class: "page-specific",
-      controller: controller.controller_name,
-      action: controller.action_name %>
-  <%= stylesheet_link_tag 'comment_editor',
+  <%= stylesheet_link_tag 'posts/posts_show',
       class: "page-specific",
       controller: controller.controller_name,
       action: controller.action_name %>
@@ -14,5 +10,6 @@
                      comments: @comments,
                      logged_in:  current_user.nil? ? false : true,
                      current_user_id: current_user.nil? ? "" : current_user.id,
+                     commentSort: @sort
                     },
-                   class: "col-sm-8 post-content-container") %>
+                   class: "col-10 col-xl-8 post-content-container") %>

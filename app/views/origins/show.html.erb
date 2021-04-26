@@ -1,5 +1,5 @@
 <% content_for :head, flush: true do %>
-  <%= stylesheet_link_tag 'origin_header',
+  <%= stylesheet_link_tag 'origins/origin_show',
       class: "page-specific",
       controller: controller.controller_name,
       action: controller.action_name %>
@@ -9,12 +9,15 @@
                     joined: @subscribed,
                     loggedIn: user_signed_in?,
                     },
-                    class: "col-12 origin-header-container secondary-header") %>
+                    class: "col-12 origin-header-container secondary-header row") %>
 <div class="w-100"></div>
-<div class="col-sm-1"></div>
-<div class="col-sm-8">
+<div class="col-lg-1"></div>
+<div class="col-lg-8">
   <%= react_component("CreatePostLink",
                       {originTitle: params[:title]},
                       class: "create-post-link") %>
+  <%= react_component("SortPostsMenu",
+                      {url: @url},
+                      class: "sort-posts-container") %>
   <%= react_component("PostFeed", {posts: @posts}, class: "postfeed" ) %>
 </div>

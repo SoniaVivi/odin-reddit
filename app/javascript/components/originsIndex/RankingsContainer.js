@@ -16,7 +16,7 @@ const RankingsContainer = (props) => {
   };
 
   return (
-    <div className="col-7" id="rankings">
+    <div className="col-12 col-md-7" id="rankings">
       <div className="container-header">
         <h1>Today's Top Growing Communities</h1>
         <p>Rank Change</p>

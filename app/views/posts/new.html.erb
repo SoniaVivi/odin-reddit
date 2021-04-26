@@ -1,5 +1,5 @@
 <% content_for :head do %>
-  <%= stylesheet_link_tag 'posts_new',
+  <%= stylesheet_link_tag 'posts/posts_new',
       class: "page-specific",
       controller: controller.controller_name,
       action: controller.action_name %>
@@ -7,4 +7,4 @@
 <div class="w-100"></div>
 <%= react_component("NewPostEditor",
                     {originName: @origin_name},
-                    class: "col-sm-8" ) %>
+                    class: "col-12 col-lg-8" ) %>

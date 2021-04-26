@@ -10,10 +10,14 @@ class Comment < ApplicationRecord
   has_many :children, class_name: 'Comment', foreign_key: 'parent_id'
   has_many :votes, as: :voteable
 
-  def get_tree(current_user_id = nil)
+  def get_tree(current_user_id = nil, sort = { score: :desc })
     return [self.get_data(current_user_id)] if children.length == 0
     child_comments = []
-    children.each { |child_comment| child_comments << child_comment.get_tree }
+    children
+      .order(sort)
+      .each do |child_comment|
+        child_comments << child_comment.get_tree(current_user_id)
+      end
     return self.get_data(current_user_id), child_comments
   end
 

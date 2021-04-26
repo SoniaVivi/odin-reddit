@@ -29,7 +29,8 @@
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <div class="container-xl">
-      <div class="row col-lg-12 content">
+      <% meow = (controller_name == 'posts' && action_name == 'show' ? "row col-10 col-xl-12 content" : "row col-12 content") %>
+      <div class="<%= meow %>" >
         <%= yield %>
         <% if (request.original_url.match?(/\/f\//)) %>
           <% origin = Origin.find_by("title = ?", params[:title]) %>
@@ -47,7 +48,7 @@
                                             .where("title = ?",
                                               params[:title]).exists?),
                                 },
-                                class: "col-sm-3 sidebar") %>
+                                class: "col-3 sidebar") %>
         <% end %>
       </div>
     </div>

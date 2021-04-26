@@ -1,0 +1,252 @@
+@import "../_variables", "../_mixins", "comment_editor";
+
+body {
+  background-color: #323232;
+}
+
+.content {
+  background-color: #dae0e6;
+  min-height: 100vh;
+}
+
+.post-details-container {
+  width: 100%;
+}
+
+.post-content {
+  height: calc(100% - 34px);
+  padding-bottom: 20px;
+  margin-bottom: 17px;
+  background-color: #ffffff;
+}
+
+.post-content-container {
+  min-height: 100%;
+  padding-left: 32px;
+}
+
+.post-container {
+  border: unset;
+}
+
+.vertical-score-container {
+  background-color: unset;
+}
+
+.comment-nesting-line {
+  $margin: 10px;
+  width: 2px;
+  height: calc(100% - #{$margin});
+  margin: $margin 0;
+  background-color: $light-gray;
+
+  &.editor {
+    height: 100%;
+    padding: 0;
+    margin: 0;
+  }
+}
+
+.comment-section {
+  height: 100%;
+  margin-top: 15px;
+}
+
+.comment {
+  padding-right: 0;
+  padding-left: 15px;
+
+  &:not(.top-level) {
+    padding-left: 21px;
+  }
+}
+
+.comment-body,
+.nested-comment-container,
+.comment-container {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.comment-container {
+  flex-flow: row nowrap;
+}
+
+.editor-buttons-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 35px;
+  padding: 0 8px;
+  background-color: #f6f7f8;
+}
+
+.post-editor-container {
+  @include rounded-form(180px);
+  width: 100%;
+  margin-bottom: 8px;
+
+  &.border {
+    border: 1px solid #000000;
+  }
+
+  .editor-buttons-container {
+    border-bottom: 1px solid #edeff1;
+  }
+}
+
+textarea.post-editor {
+  width: 100%;
+  max-height: 149px;
+  height: 136px;
+  padding: 13px;
+  &:focus {
+    outline: none;
+  }
+}
+
+.submit.post-editor {
+  @include rounded-corners(32px, $blue, 90px);
+  font-weight: 500;
+  background-color: $blue;
+  color: $white;
+}
+
+.markdown-mode.post-editor {
+  margin-left: auto;
+  font-size: 13px;
+  font-weight: 700;
+  color: $blue;
+}
+
+.cancel.post-editor {
+  $color: #ededed;
+  width: 80px;
+  height: 32px;
+
+  &:hover {
+    @include rounded-corners(32px, $color, 80px);
+    background-color: $color;
+  }
+}
+
+.submission-buttons.post-editor {
+  display: flex;
+  justify-content: flex-end;
+  margin-left: 1px;
+}
+
+.sort-comments-container {
+  display: flex;
+  margin: 30px 50px 54px 50px;
+  padding-bottom: 12px;
+  min-height: 40px;
+  font-size: 13px;
+
+  span {
+    width: 27px;
+    text-transform: uppercase;
+    font-size: 10px;
+    font-weight: 600;
+    color: $dark-gray;
+  }
+
+  > div {
+    position: relative;
+    display: flex;
+    flex-grow: 1;
+    margin-left: 24px;
+    padding-bottom: 1px;
+  }
+
+  .current-sort {
+    align-self: flex-end;
+    text-transform: capitalize;
+    font-size: 13px;
+  }
+}
+
+.sort-comments-popup.popup-container {
+  position: absolute;
+  top: 40px;
+  left: 0;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: flex-start;
+  width: 102px;
+  border: 2px solid $light-gray;
+  background-color: $white;
+
+  button {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 34px;
+    padding: 12px 9px;
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: capitalize;
+
+    &:hover {
+      background-color: #e9f5fd;
+    }
+
+    &.active {
+      color: $blue;
+    }
+  }
+}
+
+@media (max-width: 1120px) {
+  .content {
+    justify-content: center;
+    margin: 0 auto;
+  }
+
+  .post-content-container {
+    margin: 0 auto;
+    padding-left: 0;
+  }
+
+  .sidebar {
+    display: none;
+  }
+}
+
+@media (max-width: 840px) {
+  .formatting-container {
+    display: none;
+  }
+  .editor-buttons-container {
+    display: none;
+  }
+  .new-comment-options {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 640px) {
+  .utility-buttons > button,
+  .utility-buttons > a {
+    padding: 0;
+    margin-right: 4px;
+  }
+
+  .utility-buttons > div {
+    margin-left: 5px;
+  }
+}
+
+@media (max-width: 540px) {
+  .utility-buttons > button:not(:first-child, :nth-child(2)) {
+    display: none;
+  }
+}
+
+@media (max-width: 550px) {
+  .content,
+  .post-content {
+    width: 100%;
+    margin: 0;
+  }
+}

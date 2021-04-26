@@ -4,13 +4,19 @@ class PostsController < ApplicationController
   def index
     posts = Post.all.order(created_at: :desc)
     @posts = []
-    posts.each { |post| @posts << post.get_data }
+    posts.each do |post|
+      @posts << post.get_data(user_signed_in? ? current_user.id : nil)
+    end
   end
   def show
     post = Post.find(params[:id])
+    @sort = sort_params('top', 'old')
     @post = get_post_data(post)
-    @comments = post.comments.where(parent_id: nil).map  do |comment|
-      comment.get_tree(user_signed_in? ? current_user.id : nil)
+    @comments = post.comments
+                    .where(parent_id: nil)
+                    .order(comment_sort(@sort)).map  do |comment|
+      comment.get_tree(user_signed_in? ? current_user.id : nil,
+                       comment_sort(@sort))
     end
   end
   def new
@@ -79,5 +85,15 @@ class PostsController < ApplicationController
   end
   def update_params
     params.permit(:id, :body)
+  end
+  def comment_sort(order)
+    case order
+    when 'old'
+      {created_at: :asc}
+    when 'new'
+      {created_at: :desc}
+    else
+      {score: :desc}
+    end
   end
 end

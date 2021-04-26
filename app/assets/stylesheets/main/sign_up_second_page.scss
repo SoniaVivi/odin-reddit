@@ -17,7 +17,7 @@
 .forms.signup.second-page {
   display: flex;
   flex-grow: 1;
-  min-height: 434px;
+  flex-basis: 434px;
   padding-top: 24px;
 
   div {
@@ -30,6 +30,7 @@
   }
 
   input {
+    max-width: calc(100% - 25px);
     width: 350px;
     height: 48px;
     padding-left: 15px;

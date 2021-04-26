@@ -1,4 +1,5 @@
 @import "bootstrap/bootstrap", "_variables", "_mixins";
-@import "header", "user_account_modal_first_page", "sign_up_second_page",
-  "user_dropdown_menu", "subscription_dropdown_menu";
-@import "trending-posts", "post", "post_popup_menu", "sidebar", "main";
+@import "main/header", "main/user_account_modal_first_page",
+  "main/sign_up_second_page", "main/user_dropdown_menu",
+  "main/subscription_dropdown_menu";
+@import "main/post", "main/post_popup_menu", "main/sidebar", "main/main";

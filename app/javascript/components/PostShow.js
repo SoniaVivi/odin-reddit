@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import Post from "./Post";
 import CommentSection from "./postsShow/CommentSection";
 import CommentEditor from "./postsShow/CommentEditor";
+import SortCommentsMenu from "./postsShow/SortCommentsMenu";
 
 const PostShow = (props) => {
   return (
@@ -11,6 +12,7 @@ const PostShow = (props) => {
         <Post data={props.post} loggedIn={props.logged_in}></Post>
       </div>
       <div className="comment-section">
+        {console.log(props.logged_in)}
         <CommentEditor
           data={
             !props.logged_in
@@ -20,6 +22,10 @@ const PostShow = (props) => {
           logged_in={props.logged_in ? true : false}
           top_level={true}
         ></CommentEditor>
+        <SortCommentsMenu
+          url={props.post.url}
+          currentSort={props.commentSort}
+        />
         <CommentSection
           comments={props.comments}
           isTopLevel="true"

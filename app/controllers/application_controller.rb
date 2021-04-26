@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  helper_method :get_post_data
+  helper_method :get_post_data, :sort_params
 
   def get_post_data(post)
     return post.get_data if current_user.nil?
@@ -11,5 +11,10 @@ class ApplicationController < ActionController::Base
                 isModerator: ModeratorOrigin.exists?(moderator_id: id,
                                                      origin_id: post.origin.id)
               })
+  end
+  def sort_params(default='top', *args)
+    permitted_sorts = ['top', 'new'] + args
+    sort = params.permit(:sort)[:sort]
+    sort.nil? || !permitted_sorts.include?(sort) ? default : sort.downcase
   end
 end

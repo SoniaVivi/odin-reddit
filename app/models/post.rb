@@ -22,6 +22,7 @@ class Post < ApplicationRecord
       comment_quantity: comments.length,
       id: id,
       vote_type: get_vote(user_id),
+      url: "/f/#{origin.title}/#{id}",
     }
   end
 

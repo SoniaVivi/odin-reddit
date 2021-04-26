@@ -12,7 +12,7 @@ const Categories = () => {
   };
 
   return (
-    <div className="col-2" id="categories">
+    <div className="col-md-2" id="categories">
       <div className="container-header">
         <h1>Categories</h1>
       </div>

@@ -1,5 +1,5 @@
 img.user-account-modal {
-  width: 130px;
+  flex-basis: 130px;
   height: 100%;
   background-color: #000000;
 }
@@ -8,7 +8,7 @@ img.user-account-modal {
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
-  max-width: 300px;
+  flex-basis: 300px;
   margin-left: 20px;
 }
 
@@ -110,4 +110,14 @@ input.user-account-modal.first-page:valid,
 input.user-account-modal.first-page:focus,
 .forms.signup.second-page input:focus {
   outline-width: 0;
+}
+
+@media (max-width: 450px) {
+  img.user-account-modal {
+    display: none;
+  }
+
+  .account-forms-container.user-account-modal {
+    margin: 0 auto;
+  }
 }

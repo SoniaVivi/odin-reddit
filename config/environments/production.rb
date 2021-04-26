@@ -119,15 +119,13 @@ Rails.application.configure do
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
   config.assets.precompile +=
     %w[
-      posts_show.css
-      posts_new.css
-      origins_new.css
-      origin_header.css
-      comment_editor.css
+      posts/posts_show.css
+      posts/posts_new.css
+      origins/origins_new.css
+      origins/origin_show.css
+      origins/origins_index.css
+      users/user_show.css
       application.css
       application.js
-      origins_index.css
-      user_show.css
-      post.css
     ]
 end

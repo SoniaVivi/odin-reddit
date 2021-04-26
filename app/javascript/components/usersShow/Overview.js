@@ -6,7 +6,7 @@ const Overview = (props) => {
   return (
     <React.Fragment>
       <div className="col-1"></div>
-      <div className="col-8">
+      <div className="col-12 col-lg-8">
         <div></div>
         <div></div>
         {generatePreviews({ ...props })}

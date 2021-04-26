@@ -1,4 +1,4 @@
-@import "_variables", "_mixins", "user_sidebar";
+@import "../_variables", "../_mixins", "user_sidebar";
 
 .col-1,
 .col-3 {
@@ -135,5 +135,33 @@ div.comment-metadata {
     padding: 0;
     font-weight: 500;
     color: $gray;
+  }
+}
+
+.collapsed-menu {
+  display: flex;
+  justify-content: center;
+  color: #000000;
+}
+
+@media (min-width: 1120px) {
+  .collapsed-menu {
+    display: none;
+  }
+}
+
+@media (max-width: 1120px) {
+  .secondary-header {
+    justify-content: flex-start;
+  }
+  .collapse-tab {
+    display: none;
+  }
+}
+
+@media (max-width: 960px) {
+  .user-sidebar,
+  .col-1 {
+    display: none;
   }
 }

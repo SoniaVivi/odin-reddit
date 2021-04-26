@@ -33,17 +33,20 @@ const CommentEditor = (props) => {
   };
 
   if (props.logged_in == undefined || !props.logged_in) {
-    <div className="logged-out-editor col-10">
-      <p>Log in or sign up to leave a comment</p>
-      <div className="logged-out-editor-account-buttons">
-        <UserAccountModal type="login"></UserAccountModal>
-        <UserAccountModal type="signup"></UserAccountModal>
+    return (
+      <div className="logged-out-editor col-10">
+        <p>Log in or sign up to leave a comment</p>
+        <div className="logged-out-editor-account-buttons">
+          <UserAccountModal type="login"></UserAccountModal>
+          <UserAccountModal type="signup"></UserAccountModal>
+        </div>
       </div>
-    </div>;
+    );
   }
 
   return (
     <div className={containerClasses}>
+      {console.log(`meow`, props)}
       <textarea
         className="col-10 comment-editor"
         onChange={(e) => setCommentText(e.target.value)}

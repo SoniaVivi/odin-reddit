@@ -24,16 +24,18 @@ const UserShow = (props) => {
   };
   const generateTabButtons = () => {
     const tabs = [];
+    let i = 0;
     for (const tabName in tabPages) {
       tabs.push(
         <button
           className={`header-tab${
             tabName.toLowerCase() == activeTab ? " active" : ""
-          }`}
+          }${i > 3 ? " collapse-tab" : ""}`}
         >
           {tabName}
         </button>
       );
+      i += 1;
     }
     return tabs;
   };
@@ -44,10 +46,14 @@ const UserShow = (props) => {
         className="secondary-header"
         onClick={(e) =>
           !e.target.classList.contains("secondary-header") &&
+          e.target.textContent != "..." &&
           setActiveTab(e.target.textContent.toLowerCase())
         }
       >
         {generateTabButtons()}
+        <div className="collapsed-menu">
+          <button>...</button>
+        </div>
       </div>
       {tabPages[activeTab]}
       <UserSidebar data={props.sidebar} />

@@ -20,5 +20,8 @@ class Origin < ApplicationRecord
   def title=(val)
     write_attribute(:title, val.downcase)
   end
+  def url
+    "/f/#{title}"
+  end
 end
 # watching your runs over the years, I've learned that the incorrect way to pet a big ol' pupper is probably with a halbred. P.S. Happy birthday squilla!

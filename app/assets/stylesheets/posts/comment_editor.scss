@@ -1,5 +1,3 @@
-$light-gray: #edeff1;
-
 div.comment-editor {
   flex-flow: column nowrap;
   align-items: center;
@@ -131,5 +129,6 @@ button.new-comment-options {
     width: 85px;
     height: 32px;
     margin-left: 8px;
+    flex-shrink: 1;
   }
 }

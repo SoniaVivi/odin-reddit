@@ -1,4 +1,4 @@
-@import "_variables", "_mixins";
+@import "../_variables", "../_mixins";
 
 $border: 1px solid $light-gray;
 
@@ -154,6 +154,7 @@ textarea {
 
 .post-buttons-wrapper {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
 }
 
@@ -202,5 +203,17 @@ textarea {
 
   p:first-child {
     margin-bottom: 5px;
+  }
+}
+
+@media (max-width: 960px) {
+  .sidebar {
+    display: none;
+  }
+}
+
+@media (max-width: 635px) {
+  .post-buttons-wrapper {
+    justify-content: center;
   }
 }

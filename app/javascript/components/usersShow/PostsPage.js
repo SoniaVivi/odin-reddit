@@ -5,7 +5,7 @@ import generatePreviews from "./generatePreviews";
 const PostsPage = (props) => {
   return (
     <React.Fragment>
-      <div className="col-9">
+      <div className="col-12 col-lg-9">
         <div></div>
         <div></div>
         {generatePreviews({ ...props, omitComments: true })}
