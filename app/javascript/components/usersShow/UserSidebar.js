@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import formatDate from "../shared/formatDate";
 
 const UserSidebar = (props) => {
-  const { name, created_at: joined } = props.data;
+  const { name, created_at: joined, karma } = props.data;
   return (
     <div className="col-3 user-sidebar">
       <div className="user-info">
@@ -17,7 +17,7 @@ const UserSidebar = (props) => {
         <div className="user-metadata">
           <div>
             <strong>Karma</strong>
-            <span>12,345</span>
+            <span>{karma}</span>
           </div>
           <div>
             <strong>Cake day</strong>

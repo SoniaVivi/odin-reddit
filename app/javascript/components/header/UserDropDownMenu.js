@@ -19,7 +19,7 @@ const UserDropDownMenu = (props) => {
         <img src={require("../../../assets/images/test-user-icon.png")}></img>
         <div className="user-info-container">
           <p>{props.name}</p>
-          <p>X karma</p>
+          <p>{props.karma} karma</p>
         </div>
       </li>
       <MenuSection

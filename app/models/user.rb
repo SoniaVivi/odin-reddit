@@ -15,6 +15,7 @@ class User < ApplicationRecord
   has_many :comments, foreign_key: 'poster_id'
   has_many :commentted_posts, through: :comments, source: :post
   has_many :votes
+  has_many :karmas, foreign_key: 'original_poster_id', class_name: "Vote"
 
   def get_subscriptions
     user_subscriptions = {}
@@ -53,5 +54,26 @@ class User < ApplicationRecord
       previews[post.id] = {post: post.get_data(user_id), self_post: true}
     end
     previews
+  end
+  def get_comment_karma
+    karma_query('Comment') + 1
+  end
+  def get_post_karma
+    karma_query('Post') + 1
+  end
+  def get_karma
+    get_comment_karma + get_post_karma - 1
+  end
+
+  private
+
+  def karma_query(voteable_type)
+    query = -> (vote_type) {
+      karmas.where.not("user_id = ?", id)
+            .where("voteable_type = ? AND vote_type = ?",
+                    voteable_type, vote_type)
+            .count
+    }
+    query.call('up') - query.call('down')
   end
 end

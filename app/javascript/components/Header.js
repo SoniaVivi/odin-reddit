@@ -41,6 +41,7 @@ const Header = (props) => {
         <UserDropDownMenu
           name={props.username}
           logoutFunc={logout}
+          karma={props.karma}
         ></UserDropDownMenu>
       )}
     </React.Fragment>

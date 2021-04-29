@@ -10,5 +10,6 @@
                      loggedIn: user_signed_in?,
                      posts: @posts,
                      sameUser: user_signed_in? && current_user.id == @user.id,
-                     sidebar: @sidebar},
+                     sidebar: @sidebar,
+                     karma: @user.get_karma,},
                     class: "row" ) %>

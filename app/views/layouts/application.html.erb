@@ -23,13 +23,16 @@
                         originName: (params[:title] if
                                                   params.has_key?(:title)),
                         subscriptions: current_user ?
-                                            current_user.get_subscriptions : nil
+                                            current_user.get_subscriptions : nil,
+                        karma: user_signed_in? && current_user.get_karma
                       },
                       class: "header") %>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <div class="container-xl">
-      <% meow = (controller_name == 'posts' && action_name == 'show' ? "row col-10 col-xl-12 content" : "row col-12 content") %>
+      <% meow = (controller_name == 'posts' &&
+                 action_name == 'show' ?
+                  "row col-10 col-xl-12 content" : "row col-12 content") %>
       <div class="<%= meow %>" >
         <%= yield %>
         <% if (request.original_url.match?(/\/f\//)) %>

@@ -56,7 +56,7 @@ const UserShow = (props) => {
         </div>
       </div>
       {tabPages[activeTab]}
-      <UserSidebar data={props.sidebar} />
+      <UserSidebar data={{ ...props.sidebar, karma: props.karma }} />
     </React.Fragment>
   );
 };
