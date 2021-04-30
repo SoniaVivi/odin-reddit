@@ -15,6 +15,7 @@ const UserAccountModal = (props) => {
   const username = useRef("");
   const password = useRef("");
   const [firstLoad, setFirstLoad] = useState(true);
+  const [disabledScroll, setDisabledScroll] = useState(false);
 
   const generateText = () => (props.type == "login" ? "Log In" : "Sign Up");
   const generateClassNames = () =>
@@ -23,12 +24,13 @@ const UserAccountModal = (props) => {
     sendAjaxRequest("POST", "/users/check_username", { username: name });
   const exitModal = () => {
     setFirstLoad((prevState) => !prevState);
+    setDisabledScroll((prevState) => !prevState);
     setIsButtonMode(true);
     setIsFirstpage(true);
     toggleScroll();
-    if (props.exit) {
-      props.exit();
-    }
+    // if (props.exit) {
+    //   props.exit();
+    // }
   };
   const modalButton = (
     <ModalButton
@@ -74,7 +76,12 @@ const UserAccountModal = (props) => {
     return null;
   }
 
-  toggleScroll();
+  !disabledScroll
+    ? (() => {
+        setDisabledScroll((prevState) => !prevState);
+        toggleScroll();
+      })()
+    : "";
   if (props.type == "signup") {
     return (
       <React.Fragment>
