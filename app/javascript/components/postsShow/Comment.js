@@ -71,6 +71,7 @@ const Comment = (props) => {
           <PosterTime
             poster={props.data.poster}
             time={props.data.created_at}
+            isComment={true}
           ></PosterTime>
         </div>
         <div className="w-100"></div>

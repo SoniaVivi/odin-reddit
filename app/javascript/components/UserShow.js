@@ -6,20 +6,21 @@ import CommentsPage from "./usersShow/CommentsPage";
 import PostsPage from "./usersShow/PostsPage";
 
 const UserShow = (props) => {
+  const placeholder = <div class="col-12 col-lg-9"></div>
   const [activeTab, setActiveTab] = useState("overview");
   const tabPages = {
     overview: <Overview data={props.overview} loggedIn={props.loggedIn} />,
     posts: <PostsPage data={props.posts} loggedIn={props.loggedIn} />,
     comments: <CommentsPage data={props.comments} loggedIn={props.loggedIn} />,
     ...(props.sameUser && {
-      saved: <div></div>,
-      hidden: <div></div>,
-      upvoted: <div></div>,
-      downvoted: <div></div>,
+      saved: placeholder,
+      hidden: placeholder,
+      upvoted: placeholder,
+      downvoted: placeholder,
     }),
-    "Awards Received": <div></div>,
+    "awards received": placeholder,
     ...(props.sameUser && {
-      "Awards Given": <div></div>,
+      "awards given": placeholder,
     }),
   };
   const generateTabButtons = () => {

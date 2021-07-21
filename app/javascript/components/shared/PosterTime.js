@@ -23,7 +23,9 @@ const PosterTime = (props) => {
       for (const [units, func] of Object.entries(getTime)) {
         let timePast = Math.floor(func());
         if (timePast > 0) {
-          return `${timePast} ${units}${units ? " ago" : ""}`;
+          return `${timePast}${props.isComment ? units[0] : ` ${units}`}${
+            units && !props.isComment ? " ago" : ""
+          }`;
         }
       }
     };
@@ -32,8 +34,11 @@ const PosterTime = (props) => {
 
   return (
     <React.Fragment>
-      <p className="poster-time"> Posted by </p>
-      <a href={`/user/${props.poster}/`} className="poster-time">
+      {!props.isComment ? <p className="poster-time"> Posted by </p> : ""}
+      <a
+        href={`/user/${props.poster}/`}
+        className={`poster-time${props.isComment ? " comment-time" : ""}`}
+      >
         {props.poster}
       </a>
       <pre className="poster-time"> {(() => relativeTime(props.time))()}</pre>

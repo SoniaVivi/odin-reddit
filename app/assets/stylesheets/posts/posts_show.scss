@@ -237,16 +237,16 @@ textarea.post-editor {
   }
 }
 
-@media (max-width: 540px) {
-  .utility-buttons > button:not(:first-child, :nth-child(2)) {
-    display: none;
-  }
-}
-
 @media (max-width: 550px) {
   .content,
   .post-content {
     width: 100%;
     margin: 0;
+  }
+}
+
+@media (max-width: 540px) {
+  .utility-buttons > button:not(:first-child, :nth-child(2)) {
+    display: none;
   }
 }

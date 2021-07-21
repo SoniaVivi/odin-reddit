@@ -5,9 +5,9 @@ import SubscriptionButton from "./SubscriptionButton";
 import { doIf } from "../shared/helpers";
 
 const SubscriptionsMenu = (props) => {
-  const [areVisible, setAreVisible] = useState(false);
+  const [isHidden, setIsHidden] = useState(true);
   const getClasses = (defaultClass) =>
-    areVisible ? defaultClass : `hidden ${defaultClass}`;
+    isHidden ? `hidden ${defaultClass}` : defaultClass;
   const displaySubscriptions = () => {
     let buttons = [];
     for (const [title, url] of Object.entries(props.subscriptions)) {
@@ -15,7 +15,7 @@ const SubscriptionsMenu = (props) => {
         <SubscriptionButton
           text={title}
           type="subscription"
-          hidden={!areVisible}
+          hidden={isHidden}
           onClick={() => (window.location.href = url)}
         />
       );
@@ -25,39 +25,41 @@ const SubscriptionsMenu = (props) => {
 
   return (
     <div
-      className={`subscriptions-menu${doIf(areVisible, " border")}`}
+      className={`subscriptions-menu${doIf(!isHidden, " border")}`}
       onClick={(e) => {
-        onOutsideClick(e, () => setAreVisible((prevState) => !prevState));
+        onOutsideClick(e, () => setIsHidden((prevState) => !prevState));
       }}
     >
       <SubscriptionButton
         text={doIf(props.currentOrigin, props.currentOrigin, "Home")}
         type="subscription"
-        hidden={!true}
+        hidden={false}
       />
-      <strong className={getClasses("subscription-divider")}>
-        Fakedit Feeds
-      </strong>
-      <SubscriptionButton
-        text="Top Communities"
-        type="subscription"
-        hidden={!areVisible}
-        onClick={() => (window.location.href = "/origins/leaderboard")}
-      />
-      <strong className={getClasses("subscription-divider")}>
-        My Communities
-      </strong>
-      {displaySubscriptions()}
-      <strong className={getClasses("subscription-divider")}>Other</strong>
-      <SubscriptionButton
-        text="Create Community"
-        type="user"
-        hidden={!areVisible}
-        onClick={() => {
-          window.open("/origins/create");
-          setAreVisible((prevState) => !prevState);
-        }}
-      />
+      <div class={`subscriptions-menu-wrapper${isHidden ? " hidden" : ""}`}>
+        <strong className={getClasses("subscription-divider")}>
+          Fakedit Feeds
+        </strong>
+        <SubscriptionButton
+          text="Top Communities"
+          type="subscription"
+          hidden={isHidden}
+          onClick={() => (window.location.href = "/origins/leaderboard")}
+        />
+        <strong className={getClasses("subscription-divider")}>
+          My Communities
+        </strong>
+        {displaySubscriptions()}
+        <strong className={getClasses("subscription-divider")}>Other</strong>
+        <SubscriptionButton
+          text="Create Community"
+          type="user"
+          hidden={isHidden}
+          onClick={() => {
+            window.open("/origins/create");
+            setIsHidden((prevState) => !prevState);
+          }}
+        />
+      </div>
     </div>
   );
 };

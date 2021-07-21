@@ -1,10 +1,9 @@
 .subscriptions-menu {
   @include rounded-border(5px, $white);
+  position: relative;
   align-self: flex-start;
   flex-flow: column nowrap;
   width: 270px;
-  // margin-top: -5px;
-  // padding-left: 10px;
   z-index: 20;
   background-color: $white;
 
@@ -13,12 +12,17 @@
   }
 }
 
-.subscriptions-menu:hover {
-  border-color: $light-gray;
+.subscriptions-menu-wrapper {
+  @include rounded-border(5px, $white);
+  position: absolute;
+  top: 100%;
+  min-width: 268px;
+  padding-bottom: 16px;
+  background-color: $white;
 }
 
-.subscriptions-menu.border {
-  padding-bottom: 16px;
+.subscriptions-menu:hover {
+  border-color: $light-gray;
 }
 
 .subscription-button-wrapper {
@@ -71,4 +75,8 @@
 
 .hidden {
   display: none;
+}
+
+.subscribed-origin-button {
+  max-height: 21px;
 }
