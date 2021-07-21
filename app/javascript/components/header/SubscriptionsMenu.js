@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import onOutsideClick from "../shared/onOutsideClick";
 import SubscriptionButton from "./SubscriptionButton";
-import { doIf } from "../shared/helpers";
 
 const SubscriptionsMenu = (props) => {
   const [isHidden, setIsHidden] = useState(true);
@@ -25,13 +24,13 @@ const SubscriptionsMenu = (props) => {
 
   return (
     <div
-      className={`subscriptions-menu${doIf(!isHidden, " border")}`}
+      className={`subscriptions-menu${!isHidden ? " border" : ""}`}
       onClick={(e) => {
         onOutsideClick(e, () => setIsHidden((prevState) => !prevState));
       }}
     >
       <SubscriptionButton
-        text={doIf(props.currentOrigin, props.currentOrigin, "Home")}
+        text={props.currentOrigin ? props.currentOrigin : "Home"}
         type="subscription"
         hidden={false}
       />
