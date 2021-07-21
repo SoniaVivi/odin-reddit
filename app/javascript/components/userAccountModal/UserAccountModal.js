@@ -28,9 +28,6 @@ const UserAccountModal = (props) => {
     setIsButtonMode(true);
     setIsFirstpage(true);
     toggleScroll();
-    // if (props.exit) {
-    //   props.exit();
-    // }
   };
   const modalButton = (
     <ModalButton
@@ -76,12 +73,11 @@ const UserAccountModal = (props) => {
     return null;
   }
 
-  !disabledScroll
-    ? (() => {
-        setDisabledScroll((prevState) => !prevState);
-        toggleScroll();
-      })()
-    : "";
+  !disabledScroll &&
+    (() => {
+      setDisabledScroll((prevState) => !prevState);
+      toggleScroll();
+    })();
   if (props.type == "signup") {
     return (
       <React.Fragment>

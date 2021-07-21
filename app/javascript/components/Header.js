@@ -4,7 +4,6 @@ import UserAccountModal from "./userAccountModal/UserAccountModal";
 import sendAjaxRequest from "./shared/sendAjaxRequest";
 import UserDropDownMenu from "./header/UserDropDownMenu";
 import SubscriptionsMenu from "./header/SubscriptionsMenu";
-import { doIf } from "./shared/helpers";
 
 const Header = (props) => {
   const logout = () => {
@@ -20,29 +19,33 @@ const Header = (props) => {
         <div className="logo" src=""></div>
         <p className="logo-text">fakedit</p>
       </a>
-      {doIf(
-        props.loggedIn,
+      {props.loggedIn ? (
         <SubscriptionsMenu
           currentOrigin={props.originName}
           subscriptions={props.subscriptions}
         />
+      ) : (
+        ""
       )}
       <input
-        className={`search header-search ${doIf(props.loggedIn, "logged-in")}`}
+        className={`search header-search ${props.loggedIn ? "logged-in" : ""}`}
       ></input>
       <div className="login-container ">
-        {doIf(!props.loggedIn, [
-          <UserAccountModal type="login"></UserAccountModal>,
-          <UserAccountModal type="signup"></UserAccountModal>,
-        ])}
+        {!props.loggedIn
+          ? [
+              <UserAccountModal type="login"></UserAccountModal>,
+              <UserAccountModal type="signup"></UserAccountModal>,
+            ]
+          : ""}
       </div>
-      {doIf(
-        props.loggedIn,
+      {props.loggedIn ? (
         <UserDropDownMenu
           name={props.username}
           logoutFunc={logout}
           karma={props.karma}
         ></UserDropDownMenu>
+      ) : (
+        ""
       )}
     </React.Fragment>
   );
