@@ -18,22 +18,22 @@ test_user =
 
 test_origin = Origin.create title: 'test-origin', creator_id: test_user.id
 
-titles = [
-  'Canidae',
-  'Felidae',
-  'Cat',
-  'Cattle',
-  'Dog',
-  'Donkey',
-  'Goat',
-  'Guinea pig',
-  'Horse',
-  'Pig',
-  'Rabbit',
-]
+titles =
+  [
+    'Labrador Retriever',
+    'German Shepherd',
+    'Golden Retriever',
+    'French Bulldogs',
+    'Bulldogs',
+    'Poodles',
+    'Beagles',
+    'Rottweilers',
+    'German Shorthaired Pointer',
+    'Pembroke Welsh Corgi',
+  ].map { |t| "Attack of the #{t}" }
 
 titles.each_with_index do |title, i|
-  text = Text.create(description: (title * 9))
+  text = Text.create(description: 'In a dog park far, far away')
   Post.create!(
     title: title,
     score: generate_random_number,
@@ -47,20 +47,20 @@ Post.all.each do |post|
   Comment.create!(
     poster_id: 1,
     post_id: post.id,
-    body: "Whazzzup #{post.title}",
+    body: "Run! An #{post.title} is incoming!",
     score: generate_random_number,
   )
   Comment.create!(
     poster_id: 1,
     post_id: post.id,
-    body: "Whazzzup #{post.title}",
+    body: "Run! An #{post.title} is incoming!",
     score: generate_random_number,
   )
   com =
     Comment.create!(
       poster_id: 1,
       post_id: post.id,
-      body: "Whazzzup #{post.title}",
+      body: "Run! An #{post.title} is incoming!",
       score: generate_random_number,
     )
 
@@ -68,7 +68,7 @@ Post.all.each do |post|
     Comment.create!(
       poster_id: 1,
       post_id: post.id,
-      body: "Whazzzup #{post.title} 2",
+      body: "Run! An #{post.title} is incoming! 2",
       score: generate_random_number,
       parent_id: com.id,
     )
@@ -76,7 +76,7 @@ Post.all.each do |post|
   Comment.create!(
     poster_id: 1,
     post_id: post.id,
-    body: "Whazzzup #{post.title} 3",
+    body: "Run! An #{post.title} is incoming! 3",
     score: generate_random_number,
     parent_id: com.id,
   )
@@ -84,7 +84,7 @@ Post.all.each do |post|
   Comment.create!(
     poster_id: 1,
     post_id: post.id,
-    body: "Whazzzup #{post.title} 3",
+    body: "Run! An #{post.title} is incoming! 3",
     score: generate_random_number,
     parent_id: com.id,
   )
@@ -92,7 +92,7 @@ Post.all.each do |post|
   Comment.create!(
     poster_id: 1,
     post_id: post.id,
-    body: "Whazzzup #{post.title} 3",
+    body: "Run! An #{post.title} is incoming! 3",
     score: generate_random_number,
     parent_id: com.id,
   )
@@ -100,7 +100,7 @@ Post.all.each do |post|
   Comment.create!(
     poster_id: 1,
     post_id: post.id,
-    body: "Whazzzup #{post.title}",
+    body: "Run! An #{post.title} is incoming!",
     score: generate_random_number,
   )
 end
